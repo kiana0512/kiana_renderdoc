@@ -1,0 +1,134 @@
+[
+  {
+    "eventId": 1556,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1564,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1576,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1610,
+    "name": "DrawIndexedInstancedIndirect(<954, 1>)",
+    "indices": 954,
+    "instances": 1
+  },
+  {
+    "eventId": 1633,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1648,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1660,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1671,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1682,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1693,
+    "name": "",
+    "indices": 3,
+    "instances": 0
+  },
+  {
+    "eventId": 1718,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1734,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1752,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1768,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1786,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1802,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1820,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1836,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1868,
+    "name": "DrawIndexedInstancedIndirect(<348, 1>)",
+    "indices": 348,
+    "instances": 1
+  },
+  {
+    "eventId": 1885,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1899,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  },
+  {
+    "eventId": 1910,
+    "name": "",
+    "indices": 6,
+    "instances": 0
+  }
+]

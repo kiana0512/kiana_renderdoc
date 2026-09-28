@@ -1,0 +1,81 @@
+Shader hash a59b2e34-48022591-0a84af85-4b497db5
+
+ps_4_0
+      dcl_constantbuffer cb0[174], immediateIndexed
+      dcl_sampler s0, mode_default
+      dcl_resource_texture2d (float,float,float,float) t0
+      dcl_input_ps linear v1.xy
+      dcl_input_ps linear v2.xyzw
+      dcl_output o0.xyzw
+      dcl_temps 3
+   0: mad r0.xyzw, cb0[173].xyxy, l(-18.303101, -18.303101, -16.322439, -16.322439), v1.xyxy
+   1: max r0.xyzw, r0.xyzw, v2.xyxy
+   2: min r0.xyzw, r0.xyzw, v2.zwzw
+   3: sample_indexable r1.xyzw, r0.zwzz, t0.xyzw, s0
+   4: sample_indexable r0.xyzw, r0.xyxx, t0.xyzw, s0
+   5: mul r1.xyzw, r1.xyzw, l(0.000393, 0.000393, 0.000393, 0.000393)
+   6: mad r0.xyzw, r0.xyzw, l(0.000083, 0.000083, 0.000083, 0.000083), r1.xyzw
+   7: mad r1.xyzw, cb0[173].xyxy, l(-14.342410, -14.342410, -12.362960, -12.362960), v1.xyxy
+   8: max r1.xyzw, r1.xyzw, v2.xyxy
+   9: min r1.xyzw, r1.xyzw, v2.zwzw
+  10: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  11: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  12: mad r0.xyzw, r2.xyzw, l(0.001564, 0.001564, 0.001564, 0.001564), r0.xyzw
+  13: mad r0.xyzw, r1.xyzw, l(0.005202, 0.005202, 0.005202, 0.005202), r0.xyzw
+  14: mad r1.xyzw, cb0[173].xyxy, l(-10.384010, -10.384010, -8.405515, -8.405515), v1.xyxy
+  15: max r1.xyzw, r1.xyzw, v2.xyxy
+  16: min r1.xyzw, r1.xyzw, v2.zwzw
+  17: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  18: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  19: mad r0.xyzw, r2.xyzw, l(0.014478, 0.014478, 0.014478, 0.014478), r0.xyzw
+  20: mad r0.xyzw, r1.xyzw, l(0.033726, 0.033726, 0.033726, 0.033726), r0.xyzw
+  21: mad r1.xyzw, cb0[173].xyxy, l(-6.427385, -6.427385, -4.449542, -4.449542), v1.xyxy
+  22: max r1.xyzw, r1.xyzw, v2.xyxy
+  23: min r1.xyzw, r1.xyzw, v2.zwzw
+  24: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  25: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  26: mad r0.xyzw, r2.xyzw, l(0.065747, 0.065747, 0.065747, 0.065747), r0.xyzw
+  27: mad r0.xyzw, r1.xyzw, l(0.107267, 0.107267, 0.107267, 0.107267), r0.xyzw
+  28: mad r1.xyzw, cb0[173].xyxy, l(-2.471902, -2.471902, -0.494375, -0.494375), v1.xyxy
+  29: max r1.xyzw, r1.xyzw, v2.xyxy
+  30: min r1.xyzw, r1.xyzw, v2.zwzw
+  31: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  32: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  33: mad r0.xyzw, r2.xyzw, l(0.146470, 0.146470, 0.146470, 0.146470), r0.xyzw
+  34: mad r0.xyzw, r1.xyzw, l(0.167388, 0.167388, 0.167388, 0.167388), r0.xyzw
+  35: mad r1.xyzw, cb0[173].xyxy, l(1.483130, 1.483130, 3.460702, 3.460702), v1.xyxy
+  36: max r1.xyzw, r1.xyzw, v2.xyxy
+  37: min r1.xyzw, r1.xyzw, v2.zwzw
+  38: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  39: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  40: mad r0.xyzw, r2.xyzw, l(0.160103, 0.160103, 0.160103, 0.160103), r0.xyzw
+  41: mad r0.xyzw, r1.xyzw, l(0.128165, 0.128165, 0.128165, 0.128165), r0.xyzw
+  42: mad r1.xyzw, cb0[173].xyxy, l(5.438433, 5.438433, 7.416409, 7.416409), v1.xyxy
+  43: max r1.xyzw, r1.xyzw, v2.xyxy
+  44: min r1.xyzw, r1.xyzw, v2.zwzw
+  45: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  46: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  47: mad r0.xyzw, r2.xyzw, l(0.085869, 0.085869, 0.085869, 0.085869), r0.xyzw
+  48: mad r0.xyzw, r1.xyzw, l(0.048149, 0.048149, 0.048149, 0.048149), r0.xyzw
+  49: mad r1.xyzw, cb0[173].xyxy, l(9.394713, 9.394713, 11.373420, 11.373420), v1.xyxy
+  50: max r1.xyzw, r1.xyzw, v2.xyxy
+  51: min r1.xyzw, r1.xyzw, v2.zwzw
+  52: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  53: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  54: mad r0.xyzw, r2.xyzw, l(0.022595, 0.022595, 0.022595, 0.022595), r0.xyzw
+  55: mad r0.xyzw, r1.xyzw, l(0.008873, 0.008873, 0.008873, 0.008873), r0.xyzw
+  56: mad r1.xyzw, cb0[173].xyxy, l(13.352620, 13.352620, 15.332350, 15.332350), v1.xyxy
+  57: max r1.xyzw, r1.xyzw, v2.xyxy
+  58: min r1.xyzw, r1.xyzw, v2.zwzw
+  59: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  60: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  61: mad r0.xyzw, r2.xyzw, l(0.002916, 0.002916, 0.002916, 0.002916), r0.xyzw
+  62: mad r0.xyzw, r1.xyzw, l(0.000802, 0.000802, 0.000802, 0.000802), r0.xyzw
+  63: mad r1.xyzw, cb0[173].xyxy, l(17.312691, 17.312691, 19.000000, 19.000000), v1.xyxy
+  64: max r1.xyzw, r1.xyzw, v2.xyxy
+  65: min r1.xyzw, r1.xyzw, v2.zwzw
+  66: sample_indexable r2.xyzw, r1.xyxx, t0.xyzw, s0
+  67: sample_indexable r1.xyzw, r1.zwzz, t0.xyzw, s0
+  68: mad r0.xyzw, r2.xyzw, l(0.000185, 0.000185, 0.000185, 0.000185), r0.xyzw
+  69: mad o0.xyzw, r1.xyzw, l(0.000025, 0.000025, 0.000025, 0.000025), r0.xyzw
+  70: ret

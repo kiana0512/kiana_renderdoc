@@ -1,0 +1,119 @@
+{
+  "draws": [
+    {
+      "eid": 1057,
+      "vertexCount": 3101,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        0.699999988079071,
+        0.8999999761581421
+      ],
+      "matchingVertices1e4": 3101,
+      "maxAbsError": 2.384185793236071e-08,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1161,
+      "vertexCount": 838,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        0.8999999761581421
+      ],
+      "matchingVertices1e4": 838,
+      "maxAbsError": 2.384185793236071e-08,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1078,
+      "vertexCount": 2120,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        0.0,
+        1.0
+      ],
+      "matchingVertices1e4": 2120,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1091,
+      "vertexCount": 1665,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        0.0
+      ],
+      "matchingVertices1e4": 1665,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1107,
+      "vertexCount": 13588,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        1.0
+      ],
+      "matchingVertices1e4": 13588,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1118,
+      "vertexCount": 6017,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        0.0,
+        1.0
+      ],
+      "matchingVertices1e4": 6017,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1130,
+      "vertexCount": 912,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        0.0
+      ],
+      "matchingVertices1e4": 912,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1143,
+      "vertexCount": 26615,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        0.0
+      ],
+      "matchingVertices1e4": 26615,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1183,
+      "vertexCount": 6342,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        1.0
+      ],
+      "matchingVertices1e4": 6342,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    },
+    {
+      "eid": 1331,
+      "vertexCount": 6342,
+      "maxV1Uv0Error": 0.0,
+      "v5wValues": [
+        1.0
+      ],
+      "matchingVertices1e4": 6342,
+      "maxAbsError": 0.0,
+      "firstMismatch": null
+    }
+  ],
+  "totalVertices": 67540,
+  "matchingVertices1e4": 67540
+}

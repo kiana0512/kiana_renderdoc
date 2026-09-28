@@ -1,0 +1,1190 @@
+{
+  "frame": 38112,
+  "shaderFamily": [
+    31475,
+    42681,
+    33678
+  ],
+  "draws": [
+    {
+      "eid": 858,
+      "pixelShader": 31475,
+      "tableFingerprint": "028551451b21",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 1.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 13.0,
+          "weight": 0.3199999928474426,
+          "strengthCap": 0.5400000214576721,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 4.0,
+          "weight": 0.7200000286102295,
+          "strengthCap": 0.8299999833106995,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 14.0,
+          "weight": 0.0,
+          "strengthCap": 1.4500000476837158,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            0.9470841288566589,
+            0.7020000219345093,
+            1.0
+          ],
+          "arraySlice": 15.0,
+          "weight": 1.5,
+          "strengthCap": 1.0,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 875,
+      "pixelShader": 31475,
+      "tableFingerprint": "028551451b21",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 1.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 13.0,
+          "weight": 0.3199999928474426,
+          "strengthCap": 0.5400000214576721,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 4.0,
+          "weight": 0.7200000286102295,
+          "strengthCap": 0.8299999833106995,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 14.0,
+          "weight": 0.0,
+          "strengthCap": 1.4500000476837158,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            0.9470841288566589,
+            0.7020000219345093,
+            1.0
+          ],
+          "arraySlice": 15.0,
+          "weight": 1.5,
+          "strengthCap": 1.0,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 895,
+      "pixelShader": 31475,
+      "tableFingerprint": "13a97e38ad86",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 100.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 0.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            0.8773584961891174,
+            0.7088862061500549,
+            0.6414649486541748
+          ],
+          "arraySlice": 11.0,
+          "weight": 1.0,
+          "strengthCap": 1.2999999523162842,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 100.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 0.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            0.6271375417709351,
+            0.6084905862808228,
+            1.0
+          ],
+          "arraySlice": 4.0,
+          "weight": 1.559999942779541,
+          "strengthCap": 0.6499999761581421,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            0.6271375417709351,
+            0.6084905862808228,
+            1.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 1.559999942779541,
+          "strengthCap": 0.6499999761581421,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 912,
+      "pixelShader": 31475,
+      "tableFingerprint": "6be922690282",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 7.0,
+          "weight": 0.5,
+          "strengthCap": 0.5,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 8.0,
+          "weight": 0.5,
+          "strengthCap": 0.5,
+          "mode": 1.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 1.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            0.5330187678337097,
+            0.7377897500991821,
+            1.0
+          ],
+          "arraySlice": 9.0,
+          "weight": 0.5,
+          "strengthCap": 0.5,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 10.0,
+          "weight": 1.5099999904632568,
+          "strengthCap": 2.4600000381469727,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 928,
+      "pixelShader": 31475,
+      "tableFingerprint": "6be922690282",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 7.0,
+          "weight": 0.5,
+          "strengthCap": 0.5,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 8.0,
+          "weight": 0.5,
+          "strengthCap": 0.5,
+          "mode": 1.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 1.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            0.5330187678337097,
+            0.7377897500991821,
+            1.0
+          ],
+          "arraySlice": 9.0,
+          "weight": 0.5,
+          "strengthCap": 0.5,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 10.0,
+          "weight": 1.5099999904632568,
+          "strengthCap": 2.4600000381469727,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 945,
+      "pixelShader": 31475,
+      "tableFingerprint": "ff2dd9361aba",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 100.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 0.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            1.0,
+            0.8066037893295288,
+            0.8774250149726868
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.5,
+          "strengthCap": 0.6000000238418579,
+          "mode": 2.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 1.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            0.11601101607084274,
+            0.3338358700275421,
+            0.7452830076217651
+          ],
+          "arraySlice": 2.0,
+          "weight": 1.5099999904632568,
+          "strengthCap": 0.8399999737739563,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            1.0,
+            0.5529999732971191,
+            0.9184470772743225
+          ],
+          "arraySlice": 3.0,
+          "weight": 0.5,
+          "strengthCap": 0.4000000059604645,
+          "mode": 1.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 968,
+      "pixelShader": 42681,
+      "tableFingerprint": "a64bed5006a1",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            0.0,
+            0.4910411238670349,
+            1.0
+          ],
+          "arraySlice": 12.0,
+          "weight": 3.5899999141693115,
+          "strengthCap": 2.319999933242798,
+          "mode": 0.0,
+          "uvScale": [
+            10.319999694824219,
+            9.079999923706055
+          ],
+          "uvOffset": [
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 0.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 0.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 0.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 1.0,
+          "strengthCap": 1.0,
+          "mode": 0.0,
+          "uvScale": [
+            5.0,
+            5.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 1035,
+      "pixelShader": 33678,
+      "tableFingerprint": "fadfab4ca786",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "eid": 1313,
+      "pixelShader": 33678,
+      "tableFingerprint": "fadfab4ca786",
+      "active": true,
+      "normalProjectionRows": [
+        [
+          -0.9509623050689697,
+          0.1557515263557434,
+          0.2672311067581177
+        ],
+        [
+          0.2933192253112793,
+          0.7282799482345581,
+          0.6193320751190186
+        ],
+        [
+          0.09815714508295059,
+          -0.667345404624939,
+          0.738251805305481
+        ]
+      ],
+      "normalProjectionScale": 91.0731201171875,
+      "albedoMultiplier": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 1,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 2,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 3,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": 4,
+          "tint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "arraySlice": 0.0,
+          "weight": 0.0,
+          "strengthCap": 0.0,
+          "mode": 0.0,
+          "uvScale": [
+            0.0,
+            0.0
+          ],
+          "uvOffset": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  ],
+  "uniqueTables": 6
+}

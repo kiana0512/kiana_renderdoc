@@ -1,0 +1,27 @@
+{
+  "captureFrame": 38112,
+  "stage": "pixel",
+  "binding": "t1",
+  "source": "Kiana bridge PipeState.GetReadOnlyResources at each EID; RenderDoc GetBufferData RID 24248 offset 0",
+  "resourceId": 24248,
+  "resourceName": "EntityGpuDataBuffer",
+  "descriptorByteSize": 8192,
+  "elementStride": 128,
+  "events": [858, 875, 895, 912, 928, 945, 992, 1035],
+  "selection": {
+    "cb0_196_x_as_uint": 1,
+    "cb2_2_z": 0,
+    "selectedElement": 0
+  },
+  "element0": {
+    "byte0Float4": [1, 1, 1, 50],
+    "byte16Float4": [590.5455932617188, 17.584890365600586, 16.03023338317871, 1],
+    "byte32Float4": [1, 1, 0, 0],
+    "byte48Float4": [0, 0.9885035753250122, 0.6620016694068909, 0],
+    "byte80Float4": [590.5455932617188, 17.584896087646484, 16.030237197875977, 0],
+    "byte96Float4": [0.04672480374574661, 0.07053221017122269, 0.09433960914611816, 0],
+    "byte112Float4": [0.04672480374574661, 0.07053221017122269, 0.09433960914611816, 0]
+  },
+  "shaderUse": "PS 31475 instructions 94-124 load t1[0] byte 0,16,32; byte 0 is swizzled wxyz, giving radius 50 and RGB 1,1,1. The shader also loads bytes 28 and 32 later.",
+  "note": "RID 19818 GPULightDataForChar is a different buffer; it is not bound to PS t1 at these draw events. This binding is evidence, not a complete port of the light response."
+}

@@ -1,0 +1,12 @@
+{
+  "event_ids": [
+    2237,
+    2246,
+    2280,
+    2307
+  ],
+  "output": "F:\\KianaStudioElectron\\docs\\frame38112-ui-postvs-probe.json",
+  "export_dir": "E:\\KianaCaptures\\ZenlessZoneZero\\绝区零-1790334599799\\analysis-frame38112\\ui-postvs",
+  "capture": "E:\\KianaCaptures\\ZenlessZoneZero\\绝区零-1790334599799\\capture_frame38112.rdc",
+  "inspect_ps_constants": true
+}

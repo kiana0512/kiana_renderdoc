@@ -1,0 +1,45 @@
+{
+  "capture": "E:\\KianaFrame38112Workspace\\Frame38112Capture\\capture_frame38112.rdc",
+  "events": [
+    {
+      "eventId": 1511,
+      "pixelConstantBuffers": [
+        {
+          "slot": 0,
+          "resourceId": 408,
+          "byteOffset": 0,
+          "byteSize": 65536,
+          "readBytes": 64,
+          "float4s": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "pixelShaderId": 1150
+    }
+  ],
+  "ok": true
+}

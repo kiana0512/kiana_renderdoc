@@ -1,0 +1,171 @@
+{
+  "events": [
+    {
+      "eventId": 1313,
+      "independentBlend": true,
+      "colorBlends": [
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "colorBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "enabled": false,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 1,
+            "operation": 0,
+            "source": 0,
+            "sourceName": "Zero",
+            "destinationName": "One"
+          },
+          "colorBlend": {
+            "destination": 1,
+            "operation": 0,
+            "source": 0,
+            "sourceName": "Zero",
+            "destinationName": "One"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "colorBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "enabled": false,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "colorBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "enabled": false,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "colorBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "enabled": false,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "colorBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "enabled": false,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "colorBlend": {
+            "destination": 0,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "Zero"
+          },
+          "enabled": false,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        }
+      ]
+    }
+  ],
+  "ok": true
+}

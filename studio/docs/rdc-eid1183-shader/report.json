@@ -1,0 +1,188 @@
+{
+  "events": [
+    {
+      "eventId": 1183,
+      "stages": {
+        "vertex": {
+          "resourceId": 31468,
+          "inputSignature": [
+            {
+              "name": "POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 3
+            },
+            {
+              "name": "NORMAL",
+              "index": 0,
+              "reg": 1,
+              "count": 3
+            },
+            {
+              "name": "TANGENT",
+              "index": 0,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "COLOR",
+              "index": 0,
+              "reg": 3,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 4,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 5,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 6,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 3,
+              "reg": 7,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 4,
+              "reg": 8,
+              "count": 3
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 5,
+              "reg": 3,
+              "count": 3
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 4,
+              "reg": 4,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 7,
+              "reg": 5,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 8,
+              "reg": 6,
+              "count": 3
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\rdc-eid1183-shader\\EID1183-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 31479,
+          "inputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 5,
+              "reg": 3,
+              "count": 3
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 4,
+              "reg": 4,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 7,
+              "reg": 5,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 8,
+              "reg": 6,
+              "count": 3
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "SV_Target",
+              "index": 1,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "SV_Target",
+              "index": 2,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "SV_Target",
+              "index": 3,
+              "reg": 3,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\rdc-eid1183-shader\\EID1183-fragment.txt"
+        }
+      }
+    }
+  ],
+  "ok": true
+}

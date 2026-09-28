@@ -1,0 +1,296 @@
+[
+  {
+    "eid": 858,
+    "pixels": 115638,
+    "sourceMeanY": 80.67,
+    "unityMeanY": 104.739,
+    "meanYDeltaUnityMinusSource": 24.069,
+    "medianYDeltaUnityMinusSource": 19.739,
+    "meanRGBDeltaUnityMinusSource": [
+      27.958,
+      23.579,
+      17.469
+    ],
+    "rgbMAE": 24.259
+  },
+  {
+    "eid": 875,
+    "pixels": 629169,
+    "sourceMeanY": 69.695,
+    "unityMeanY": 71.646,
+    "meanYDeltaUnityMinusSource": 1.95,
+    "medianYDeltaUnityMinusSource": 4.217,
+    "meanRGBDeltaUnityMinusSource": [
+      1.707,
+      2.119,
+      0.991
+    ],
+    "rgbMAE": 8.392
+  },
+  {
+    "eid": 895,
+    "pixels": 491562,
+    "sourceMeanY": 80.44,
+    "unityMeanY": 80.472,
+    "meanYDeltaUnityMinusSource": 0.033,
+    "medianYDeltaUnityMinusSource": -0.426,
+    "meanRGBDeltaUnityMinusSource": [
+      -0.154,
+      0.095,
+      -0.033
+    ],
+    "rgbMAE": 10.006
+  },
+  {
+    "eid": 912,
+    "pixels": 109459,
+    "sourceMeanY": 54.076,
+    "unityMeanY": 56.51,
+    "meanYDeltaUnityMinusSource": 2.434,
+    "medianYDeltaUnityMinusSource": 3.136,
+    "meanRGBDeltaUnityMinusSource": [
+      4.365,
+      2.164,
+      -0.579
+    ],
+    "rgbMAE": 19.812
+  },
+  {
+    "eid": 945,
+    "pixels": 527945,
+    "sourceMeanY": 118.567,
+    "unityMeanY": 124.648,
+    "meanYDeltaUnityMinusSource": 6.081,
+    "medianYDeltaUnityMinusSource": 1.715,
+    "meanRGBDeltaUnityMinusSource": [
+      6.978,
+      6.602,
+      -1.711
+    ],
+    "rgbMAE": 8.982
+  },
+  {
+    "eid": 968,
+    "pixels": 1741,
+    "sourceMeanY": 107.403,
+    "unityMeanY": 85.28,
+    "meanYDeltaUnityMinusSource": -22.124,
+    "medianYDeltaUnityMinusSource": -1.791,
+    "meanRGBDeltaUnityMinusSource": [
+      -24.836,
+      -21.382,
+      -21.482
+    ],
+    "rgbMAE": 28.76
+  },
+  {
+    "eid": 992,
+    "pixels": 124216,
+    "sourceMeanY": 162.819,
+    "unityMeanY": 162.774,
+    "meanYDeltaUnityMinusSource": -0.045,
+    "medianYDeltaUnityMinusSource": 1.0,
+    "meanRGBDeltaUnityMinusSource": [
+      -0.413,
+      -0.026,
+      0.857
+    ],
+    "rgbMAE": 2.08
+  },
+  {
+    "eid": 1008,
+    "pixels": 8130,
+    "sourceMeanY": 162.009,
+    "unityMeanY": 164.341,
+    "meanYDeltaUnityMinusSource": 2.332,
+    "medianYDeltaUnityMinusSource": 0.213,
+    "meanRGBDeltaUnityMinusSource": [
+      7.908,
+      1.146,
+      -2.336
+    ],
+    "rgbMAE": 9.824
+  },
+  {
+    "eid": 1035,
+    "pixels": 154139,
+    "sourceMeanY": 125.399,
+    "unityMeanY": 126.433,
+    "meanYDeltaUnityMinusSource": 1.034,
+    "medianYDeltaUnityMinusSource": -4.01,
+    "meanRGBDeltaUnityMinusSource": [
+      0.787,
+      1.081,
+      1.295
+    ],
+    "rgbMAE": 12.902
+  },
+  {
+    "eid": 1057,
+    "pixels": 692,
+    "sourceMeanY": 21.395,
+    "unityMeanY": 46.528,
+    "meanYDeltaUnityMinusSource": 25.133,
+    "medianYDeltaUnityMinusSource": 27.148,
+    "meanRGBDeltaUnityMinusSource": [
+      10.275,
+      27.614,
+      44.305
+    ],
+    "rgbMAE": 40.689
+  },
+  {
+    "eid": 1078,
+    "pixels": 3107,
+    "sourceMeanY": 13.825,
+    "unityMeanY": 26.886,
+    "meanYDeltaUnityMinusSource": 13.061,
+    "medianYDeltaUnityMinusSource": 6.29,
+    "meanRGBDeltaUnityMinusSource": [
+      14.617,
+      12.155,
+      17.454
+    ],
+    "rgbMAE": 31.834
+  },
+  {
+    "eid": 1091,
+    "pixels": 7402,
+    "sourceMeanY": 12.94,
+    "unityMeanY": 22.66,
+    "meanYDeltaUnityMinusSource": 9.72,
+    "medianYDeltaUnityMinusSource": -2.715,
+    "meanRGBDeltaUnityMinusSource": [
+      4.95,
+      10.279,
+      18.225
+    ],
+    "rgbMAE": 25.675
+  },
+  {
+    "eid": 1107,
+    "pixels": 8802,
+    "sourceMeanY": 24.362,
+    "unityMeanY": 27.706,
+    "meanYDeltaUnityMinusSource": 3.344,
+    "medianYDeltaUnityMinusSource": 2.714,
+    "meanRGBDeltaUnityMinusSource": [
+      3.604,
+      3.764,
+      -1.578
+    ],
+    "rgbMAE": 19.901
+  },
+  {
+    "eid": 1118,
+    "pixels": 3883,
+    "sourceMeanY": 10.569,
+    "unityMeanY": 41.23,
+    "meanYDeltaUnityMinusSource": 30.662,
+    "medianYDeltaUnityMinusSource": 7.0,
+    "meanRGBDeltaUnityMinusSource": [
+      31.826,
+      30.858,
+      25.285
+    ],
+    "rgbMAE": 38.553
+  },
+  {
+    "eid": 1143,
+    "pixels": 14060,
+    "sourceMeanY": 28.119,
+    "unityMeanY": 55.19,
+    "meanYDeltaUnityMinusSource": 27.07,
+    "medianYDeltaUnityMinusSource": 9.415,
+    "meanRGBDeltaUnityMinusSource": [
+      18.378,
+      28.185,
+      41.63
+    ],
+    "rgbMAE": 51.107
+  },
+  {
+    "eid": 1183,
+    "pixels": 8245,
+    "sourceMeanY": 23.993,
+    "unityMeanY": 42.264,
+    "meanYDeltaUnityMinusSource": 18.271,
+    "medianYDeltaUnityMinusSource": 4.567,
+    "meanRGBDeltaUnityMinusSource": [
+      18.068,
+      19.107,
+      10.589
+    ],
+    "rgbMAE": 28.393
+  },
+  {
+    "eid": 1236,
+    "pixels": 3363,
+    "sourceMeanY": 126.366,
+    "unityMeanY": 160.818,
+    "meanYDeltaUnityMinusSource": 34.452,
+    "medianYDeltaUnityMinusSource": 51.522,
+    "meanRGBDeltaUnityMinusSource": [
+      22.407,
+      37.808,
+      36.683
+    ],
+    "rgbMAE": 48.322
+  },
+  {
+    "eid": 1252,
+    "pixels": 1104,
+    "sourceMeanY": 41.291,
+    "unityMeanY": 61.182,
+    "meanYDeltaUnityMinusSource": 19.891,
+    "medianYDeltaUnityMinusSource": 13.558,
+    "meanRGBDeltaUnityMinusSource": [
+      13.764,
+      20.769,
+      29.231
+    ],
+    "rgbMAE": 27.176
+  },
+  {
+    "eid": 1273,
+    "pixels": 4049,
+    "sourceMeanY": 51.843,
+    "unityMeanY": 58.666,
+    "meanYDeltaUnityMinusSource": 6.823,
+    "medianYDeltaUnityMinusSource": 5.503,
+    "meanRGBDeltaUnityMinusSource": [
+      10.558,
+      5.905,
+      4.917
+    ],
+    "rgbMAE": 9.075
+  },
+  {
+    "eid": 1313,
+    "pixels": 1019,
+    "sourceMeanY": 49.759,
+    "unityMeanY": 72.236,
+    "meanYDeltaUnityMinusSource": 22.477,
+    "medianYDeltaUnityMinusSource": 24.721,
+    "meanRGBDeltaUnityMinusSource": [
+      24.717,
+      22.158,
+      19.037
+    ],
+    "rgbMAE": 22.92
+  },
+  {
+    "eid": 1331,
+    "pixels": 313,
+    "sourceMeanY": 22.734,
+    "unityMeanY": 28.042,
+    "meanYDeltaUnityMinusSource": 5.308,
+    "medianYDeltaUnityMinusSource": -1.209,
+    "meanRGBDeltaUnityMinusSource": [
+      6.112,
+      6.204,
+      -5.939
+    ],
+    "rgbMAE": 17.463
+  }
+]

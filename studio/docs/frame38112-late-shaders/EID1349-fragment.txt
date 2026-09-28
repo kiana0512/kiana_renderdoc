@@ -1,0 +1,54 @@
+Shader hash 27e8605c-203fa12d-5a65e13a-f9d57be2
+
+ps_5_0
+      dcl_globalFlags refactoringAllowed
+      dcl_constantbuffer cb0[63], immediateIndexed
+      dcl_sampler s0, mode_default
+      dcl_sampler s1, mode_default
+      dcl_resource_texture2d (float,float,float,float) t0
+      dcl_resource_texture2d (float,float,float,float) t1
+      dcl_input_ps_siv linear noperspective v0.xy, position
+      dcl_input_ps linear v1.xy
+      dcl_input_ps linear v2.yz
+      dcl_output o0.x
+      dcl_output o1.xyzw
+      dcl_output o2.xy
+      dcl_output oDepth
+      dcl_temps 3
+   0: gather4(texture2d)(float,float,float,float) r0.xyzw, v1.xyxx, t0.xyzw, s0.x
+   1: min r1.x, r0.w, r0.z
+   2: min r1.x, r0.y, r1.x
+   3: min r1.x, r0.x, r1.x
+   4: mad r1.y, cb0[62].x, r1.x, cb0[62].y
+   5: div o0.x, l(1.000000, 1.000000, 1.000000, 1.000000), r1.y
+   6: eq r1.yzw, r0.xxyz, r1.xxxx
+   7: mov o2.y, r1.x
+   8: movc r1.xw, r1.wwww, l(1.000000, 0.000000, 0.000000, -1.000000), l(-1.000000, 0.000000, 0.000000, -1.000000)
+   9: movc r1.xz, r1.zzzz, l(1.000000, 0.000000, 1.000000, 0.000000), r1.xxwx
+  10: movc r1.xy, r1.yyyy, l(-1.000000, 1.000000, 0.000000, 0.000000), r1.xzxx
+  11: ftoi r1.zw, r1.xxxy
+  12: mad r1.xy, v2.zyzz, r1.xyxx, v1.xyxx
+  13: sample_indexable(texture2d)(float,float,float,float) r2.xyz, r1.xyxx, t1.xyzw, s1
+  14: mov o1.xyz, r2.xyzx
+  15: iadd r1.xy, r1.zwzz, l(1, 1, 0, 0)
+  16: ushr r1.xy, r1.xyxx, l(1, 1, 0, 0)
+  17: itof r1.xy, r1.xyxx
+  18: mad r1.x, r1.y, l(2.000000), r1.x
+  19: mul o1.w, r1.x, l(0.333333)
+  20: max r1.x, r0.w, r0.z
+  21: max r1.x, r0.y, r1.x
+  22: max o2.x, r0.x, r1.x
+  23: add r1.xyzw, v0.xyxy, v0.xyxy
+  24: ge r1.xyzw, r1.xyzw, -r1.zwzw
+  25: movc r1.xyzw, r1.xyzw, l(2.000000, 2.000000, 0.500000, 0.500000), l(-2.000000, -2.000000, -0.500000, -0.500000)
+  26: mul r1.zw, r1.zzzw, v0.xxxy
+  27: frc r1.zw, r1.zzzw
+  28: mul r1.xy, r1.zwzz, r1.xyxx
+  29: ftou r1.xy, r1.xyxx
+  30: ishl r1.x, r1.x, l(1)
+  31: iadd r1.x, r1.y, r1.x
+  32: ieq r1.yz, r1.xxxx, l(0, 1, 2, 0)
+  33: movc r0.z, r1.z, r0.z, r0.w
+  34: movc r0.x, r1.y, r0.x, r0.z
+  35: movc oDepth, r1.x, r0.x, r0.y
+  36: ret

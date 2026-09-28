@@ -1,0 +1,153 @@
+{
+  "cfglibCommit": "6e57c166403e80e81a0f51e01aebf5ed47267784",
+  "decompiler": "E:\\KianaTools\\d3dasm\\target\\release\\d3dasm.exe",
+  "shaders": [
+    {
+      "eventId": 1885,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1885-VS.hlsl",
+      "hlslSha256": "412B4F7683FD0752C419AC46F97EDE7C698AEE39108E945CC43823C1D1071077",
+      "dxbcSha256": "3CF500ADDA737A11431D7E4935D837B870CE05834F57095A60012F8712FE70A3",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1885-VS.dxbc"
+    },
+    {
+      "eventId": 1885,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1885-PS.hlsl",
+      "hlslSha256": "B278F7A8277A12056081208A9B0FFEC3EAAFA028A834BD3C55FA4154F290D968",
+      "dxbcSha256": "E572C98FCD0F32A2EFD9CBBEB8E31E6F79735FD64AE75077E4FDCEA6EB9B766F",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1885-PS.dxbc"
+    },
+    {
+      "eventId": 1899,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1899-VS.hlsl",
+      "hlslSha256": "FF80C70743FBF0F8AAC4A2D53790386FD73EE2F5A69A498B33836A1E274257CB",
+      "dxbcSha256": "C23F78CA3B4DD7E7A0F1532C6EA81AC759696620ADF91EC14CC0108E8603D8C2",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1899-VS.dxbc"
+    },
+    {
+      "eventId": 1899,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1899-PS.hlsl",
+      "hlslSha256": "5F6439008988F2140CB50078D6A2879B24DA9AB96CD199A1EFD936A7C703D064",
+      "dxbcSha256": "7E306F66C6C7BCFB9203AA0D241769D1C9550A60CA0DBB676282D8EC0D8E9702",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1899-PS.dxbc"
+    },
+    {
+      "eventId": 1924,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1924-VS.hlsl",
+      "hlslSha256": "41DC1BF1951AFD1273B582A981D4846CAA8466C50A54FB62ED71BFD5298F95EB",
+      "dxbcSha256": "C512B75CD338E1F206D123774BB3417C452A2BE72B475612FD8890EF30229A86",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1924-VS.dxbc"
+    },
+    {
+      "eventId": 1924,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1924-PS.hlsl",
+      "hlslSha256": "B73085EEBAA21BD085EE50890E3E42FFF06324E1EA414D739094830D494555A5",
+      "dxbcSha256": "27262B705F2C4B2505066B352005C507148072568D33186E5F6ED3D6E1B8990B",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1924-PS.dxbc"
+    },
+    {
+      "eventId": 1952,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1952-VS.hlsl",
+      "hlslSha256": "FF80C70743FBF0F8AAC4A2D53790386FD73EE2F5A69A498B33836A1E274257CB",
+      "dxbcSha256": "C23F78CA3B4DD7E7A0F1532C6EA81AC759696620ADF91EC14CC0108E8603D8C2",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1952-VS.dxbc"
+    },
+    {
+      "eventId": 1952,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1952-PS.hlsl",
+      "hlslSha256": "5DA58364AB0D17E680DFE2AF0DAE9B39238B7520FB4EEE7275FD1582958FE43B",
+      "dxbcSha256": "2272FB7B1EAA0CCAFCED746606C6E7E92268759F49D51F2A9B1D327E6F4F40C5",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1952-PS.dxbc"
+    },
+    {
+      "eventId": 1961,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1961-VS.hlsl",
+      "hlslSha256": "FF80C70743FBF0F8AAC4A2D53790386FD73EE2F5A69A498B33836A1E274257CB",
+      "dxbcSha256": "C23F78CA3B4DD7E7A0F1532C6EA81AC759696620ADF91EC14CC0108E8603D8C2",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1961-VS.dxbc"
+    },
+    {
+      "eventId": 1961,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1961-PS.hlsl",
+      "hlslSha256": "3EEE666E6F3ACB8771A7ACF7EFFF9DF4A2A19E0960F14ADDEEC8B3D8963FA442",
+      "dxbcSha256": "231E16D5FA071152474D10839BE8D701B540ECFD05FDD3E0CA645C5821632FEF",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1961-PS.dxbc"
+    },
+    {
+      "eventId": 1970,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1970-VS.hlsl",
+      "hlslSha256": "FF80C70743FBF0F8AAC4A2D53790386FD73EE2F5A69A498B33836A1E274257CB",
+      "dxbcSha256": "C23F78CA3B4DD7E7A0F1532C6EA81AC759696620ADF91EC14CC0108E8603D8C2",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1970-VS.dxbc"
+    },
+    {
+      "eventId": 1970,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1970-PS.hlsl",
+      "hlslSha256": "8E1F386BEF7BAADF41060A6FFEDB8FB5F2D73B7C5E275B4223AF432CAC4D05EE",
+      "dxbcSha256": "927C8189AF3EC2BB3D95BAF2C546BB62803DCB3C06F3BEFA1BFD2EB79A2A57A2",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID1970-PS.dxbc"
+    },
+    {
+      "eventId": 2017,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2017-VS.hlsl",
+      "hlslSha256": "92C452816E7B2F0F589808F7AA036CBD2E780CF28F173C0006301A8A1039F8B2",
+      "dxbcSha256": "598504FCA1318D65B493E039E1E15A84FEFF87C55A60963394C97E6042D1D587",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2017-VS.dxbc"
+    },
+    {
+      "eventId": 2017,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2017-PS.hlsl",
+      "hlslSha256": "C219E5289CCB0273D6DAAA5DB44EAF45106A686B72B045FDE6FEFB8EEF7D87F4",
+      "dxbcSha256": "DA9C7750A2CBFE35CDCB2DD14E49B438675A2F36DDD6BF58C67490EB1EAA9919",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2017-PS.dxbc"
+    },
+    {
+      "eventId": 2035,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2035-VS.hlsl",
+      "hlslSha256": "2B4D2A880D93A8C5BE49179DAC39FD6192F89C5B494C24D0A2B6AAE6BFCA921B",
+      "dxbcSha256": "6D442FE2CDF61244565B74849DD66F6B7CDDE84F4CB90929E665060D95769FED",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2035-VS.dxbc"
+    },
+    {
+      "eventId": 2035,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2035-PS.hlsl",
+      "hlslSha256": "0EC86CE82D744630218E3C3B659A2654AAF6B552EE166995709E29025B2C58F5",
+      "dxbcSha256": "045E22CA0B4720DCB989DCD8BE79CE5A9242152E9FBFEBBAF0E828C403F7D3CA",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2035-PS.dxbc"
+    },
+    {
+      "eventId": 2166,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2166-VS.hlsl",
+      "hlslSha256": "55371307374BCDB38A415D68EB510734D808CFF0D2756AA607B4D9623CD76376",
+      "dxbcSha256": "C38035624ADD5998AB1C3A37F777C2F95803CF6B138347598A90235D37C11BE4",
+      "stage": "VS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2166-VS.dxbc"
+    },
+    {
+      "eventId": 2166,
+      "hlsl": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2166-PS.hlsl",
+      "hlslSha256": "771AA629C4ACBA9B8641AFFA8DA5619F853CF3D8F554CCB501BD31BAF5C98F55",
+      "dxbcSha256": "CBD6EE6D84001B425D21BAF070B40E6CD6E8932C7CA6C5011959B76B23B5FF73",
+      "stage": "PS",
+      "dxbc": "E:\\KianaStudioElectron\\docs\\frame38112-postprocess-shaders\\EID2166-PS.dxbc"
+    }
+  ],
+  "captureSha256": "400F63707E1081B4637A8A11542306E974CCE36AC09F5C5ECF253641D31C3994",
+  "d3dasmCommit": "a292206a15daf0723d945a475c6254413eda8551",
+  "capture": "E:\\KianaFrame38112Workspace\\Frame38112Capture\\capture_frame38112.rdc"
+}

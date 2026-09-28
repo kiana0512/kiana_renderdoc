@@ -1,0 +1,656 @@
+{
+  "events": [
+    {
+      "eventId": 1349,
+      "stages": {
+        "vertex": {
+          "resourceId": 6602,
+          "inputSignature": [
+            {
+              "name": "SV_VertexID",
+              "index": 0,
+              "reg": 0,
+              "count": 1
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 3,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1349-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 6603,
+          "inputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 3,
+              "count": 4
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 1
+            },
+            {
+              "name": "SV_Target",
+              "index": 1,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "SV_Target",
+              "index": 2,
+              "reg": 2,
+              "count": 2
+            },
+            {
+              "name": "SV_Depth",
+              "index": 0,
+              "reg": 4294967295,
+              "count": 1
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1349-fragment.txt"
+        }
+      }
+    },
+    {
+      "eventId": 1511,
+      "stages": {
+        "vertex": {
+          "resourceId": 1149,
+          "inputSignature": [
+            {
+              "name": "POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1511-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 1150,
+          "inputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1511-fragment.txt"
+        }
+      }
+    },
+    {
+      "eventId": 1610,
+      "stages": {
+        "vertex": {
+          "resourceId": 33677,
+          "inputSignature": [
+            {
+              "name": "POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 3
+            },
+            {
+              "name": "NORMAL",
+              "index": 0,
+              "reg": 1,
+              "count": 3
+            },
+            {
+              "name": "TANGENT",
+              "index": 0,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "COLOR",
+              "index": 0,
+              "reg": 3,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 4,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 5,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 6,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 3,
+              "reg": 7,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 4,
+              "reg": 8,
+              "count": 3
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 3,
+              "reg": 3,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 4,
+              "reg": 4,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 5,
+              "reg": 5,
+              "count": 1
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 8,
+              "reg": 5,
+              "count": 3
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 7,
+              "reg": 6,
+              "count": 4
+            },
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 7,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1610-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 33680,
+          "inputSignature": [
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 2,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 3,
+              "reg": 3,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 4,
+              "reg": 4,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 5,
+              "reg": 5,
+              "count": 1
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 8,
+              "reg": 5,
+              "count": 3
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 7,
+              "reg": 6,
+              "count": 4
+            },
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 7,
+              "count": 4
+            },
+            {
+              "name": "SV_IsFrontFace",
+              "index": 0,
+              "reg": 8,
+              "count": 1
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1610-fragment.txt"
+        }
+      }
+    },
+    {
+      "eventId": 1970,
+      "stages": {
+        "vertex": {
+          "resourceId": 6681,
+          "inputSignature": [
+            {
+              "name": "SV_VertexID",
+              "index": 0,
+              "reg": 0,
+              "count": 1
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 2,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1970-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 6682,
+          "inputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 2,
+              "count": 4
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID1970-fragment.txt"
+        }
+      }
+    },
+    {
+      "eventId": 2057,
+      "stages": {
+        "vertex": {
+          "resourceId": 1149,
+          "inputSignature": [
+            {
+              "name": "POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID2057-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 1150,
+          "inputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID2057-fragment.txt"
+        }
+      }
+    },
+    {
+      "eventId": 2197,
+      "stages": {
+        "vertex": {
+          "resourceId": 6596,
+          "inputSignature": [
+            {
+              "name": "SV_VertexID",
+              "index": 0,
+              "reg": 0,
+              "count": 1
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID2197-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 6597,
+          "inputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 1,
+              "count": 2
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID2197-fragment.txt"
+        }
+      }
+    },
+    {
+      "eventId": 2475,
+      "stages": {
+        "vertex": {
+          "resourceId": 31744,
+          "inputSignature": [
+            {
+              "name": "POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "COLOR",
+              "index": 0,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 2,
+              "count": 2
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "COLOR",
+              "index": 0,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 2,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 3,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 4,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID2475-vertex.txt"
+        },
+        "fragment": {
+          "resourceId": 31769,
+          "inputSignature": [
+            {
+              "name": "SV_POSITION",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            },
+            {
+              "name": "COLOR",
+              "index": 0,
+              "reg": 1,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 0,
+              "reg": 2,
+              "count": 2
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 1,
+              "reg": 3,
+              "count": 4
+            },
+            {
+              "name": "TEXCOORD",
+              "index": 2,
+              "reg": 4,
+              "count": 4
+            }
+          ],
+          "outputSignature": [
+            {
+              "name": "SV_Target",
+              "index": 0,
+              "reg": 0,
+              "count": 4
+            }
+          ],
+          "disassembly": "F:\\KianaStudioElectron\\docs\\frame38112-late-shaders\\EID2475-fragment.txt"
+        }
+      }
+    }
+  ],
+  "ok": true
+}

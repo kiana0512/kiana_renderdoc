@@ -1,0 +1,187 @@
+{
+    "scene": "Assets/Kiana/Scenes/Frame38112_GBuffer5_World.unity",
+    "events": [
+        {
+            "eventId": 858,
+            "vertices": 2120,
+            "maxWorldPositionError": 0.00006103600026108325,
+            "meanWorldPositionError": 6.237274305931351e-7,
+            "maxMatrixError": 7.152557373046875e-7
+        },
+        {
+            "eventId": 875,
+            "vertices": 1665,
+            "maxWorldPositionError": 0.00006103521445766091,
+            "meanWorldPositionError": 1.8671009627269086e-7,
+            "maxMatrixError": 4.76837158203125e-7
+        },
+        {
+            "eventId": 895,
+            "vertices": 13588,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 1.7714629763077028e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 912,
+            "vertices": 6017,
+            "maxWorldPositionError": 2.9802322387695313e-8,
+            "meanWorldPositionError": 6.797526985735658e-9,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 928,
+            "vertices": 912,
+            "maxWorldPositionError": 5.960464477539063e-8,
+            "meanWorldPositionError": 1.0571327813124753e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 945,
+            "vertices": 26615,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 5.275651915326307e-9,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 968,
+            "vertices": 220,
+            "maxWorldPositionError": 1.1944189282075968e-7,
+            "meanWorldPositionError": 1.3931726883242845e-8,
+            "maxMatrixError": 5.960464477539063e-8
+        },
+        {
+            "eventId": 992,
+            "vertices": 3101,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 5.6286179273001835e-8,
+            "maxMatrixError": 2.980232238769531e-7
+        },
+        {
+            "eventId": 1008,
+            "vertices": 838,
+            "maxWorldPositionError": 1.2287812012345967e-7,
+            "meanWorldPositionError": 2.8514628880316195e-8,
+            "maxMatrixError": 2.980232238769531e-7
+        },
+        {
+            "eventId": 1035,
+            "vertices": 6342,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 1.6678319170182476e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1057,
+            "vertices": 3101,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 5.6286179273001835e-8,
+            "maxMatrixError": 2.980232238769531e-7
+        },
+        {
+            "eventId": 1078,
+            "vertices": 2120,
+            "maxWorldPositionError": 0.00006103600026108325,
+            "meanWorldPositionError": 6.237274305931351e-7,
+            "maxMatrixError": 7.152557373046875e-7
+        },
+        {
+            "eventId": 1091,
+            "vertices": 1665,
+            "maxWorldPositionError": 0.00006103521445766091,
+            "meanWorldPositionError": 1.8671009627269086e-7,
+            "maxMatrixError": 4.76837158203125e-7
+        },
+        {
+            "eventId": 1107,
+            "vertices": 13588,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 1.7714629763077028e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1118,
+            "vertices": 6017,
+            "maxWorldPositionError": 2.9802322387695313e-8,
+            "meanWorldPositionError": 6.797526985735658e-9,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1130,
+            "vertices": 912,
+            "maxWorldPositionError": 5.960464477539063e-8,
+            "meanWorldPositionError": 1.0571327813124753e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1143,
+            "vertices": 26615,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 5.275651915326307e-9,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1161,
+            "vertices": 838,
+            "maxWorldPositionError": 1.2287812012345967e-7,
+            "meanWorldPositionError": 2.8514628880316195e-8,
+            "maxMatrixError": 2.980232238769531e-7
+        },
+        {
+            "eventId": 1183,
+            "vertices": 6342,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 1.6678319170182476e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1202,
+            "vertices": 1349,
+            "maxWorldPositionError": 1.4901161193847656e-8,
+            "meanWorldPositionError": 7.004430813140061e-9,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1236,
+            "vertices": 3101,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 5.6286179273001835e-8,
+            "maxMatrixError": 2.980232238769531e-7
+        },
+        {
+            "eventId": 1252,
+            "vertices": 838,
+            "maxWorldPositionError": 1.2287812012345967e-7,
+            "meanWorldPositionError": 2.8514628880316195e-8,
+            "maxMatrixError": 2.980232238769531e-7
+        },
+        {
+            "eventId": 1273,
+            "vertices": 426,
+            "maxWorldPositionError": 1.22028140481234e-7,
+            "meanWorldPositionError": 2.7222379017644016e-8,
+            "maxMatrixError": 2.980232238769531e-7
+        },
+        {
+            "eventId": 1287,
+            "vertices": 6342,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 1.6678319170182476e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1313,
+            "vertices": 6342,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 1.6678319170182476e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        },
+        {
+            "eventId": 1331,
+            "vertices": 6342,
+            "maxWorldPositionError": 0.00006103515625,
+            "meanWorldPositionError": 1.6678319170182476e-8,
+            "maxMatrixError": 2.9802322387695313e-8
+        }
+    ]
+}

@@ -1,0 +1,2 @@
+mip -1 slice <Swig Object of type 'TextureSliceMapping *' at 0x000001FDD4F3B770> DDS FileType.DDS
+['acquire', 'alpha', 'alphaCol', 'append', 'channelExtract', 'comp', 'destType', 'disown', 'jpegQuality', 'mip', 'next', 'own', 'resourceId', 'sample', 'slice', 'this', 'thisown', 'typeCast']

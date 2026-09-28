@@ -1,0 +1,23 @@
+{
+  "pixels": [
+    [
+      1120,
+      200
+    ],
+    [
+      840,
+      400
+    ],
+    [
+      300,
+      800
+    ],
+    [
+      450,
+      520
+    ]
+  ],
+  "capture": "E:/KianaCaptures/ZenlessZoneZero/绝区零-1790334599799/capture_frame38112.rdc",
+  "event_id": 858,
+  "output": "F:/KianaStudioElectron/docs/frame38112-eid858-pixel-trace.json"
+}

@@ -1,0 +1,32 @@
+{
+  "event_ids": [
+    858,
+    875,
+    895,
+    912,
+    928,
+    945,
+    968,
+    992,
+    1008,
+    1035,
+    1057,
+    1078,
+    1091,
+    1107,
+    1118,
+    1130,
+    1143,
+    1161,
+    1183,
+    1202,
+    1236,
+    1252,
+    1273,
+    1287,
+    1313,
+    1331
+  ],
+  "capture": "E:\\KianaCaptures\\ZenlessZoneZero\\绝区零-1790334599799\\capture_frame38112.rdc",
+  "output": "F:\\KianaStudioElectron\\docs\\frame38112-gbuffer-state-all.json"
+}

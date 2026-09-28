@@ -1,0 +1,630 @@
+{
+  "events": [
+    {
+      "eventId": 858,
+      "pixelShader": 31475,
+      "disassembly": "EID858-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 875,
+      "pixelShader": 31475,
+      "disassembly": "EID858-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 895,
+      "pixelShader": 31475,
+      "disassembly": "EID858-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 912,
+      "pixelShader": 31475,
+      "disassembly": "EID858-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 928,
+      "pixelShader": 31475,
+      "disassembly": "EID858-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 945,
+      "pixelShader": 31475,
+      "disassembly": "EID858-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 968,
+      "pixelShader": 42681,
+      "disassembly": "EID968-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 992,
+      "pixelShader": 31476,
+      "disassembly": "EID992-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1008,
+      "pixelShader": 31476,
+      "disassembly": "EID992-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1035,
+      "pixelShader": 33678,
+      "disassembly": "EID1035-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1057,
+      "pixelShader": 31478,
+      "disassembly": "EID1057-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1078,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1091,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1107,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1118,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1130,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1143,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1161,
+      "pixelShader": 31478,
+      "disassembly": "EID1057-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1183,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1202,
+      "pixelShader": 24167,
+      "disassembly": "EID1202-fragment.txt",
+      "boundFragmentSlots": [],
+      "structuredBufferSlots": [],
+      "referencedFragmentSlots": [],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1236,
+      "pixelShader": 31480,
+      "disassembly": "EID1236-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1252,
+      "pixelShader": 31480,
+      "disassembly": "EID1236-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1273,
+      "pixelShader": 31489,
+      "disassembly": "EID1273-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1287,
+      "pixelShader": 31482,
+      "disassembly": "EID1287-fragment.txt",
+      "boundFragmentSlots": [],
+      "structuredBufferSlots": [],
+      "referencedFragmentSlots": [],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1313,
+      "pixelShader": 33678,
+      "disassembly": "EID1035-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    },
+    {
+      "eventId": 1331,
+      "pixelShader": 31479,
+      "disassembly": "EID1078-fragment.txt",
+      "boundFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "structuredBufferSlots": [
+        1
+      ],
+      "referencedFragmentSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "boundButUnreferenced": [],
+      "referencedButUnbound": []
+    }
+  ]
+}

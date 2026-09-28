@@ -1,0 +1,21 @@
+Shader hash 2f4c560f-c1186041-8bf9032b-8b473462
+
+vs_4_0
+      dcl_constantbuffer cb0[173], immediateIndexed
+      dcl_input_sgv v0.x, vertexid
+      dcl_output_siv o0.xyzw, position
+      dcl_output o1.xy
+      dcl_output o2.xyzw
+      dcl_temps 2
+   0: and r0.x, v0.x, l(1)
+   1: ushr r0.y, v0.x, l(1)
+   2: iadd r0.x, r0.x, r0.y
+   3: and r0.x, r0.x, l(1)
+   4: utof r1.xy, r0.yxyy
+   5: mad r0.xy, r1.xyxx, l(2.000000, 2.000000, 0.000000, 0.000000), l(-1.000000, -1.000000, 0.000000, 0.000000)
+   6: add r1.z, -r1.y, l(1.000000)
+   7: mad o1.xy, r1.xzxx, cb0[172].xyxx, cb0[172].zwzz
+   8: mad o0.xy, r0.xyxx, cb0[171].xyxx, cb0[171].zwzz
+   9: mov o0.zw, l(0.000000, 0.000000, 1.000000, 1.000000)
+  10: mad o2.xyzw, cb0[172].xyxy, l(0.000000, 0.000000, 1.000000, 1.000000), cb0[172].zwzw
+  11: ret

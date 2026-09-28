@@ -1,0 +1,9 @@
+{
+  "extension_api": 1,
+  "name": "Kiana MCP and FBX export",
+  "version": "1.0",
+  "minimum_renderdoc": "1.47",
+  "description": "Local MCP bridge, optional Vulkan linked capture and FBX plus bound texture export.",
+  "author": "Kiana contributors; RenderDocMCP2 by StellaAstra",
+  "url": "https://github.com/Hengle/RenderDocMCP2"
+}

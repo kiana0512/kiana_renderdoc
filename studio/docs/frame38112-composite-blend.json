@@ -1,0 +1,171 @@
+{
+  "events": [
+    {
+      "eventId": 2475,
+      "independentBlend": false,
+      "colorBlends": [
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        },
+        {
+          "alphaBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 6,
+            "sourceName": "SrcAlpha",
+            "destinationName": "InvSrcAlpha"
+          },
+          "colorBlend": {
+            "destination": 7,
+            "operation": 0,
+            "source": 1,
+            "sourceName": "One",
+            "destinationName": "InvSrcAlpha"
+          },
+          "enabled": true,
+          "logicOperation": 0,
+          "logicOperationEnabled": false,
+          "writeMask": 15
+        }
+      ]
+    }
+  ],
+  "ok": true
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "eid": 858,
+    "changedPixels": 1503670,
+    "boundingRect": [
+      10,
+      0,
+      1539,
+      1368
+    ]
+  },
+  {
+    "eid": 875,
+    "changedPixels": 629448,
+    "boundingRect": [
+      10,
+      191,
+      933,
+      1174
+    ]
+  },
+  {
+    "eid": 895,
+    "changedPixels": 494035,
+    "boundingRect": [
+      803,
+      0,
+      1537,
+      1292
+    ]
+  },
+  {
+    "eid": 912,
+    "changedPixels": 118800,
+    "boundingRect": [
+      702,
+      211,
+      1388,
+      1368
+    ]
+  },
+  {
+    "eid": 928,
+    "changedPixels": 0,
+    "boundingRect": null
+  },
+  {
+    "eid": 945,
+    "changedPixels": 532338,
+    "boundingRect": [
+      307,
+      0,
+      1358,
+      983
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "vertexCount": 426,
+  "vsoutStride": 132,
+  "firstPackedIndex": 255,
+  "firstCapturedV5": [
+    1.2000000476837158,
+    1.2000000476837158,
+    1.2000000476837158,
+    1.0
+  ],
+  "rowOrientations": {
+    "sameRow": {
+      "meanAbsError": 0.0,
+      "maxAbsError": 0.0,
+      "matchingVertices1e-4": 426
+    },
+    "flippedRow": {
+      "meanAbsError": 0.7029274106025696,
+      "maxAbsError": 1.8274509906768799,
+      "matchingVertices1e-4": 42
+    }
+  }
+}

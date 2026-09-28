@@ -1,0 +1,23 @@
+CompareFunction
+  AlwaysTrue = 1
+  Equal = 6
+  Greater = 4
+  GreaterEqual = 5
+  Less = 2
+  LessEqual = 3
+  Never = 0
+  NotEqual = 7
+StencilOperation
+  DecSat = 4
+  DecWrap = 6
+  IncSat = 3
+  IncWrap = 5
+  Invert = 7
+  Keep = 0
+  Replace = 2
+  Zero = 1
+CullMode
+  Back = 2
+  Front = 1
+  FrontAndBack = 3
+  NoCull = 0

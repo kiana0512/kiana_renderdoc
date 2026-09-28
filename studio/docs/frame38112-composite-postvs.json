@@ -1,0 +1,553 @@
+{
+  "capture": "E:/KianaCaptures/ZenlessZoneZero/绝区零-1790334599799/capture_frame38112.rdc",
+  "events": [
+    {
+      "eventId": 2475,
+      "mesh": {
+        "numIndices": 6,
+        "topology": 5,
+        "indexResourceId": 1000000000000000183,
+        "indexByteOffset": 0,
+        "indexByteStride": 2,
+        "vertexResourceId": 1000000000000000184,
+        "vertexByteOffset": 0,
+        "vertexByteStride": 72,
+        "baseVertex": 0,
+        "nearPlane": 0.27008503675460815,
+        "farPlane": 3.4028234663852886e+38,
+        "instanced": false,
+        "unproject": true
+      },
+      "vertexSample": {
+        "byteCount": 256,
+        "firstBytesBase64": "VdXcwv7/x8KWSIo+AADIQgAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAACAhMT//wbEAAAAAAAAgD8AAADFAAAAxTGmFUExphVBVdXcwv7/x0KWSIo+AADIQgAAgD8AAIA/AACAPwAAgD8AAAAAAACAPwCAhMT//wZEAAAAAAAAgD8AAADFAAAARTGmFUExphVBVhX8Qv7/x0KWSIo+AADIQgAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwBAl0T//wZEAAAAAAAAgD8AAABFAAAARTGmFUExphVBVhX8Qv7/x8KWSIo+AADIQgAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAA==",
+        "firstFloat4": [
+          -110.41666412353516,
+          -99.99998474121094,
+          0.27008503675460815,
+          100.0
+        ]
+      },
+      "indexSample": {
+        "byteCount": 8,
+        "firstBytesBase64": "AAABAAIAAgA="
+      },
+      "vsConstantBuffers": [
+        {
+          "slot": 0,
+          "resourceId": 1189,
+          "byteOffset": 0,
+          "byteSize": 65536,
+          "readBytes": 224,
+          "firstFloat4s": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.401298464324817e-45,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0001572144974488765,
+              -0.0002407170832157135,
+              0.0,
+              0.0
+            ],
+            [
+              4.212548810755834e-05,
+              0.0008983685984276235,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.6954429745674133,
+              0.7254464626312256,
+              0.0,
+              1.0
+            ],
+            [
+              0.0010000000474974513,
+              0.0018601189367473125,
+              0.0010000000474974513,
+              0.0018601189367473125
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              -Infinity,
+              -Infinity,
+              Infinity,
+              Infinity
+            ],
+            [
+              1.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "resourceId": 322,
+          "byteOffset": 0,
+          "byteSize": 65536,
+          "readBytes": 144,
+          "firstFloat4s": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              -1.0,
+              0.029999999329447746,
+              5033.19482421875,
+              0.00019868096569553018
+            ],
+            [
+              3840.0,
+              2160.0,
+              1.0002604722976685,
+              1.0004630088806152
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "resourceId": 112,
+          "byteOffset": 0,
+          "byteSize": 65536,
+          "readBytes": 176,
+          "firstFloat4s": [
+            [
+              0.10691671818494797,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.10691671818494797,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.10691671818494797,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              100.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "slot": 3,
+          "resourceId": 113,
+          "byteOffset": 0,
+          "byteSize": 65536,
+          "readBytes": 368,
+          "firstFloat4s": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.9742785692214966,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.7320507764816284,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0003000497817993164,
+              -1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.3000900149345398,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.9742785692214966,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.7320507764816284,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -0.0003000497817993164,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.3000900149345398,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        }
+      ],
+      "psConstantBuffers": [
+        {
+          "slot": 0,
+          "resourceId": 1189,
+          "byteOffset": 0,
+          "byteSize": 65536,
+          "float4s": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.401298464324817e-45,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0001572144974488765,
+              -0.0002407170832157135,
+              0.0,
+              0.0
+            ],
+            [
+              4.212548810755834e-05,
+              0.0008983685984276235,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.6954429745674133,
+              0.7254464626312256,
+              0.0,
+              1.0
+            ],
+            [
+              0.0010000000474974513,
+              0.0018601189367473125,
+              0.0010000000474974513,
+              0.0018601189367473125
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              -Infinity,
+              -Infinity,
+              Infinity,
+              Infinity
+            ],
+            [
+              1.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        }
+      ],
+      "vsOutputs": [
+        {
+          "semantic": "SV_POSITION",
+          "semanticIndex": 0,
+          "regIndex": 0,
+          "varType": "VarType.Float",
+          "compCount": 4
+        },
+        {
+          "semantic": "COLOR",
+          "semanticIndex": 0,
+          "regIndex": 1,
+          "varType": "VarType.Float",
+          "compCount": 4
+        },
+        {
+          "semantic": "TEXCOORD",
+          "semanticIndex": 0,
+          "regIndex": 2,
+          "varType": "VarType.Float",
+          "compCount": 2
+        },
+        {
+          "semantic": "TEXCOORD",
+          "semanticIndex": 1,
+          "regIndex": 3,
+          "varType": "VarType.Float",
+          "compCount": 4
+        },
+        {
+          "semantic": "TEXCOORD",
+          "semanticIndex": 2,
+          "regIndex": 4,
+          "varType": "VarType.Float",
+          "compCount": 4
+        }
+      ],
+      "vertexFile": "E:\\KianaCaptures\\ZenlessZoneZero\\绝区零-1790334599799\\analysis-frame38112\\composite-postvs\\EID2475.vsout.bin",
+      "indexFile": "E:\\KianaCaptures\\ZenlessZoneZero\\绝区零-1790334599799\\analysis-frame38112\\composite-postvs\\EID2475.indices.bin",
+      "vertexBytes": 288,
+      "indexBytes": 12
+    }
+  ],
+  "ok": true
+}

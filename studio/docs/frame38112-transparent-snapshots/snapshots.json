@@ -1,0 +1,39 @@
+{
+  "capture": "E:/KianaCaptures/ZenlessZoneZero\\绝区零-1790334599799\\capture_frame38112.rdc",
+  "resourceIds": [
+    53234
+  ],
+  "events": [
+    {
+      "eventId": 1576,
+      "outputs": [
+        {
+          "resourceId": 53234,
+          "path": "F:\\KianaStudioElectron\\docs\\frame38112-transparent-snapshots\\EID1576-RID53234.png",
+          "bytes": 2893258
+        }
+      ]
+    },
+    {
+      "eventId": 1610,
+      "outputs": [
+        {
+          "resourceId": 53234,
+          "path": "F:\\KianaStudioElectron\\docs\\frame38112-transparent-snapshots\\EID1610-RID53234.png",
+          "bytes": 2911930
+        }
+      ]
+    },
+    {
+      "eventId": 1868,
+      "outputs": [
+        {
+          "resourceId": 53234,
+          "path": "F:\\KianaStudioElectron\\docs\\frame38112-transparent-snapshots\\EID1868-RID53234.png",
+          "bytes": 2911930
+        }
+      ]
+    }
+  ],
+  "ok": true
+}

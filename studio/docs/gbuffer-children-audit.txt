@@ -1,0 +1,3 @@
+Base G-buffer meshes — IA plus RDC per-draw matrices|active=True|children=10|cameras=0|renderers=10
+Later G-buffer draws — eye active, variants pending|active=True|children=16|cameras=0|renderers=16
+RDC camera — captured view and projection|active=True|children=0|cameras=1|renderers=0

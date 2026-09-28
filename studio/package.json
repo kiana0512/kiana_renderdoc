@@ -1,0 +1,48 @@
+{
+  "name": "kianastudioelectron",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Kiana GPU capture and scene reconstruction workbench",
+  "main": "out/main/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "dev:web": "vite --host 127.0.0.1",
+    "build": "tsc -b && electron-vite build",
+    "typecheck": "tsc -b",
+    "lint": "oxlint electron src",
+    "preview": "electron-vite preview",
+    "package": "npm run build && electron-builder --win --dir",
+    "dist": "npm run build && electron-builder --win nsis"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "decius-css": "^0.6.2",
+    "lucide-react": "^1.48.0",
+    "react": "^19.2.8",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^19.2.8",
+    "react-mosaic-component": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.6",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^5.1.1",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vite": "^7.3.6"
+  },
+  "build": {
+    "appId": "com.kiana.studio",
+    "productName": "Kiana Studio",
+    "directories": { "output": "release" },
+    "files": ["out/**/*", "package.json"],
+    "win": { "target": ["nsis"], "icon": "build/icon.ico" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true }
+  }
+}

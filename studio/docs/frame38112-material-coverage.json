@@ -1,0 +1,862 @@
+{
+  "frame": 38112,
+  "pass": 5,
+  "draws": [
+    {
+      "eid": 858,
+      "pixelShader": 31475,
+      "albedoResourceId": 42892,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3,
+        4
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 875,
+      "pixelShader": 31475,
+      "albedoResourceId": 42892,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3,
+        4
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 895,
+      "pixelShader": 31475,
+      "albedoResourceId": 42842,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3,
+        4
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 912,
+      "pixelShader": 31475,
+      "albedoResourceId": 42884,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3,
+        4
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 928,
+      "pixelShader": 31475,
+      "albedoResourceId": 42884,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3,
+        4
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 945,
+      "pixelShader": 31475,
+      "albedoResourceId": 42974,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3,
+        4
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 968,
+      "pixelShader": 42681,
+      "albedoResourceId": 42884,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 992,
+      "pixelShader": 31476,
+      "albedoResourceId": 42972,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": true,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        4,
+        5
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1008,
+      "pixelShader": 31476,
+      "albedoResourceId": 42972,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": true,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        4,
+        5
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1035,
+      "pixelShader": 33678,
+      "albedoResourceId": 42842,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1057,
+      "pixelShader": 31478,
+      "albedoResourceId": 42972,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1078,
+      "pixelShader": 31479,
+      "albedoResourceId": 42892,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1091,
+      "pixelShader": 31479,
+      "albedoResourceId": 42892,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1107,
+      "pixelShader": 31479,
+      "albedoResourceId": 42842,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1118,
+      "pixelShader": 31479,
+      "albedoResourceId": 42884,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1130,
+      "pixelShader": 31479,
+      "albedoResourceId": 42884,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1143,
+      "pixelShader": 31479,
+      "albedoResourceId": 42974,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1161,
+      "pixelShader": 31478,
+      "albedoResourceId": 42972,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1183,
+      "pixelShader": 31479,
+      "albedoResourceId": 42842,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1202,
+      "pixelShader": 24167,
+      "albedoResourceId": 0,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [],
+      "unityCurrentColorTextureSlots": [],
+      "unityPendingTextureSlots": [],
+      "status": "partial"
+    },
+    {
+      "eid": 1236,
+      "pixelShader": 31480,
+      "albedoResourceId": 42972,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": true,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        4,
+        5
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1252,
+      "pixelShader": 31480,
+      "albedoResourceId": 42972,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": true,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        4,
+        5
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1273,
+      "pixelShader": 31489,
+      "albedoResourceId": 42972,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": true,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3,
+        4
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        5
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1287,
+      "pixelShader": 31482,
+      "albedoResourceId": 0,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [],
+      "unityCurrentColorTextureSlots": [],
+      "unityPendingTextureSlots": [],
+      "status": "partial"
+    },
+    {
+      "eid": 1313,
+      "pixelShader": 33678,
+      "albedoResourceId": 42842,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": true,
+      "unityOutlineTableBound": false,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": true,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceSampledButColorDiscardedSlots": [
+        2
+      ],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        3
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "partial"
+    },
+    {
+      "eid": 1331,
+      "pixelShader": 31479,
+      "albedoResourceId": 42842,
+      "unitySourcePSIdentityAssigned": true,
+      "unityBandTableBound": false,
+      "unityOutlineTableBound": true,
+      "unityFaceTableBound": false,
+      "unityFamilyCandidateEnabled": false,
+      "unityVertexLookupSlot1Audited": false,
+      "sourceReferencedTextureSlots": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "sourceSampledButColorDiscardedSlots": [],
+      "sourceStructuredBufferSlots": [
+        1
+      ],
+      "unityCurrentColorTextureSlots": [
+        2
+      ],
+      "unityPendingTextureSlots": [
+        0,
+        3,
+        4
+      ],
+      "status": "partial"
+    }
+  ],
+  "psIdentityAssignedDraws": 26,
+  "bandTableBoundDraws": 9,
+  "outlineTableBoundDraws": 10,
+  "faceTableBoundDraws": 4,
+  "eyeVertexLookupAuditedDraws": 1,
+  "completeDraws": 0
+}

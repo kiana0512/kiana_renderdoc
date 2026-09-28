@@ -1,0 +1,66 @@
+[
+  {
+    "eid": 1057,
+    "sourceChangedPixels": 692,
+    "baselineChangedMAE": 40.689,
+    "exactXYChangedMAE": 24.426,
+    "baselineFrameMAE": 3.8733,
+    "exactXYFrameMAE": 3.8713
+  },
+  {
+    "eid": 1078,
+    "sourceChangedPixels": 3115,
+    "baselineChangedMAE": 29.126,
+    "exactXYChangedMAE": 14.487,
+    "baselineFrameMAE": 3.8907,
+    "exactXYFrameMAE": 3.8803
+  },
+  {
+    "eid": 1091,
+    "sourceChangedPixels": 7730,
+    "baselineChangedMAE": 26.513,
+    "exactXYChangedMAE": 10.363,
+    "baselineFrameMAE": 3.9397,
+    "exactXYFrameMAE": 3.9028
+  },
+  {
+    "eid": 1107,
+    "sourceChangedPixels": 8804,
+    "baselineChangedMAE": 19.898,
+    "exactXYChangedMAE": 17.655,
+    "baselineFrameMAE": 3.9846,
+    "exactXYFrameMAE": 3.9679
+  },
+  {
+    "eid": 1118,
+    "sourceChangedPixels": 7404,
+    "baselineChangedMAE": 36.849,
+    "exactXYChangedMAE": 13.308,
+    "baselineFrameMAE": 4.0345,
+    "exactXYFrameMAE": 3.9991
+  },
+  {
+    "eid": 1143,
+    "sourceChangedPixels": 15076,
+    "baselineChangedMAE": 48.743,
+    "exactXYChangedMAE": 25.729,
+    "baselineFrameMAE": 4.1923,
+    "exactXYFrameMAE": 4.1048
+  },
+  {
+    "eid": 1183,
+    "sourceChangedPixels": 8246,
+    "baselineChangedMAE": 28.39,
+    "exactXYChangedMAE": 19.023,
+    "baselineFrameMAE": 4.2606,
+    "exactXYFrameMAE": 4.2165
+  },
+  {
+    "eid": 1331,
+    "sourceChangedPixels": 313,
+    "baselineChangedMAE": 17.463,
+    "exactXYChangedMAE": 14.99,
+    "baselineFrameMAE": 4.2879,
+    "exactXYFrameMAE": 4.2725
+  }
+]

@@ -1,0 +1,383 @@
+{
+  "capture": "E:\\KianaFrame38112Workspace\\Frame38112Capture\\capture_frame38112.rdc",
+  "events": [
+    {
+      "eventId": 1610,
+      "vsCb1FirstFloat4s": [
+        [
+          0.33645033836364746,
+          -0.9139758944511414,
+          -0.22682449221611023,
+          0.0
+        ],
+        [
+          0.8147427439689636,
+          0.16173583269119263,
+          0.556808590888977,
+          0.0
+        ],
+        [
+          -0.4722239673137665,
+          -0.3721420466899872,
+          0.799071192741394,
+          0.0
+        ],
+        [
+          600.0770874023438,
+          0.8958644866943359,
+          0.04190531373023987,
+          1.0
+        ],
+        [
+          0.33645033836364746,
+          0.8147426843643188,
+          -0.47222399711608887,
+          0.0
+        ],
+        [
+          -0.9139758348464966,
+          0.16173580288887024,
+          -0.3721420466899872,
+          0.0
+        ],
+        [
+          -0.22682449221611023,
+          0.5568086504936218,
+          0.7990713119506836,
+          0.0
+        ],
+        [
+          -201.0678253173828,
+          -489.07666015625,
+          283.6706848144531,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "colorBlends": [
+        {
+          "enabled": true,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.InvSrcAlpha",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.InvDstAlpha",
+            "destination": "BlendMultiplier.One",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": true,
+          "color": {
+            "source": "BlendMultiplier.Zero",
+            "destination": "BlendMultiplier.One",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.Zero",
+            "destination": "BlendMultiplier.One",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        }
+      ],
+      "depth": {
+        "depthEnable": "True",
+        "depthWrites": "False",
+        "depthFunction": "CompareFunction.GreaterEqual"
+      },
+      "stencilEnabled": false,
+      "raster": {
+        "cullMode": "CullMode.Back",
+        "frontCCW": "True"
+      }
+    },
+    {
+      "eventId": 1868,
+      "vsCb1FirstFloat4s": [
+        [
+          0.33645033836364746,
+          -0.9139758944511414,
+          -0.22682449221611023,
+          0.0
+        ],
+        [
+          0.8147427439689636,
+          0.16173583269119263,
+          0.556808590888977,
+          0.0
+        ],
+        [
+          -0.4722239673137665,
+          -0.3721420466899872,
+          0.799071192741394,
+          0.0
+        ],
+        [
+          600.0770874023438,
+          0.8958644866943359,
+          0.04190531373023987,
+          1.0
+        ],
+        [
+          0.33645033836364746,
+          0.8147426843643188,
+          -0.47222399711608887,
+          0.0
+        ],
+        [
+          -0.9139758348464966,
+          0.16173580288887024,
+          -0.3721420466899872,
+          0.0
+        ],
+        [
+          -0.22682449221611023,
+          0.5568086504936218,
+          0.7990713119506836,
+          0.0
+        ],
+        [
+          -201.0678253173828,
+          -489.07666015625,
+          283.6706848144531,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "colorBlends": [
+        {
+          "enabled": true,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.InvSrcAlpha",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.InvDstAlpha",
+            "destination": "BlendMultiplier.One",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": true,
+          "color": {
+            "source": "BlendMultiplier.Zero",
+            "destination": "BlendMultiplier.One",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.Zero",
+            "destination": "BlendMultiplier.One",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        },
+        {
+          "enabled": false,
+          "color": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "alpha": {
+            "source": "BlendMultiplier.One",
+            "destination": "BlendMultiplier.Zero",
+            "operation": "BlendOperation.Add"
+          },
+          "writeMask": 15
+        }
+      ],
+      "depth": {
+        "depthEnable": "True",
+        "depthWrites": "False",
+        "depthFunction": "CompareFunction.GreaterEqual"
+      },
+      "stencilEnabled": false,
+      "raster": {
+        "cullMode": "CullMode.Back",
+        "frontCCW": "True"
+      }
+    }
+  ]
+}

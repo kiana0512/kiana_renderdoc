@@ -1,0 +1,74 @@
+{
+  "capture": "E:\\KianaFrame38112Workspace\\Frame38112Capture\\capture_frame38112.rdc",
+  "output_dir": "E:\\KianaFrame38112Workspace\\KianaFrame38112Unity\\Assets\\Kiana\\Textures\\FinalUI",
+  "textures": [
+    {
+      "resourceId": 30487,
+      "eventId": 2377
+    },
+    {
+      "resourceId": 19881,
+      "eventId": 2542
+    },
+    {
+      "resourceId": 53009,
+      "eventId": 2552
+    },
+    {
+      "resourceId": 19950,
+      "eventId": 2770
+    },
+    {
+      "resourceId": 19948,
+      "eventId": 2783
+    },
+    {
+      "resourceId": 52991,
+      "eventId": 2831
+    },
+    {
+      "resourceId": 52993,
+      "eventId": 2835
+    },
+    {
+      "resourceId": 52997,
+      "eventId": 2845
+    },
+    {
+      "resourceId": 52995,
+      "eventId": 2849
+    },
+    {
+      "resourceId": 52999,
+      "eventId": 2859
+    },
+    {
+      "resourceId": 53001,
+      "eventId": 2869
+    },
+    {
+      "resourceId": 53003,
+      "eventId": 2879
+    },
+    {
+      "resourceId": 30493,
+      "eventId": 2903
+    },
+    {
+      "resourceId": 30507,
+      "eventId": 2946
+    },
+    {
+      "resourceId": 19942,
+      "eventId": 2965
+    },
+    {
+      "resourceId": 49175,
+      "eventId": 3035
+    },
+    {
+      "resourceId": 57155,
+      "eventId": 3117
+    }
+  ]
+}

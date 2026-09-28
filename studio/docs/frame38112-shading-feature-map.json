@@ -1,0 +1,68 @@
+{
+  "frame": 38112,
+  "sourcePass": 5,
+  "sourceColorTarget": 53242,
+  "note": "Evidence refers to the captured shader and bindings, not to a claim that each feature occupies its own G-buffer channel. Unity status is for the saved native scene.",
+  "features": [
+    {
+      "name": "baseColor",
+      "sourceEvidence": "Body PS31475 EID858 instructions 28-29 sample t3 and multiply cb3[38]; face PS31476 EID992 instructions 19-20 sample t3 and multiply cb3[29].",
+      "unityStatus": "implemented for visible mesh families; independent per-draw textures and UVs",
+      "nextGate": "Check remaining late draw and transparency families"
+    },
+    {
+      "name": "normalMapping",
+      "sourceEvidence": "Body PS31475 EID858 instructions 31-45 sample t4 and reconstruct a tangent-space normal with cb3[106].z and VFACE.",
+      "unityStatus": "partial; current body material normal decoder used by approximate light",
+      "nextGate": "Compare source RT53254 encoded normal against Unity normals by draw"
+    },
+    {
+      "name": "materialBandsAndMasks",
+      "sourceEvidence": "Body PS31475 EID858 instructions 46-78 sample t5/t6 and select a material band; instructions 330-389 sample t7 texture array with per-draw cb3 band table.",
+      "unityStatus": "t5/t6/t7 bound; nine band tables bound; t7 replace/add/overlay and post-light order ported as a candidate; enabled only for EID875 umbrella after same-state ROI improvement",
+      "nextGate": "Trace the remaining t7 mask and UV terms for EID895/912/945; do not assume one blend works for every draw"
+    },
+    {
+      "name": "aoAndOcclusion",
+      "sourceEvidence": "Body PS31475 EID858 t6.b contributes to r2.w at instructions 53-57; local shadow/attenuation path uses t0/t1/t8 at instructions 93-161. An independent AO equation has not yet been isolated.",
+      "unityStatus": "unverified; generic t6.b AO darkened skin and was disabled",
+      "nextGate": "Trace t6.b through the selected EID945 PS branch before assigning it an AO meaning"
+    },
+    {
+      "name": "toonDiffuseAndShadow",
+      "sourceEvidence": "Body PS31475 EID858 instructions 163-329 mix light and material bands; t8 comparison shadow samples occur at 136-160, selected by cb2[37].x. Final lit color reaches o0 at 662.",
+      "unityStatus": "partial; EID875 and EID895 draw-specific toon bands and EID945 mild band enabled after source ROI checks; shadow map comparison not yet reproduced",
+      "nextGate": "Check shadowed and lit ROIs for each material band, then implement the source shadow coordinate and comparison"
+    },
+    {
+      "name": "specularHighlights",
+      "sourceEvidence": "Body PS31475 EID858 instructions 435-528 use t5-derived controls, view/light/normal vectors and cb3 color rows in the highlight branch.",
+      "unityStatus": "EID912 high-green mask gated highlight enabled after source ROI MAE 25.9154 to 24.5257; EID945 candidate remains off; hair crescent still missing",
+      "nextGate": "Port PS31475 instructions 435-528 by band for the metal and hair highlight shapes"
+    },
+    {
+      "name": "rimAndEdgeLight",
+      "sourceEvidence": "Body PS31475 EID858 instructions 583-617 derive a view-normal edge term and blend a cb3-selected color; PS output composition continues through 656.",
+      "unityStatus": "tunable view-rim candidate implemented but disabled pending per-band check",
+      "nextGate": "Validate edge pixels on hair, cloth and skin separately to avoid a uniform halo"
+    },
+    {
+      "name": "faceMaskOrSdf",
+      "sourceEvidence": "Face PS31476 EID992 samples t3 alpha at instruction 19 and t4 face lightmap at 21/28; instructions 98-110 combine projected direction, cb3[76], t3 alpha and a hard threshold. Whether this precise term is the intended face SDF needs a register trace.",
+      "unityStatus": "face texture and t4 floating-point lightmap bound, source PS UV restored; face-light candidate disabled after source comparison regression",
+      "nextGate": "Trace instructions 98-110 for selected face pixels and preserve the correct face orientation and light direction"
+    },
+    {
+      "name": "outlines",
+      "sourceEvidence": "PS31478/31479 use separate outline draws, t2 color, cb3 band tables and packed vertex-color selection; EID1057/1161 use a dedicated expanding VS.",
+      "unityStatus": "ten per-draw band tables and 67540 vertex controls audited; candidate draw remains disabled because its raster/depth coverage is too broad",
+      "nextGate": "Restore expanding VS and source depth/stencil silhouette before tuning outline color"
+    },
+    {
+      "name": "blendAndComposition",
+      "sourceEvidence": "EID1273 eye RT0 uses One/InvSrcAlpha RGB and InvDstAlpha/One alpha; PS31475 writes four G-buffer RTs with separate color, material, normal and encoded state outputs.",
+      "unityStatus": "eye RT0 blend enabled; Unity pass currently represents RT0 only",
+      "nextGate": "Reproduce RT1/RT2/RT3 and later pass 6-13 compositing with correct color space"
+    }
+  ]
+}

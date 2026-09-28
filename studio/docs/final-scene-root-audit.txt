@@ -1,0 +1,2 @@
+RDC final output camera — 3840 x 2160|renderers=0
+Native 3D character — RDC mesh draws and captured camera|renderers=26

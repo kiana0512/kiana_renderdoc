@@ -1,0 +1,79 @@
+{
+  "draws": [
+    {
+      "eid": 992,
+      "vertexCount": 3101,
+      "maxUv0Error": 0.0,
+      "maxKmfUv2VsPsZwError": 1.312406063079834,
+      "psZwMin": [
+        0.029651641845703125,
+        -0.35530051589012146
+      ],
+      "psZwMax": [
+        0.9950863122940063,
+        -0.35530051589012146
+      ],
+      "unityOverride": "F:\\KianaFrame38112Unity\\Assets\\Kiana\\MeshData\\PSUV\\EID992.bytes"
+    },
+    {
+      "eid": 1008,
+      "vertexCount": 838,
+      "maxUv0Error": 0.0,
+      "maxKmfUv2VsPsZwError": 1.2588481903076172,
+      "psZwMin": [
+        0.0152580002322793,
+        -0.35530051589012146
+      ],
+      "psZwMax": [
+        0.9717689752578735,
+        -0.35530051589012146
+      ],
+      "unityOverride": "F:\\KianaFrame38112Unity\\Assets\\Kiana\\MeshData\\PSUV\\EID1008.bytes"
+    },
+    {
+      "eid": 1236,
+      "vertexCount": 3101,
+      "maxUv0Error": 0.0,
+      "maxKmfUv2VsPsZwError": 1.312406063079834,
+      "psZwMin": [
+        0.029651641845703125,
+        -0.35530051589012146
+      ],
+      "psZwMax": [
+        0.9950863122940063,
+        -0.35530051589012146
+      ],
+      "unityOverride": "F:\\KianaFrame38112Unity\\Assets\\Kiana\\MeshData\\PSUV\\EID1236.bytes"
+    },
+    {
+      "eid": 1252,
+      "vertexCount": 838,
+      "maxUv0Error": 0.0,
+      "maxKmfUv2VsPsZwError": 1.2588481903076172,
+      "psZwMin": [
+        0.0152580002322793,
+        -0.35530051589012146
+      ],
+      "psZwMax": [
+        0.9717689752578735,
+        -0.35530051589012146
+      ],
+      "unityOverride": "F:\\KianaFrame38112Unity\\Assets\\Kiana\\MeshData\\PSUV\\EID1252.bytes"
+    },
+    {
+      "eid": 1273,
+      "vertexCount": 426,
+      "maxUv0Error": 0.0,
+      "maxKmfUv2VsPsZwError": 1.2572627067565918,
+      "psZwMin": [
+        0.032043974846601486,
+        -0.35530051589012146
+      ],
+      "psZwMax": [
+        0.9810357093811035,
+        -0.35530051589012146
+      ],
+      "unityOverride": "F:\\KianaFrame38112Unity\\Assets\\Kiana\\MeshData\\PSUV\\EID1273.bytes"
+    }
+  ]
+}

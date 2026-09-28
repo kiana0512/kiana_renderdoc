@@ -1,0 +1,1223 @@
+{
+  "capture": "E:\\KianaFrame38112Workspace\\Frame38112Capture\\capture_frame38112.rdc",
+  "range": [
+    1390,
+    1533
+  ],
+  "events": [
+    {
+      "eventId": 1392,
+      "name": "",
+      "flags": "ActionFlags.ClearColor|Clear",
+      "indices": 0,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6604,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "ps": {
+          "id": 6605,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {},
+      "readWrite": {}
+    },
+    {
+      "eventId": 1393,
+      "name": "",
+      "flags": "ActionFlags.ClearColor|Clear",
+      "indices": 0,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6604,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "ps": {
+          "id": 6605,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {},
+      "readWrite": {}
+    },
+    {
+      "eventId": 1394,
+      "name": "",
+      "flags": "ActionFlags.ClearColor|Clear",
+      "indices": 0,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6604,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "ps": {
+          "id": 6605,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {},
+      "readWrite": {}
+    },
+    {
+      "eventId": 1395,
+      "name": "",
+      "flags": "ActionFlags.ClearColor|Clear",
+      "indices": 0,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6604,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "ps": {
+          "id": 6605,
+          "name": "Hidden/Universal Render Pipeline/DepthPiramid"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {},
+      "readWrite": {}
+    },
+    {
+      "eventId": 1403,
+      "name": "",
+      "flags": "ActionFlags.Drawcall",
+      "indices": 3,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6619,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "ps": {
+          "id": 6620,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {},
+      "readWrite": {}
+    },
+    {
+      "eventId": 1419,
+      "name": "",
+      "flags": "ActionFlags.Drawcall",
+      "indices": 3,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6621,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "ps": {
+          "id": 6622,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {
+        "ps": [
+          {
+            "slot": 0,
+            "resource": {
+              "name": "TempBuffer 286 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53254
+          },
+          {
+            "slot": 1,
+            "resource": {
+              "name": "TempBuffer 289 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "D32S8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53259
+          },
+          {
+            "slot": 2,
+            "resource": {
+              "name": "TempBuffer 283 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R16G16B16A16_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53242
+          },
+          {
+            "slot": 3,
+            "resource": {
+              "name": "TempBuffer 284 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R8G8B8A8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53246
+          },
+          {
+            "slot": 4,
+            "resource": {
+              "name": "TempBuffer 285 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53250
+          },
+          {
+            "slot": 5,
+            "resource": {
+              "name": "InternalLut_Char_1024x32_ARGBHalf",
+              "width": 1024,
+              "height": 32,
+              "format": "R16G16B16A16_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 19795
+          }
+        ]
+      },
+      "readWrite": {}
+    },
+    {
+      "eventId": 1429,
+      "name": "",
+      "flags": "ActionFlags.Drawcall",
+      "indices": 3,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6623,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "ps": {
+          "id": 6624,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {
+        "ps": [
+          {
+            "slot": 0,
+            "resource": {
+              "name": "TempBuffer 289 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "D32S8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53259
+          },
+          {
+            "slot": 1,
+            "resource": {
+              "name": "TempBuffer 284 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R8G8B8A8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53246
+          }
+        ]
+      },
+      "readWrite": {}
+    },
+    {
+      "eventId": 1447,
+      "name": "",
+      "flags": "ActionFlags.Drawcall",
+      "indices": 3,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6625,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "ps": {
+          "id": 19389,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {
+        "ps": [
+          {
+            "slot": 0,
+            "resource": {
+              "name": "TempBuffer 286 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53254
+          },
+          {
+            "slot": 1,
+            "resource": {
+              "name": "UnityRed",
+              "width": 4,
+              "height": 4,
+              "format": "R8G8B8A8_SRGB",
+              "mips": 3,
+              "arraysize": 1
+            },
+            "id": 65
+          },
+          {
+            "slot": 2,
+            "resource": {
+              "name": "PreIntegratedFGD_GGXDisneyDiffuse",
+              "width": 64,
+              "height": 64,
+              "format": "R16G16B16A16_FLOAT",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 5964
+          },
+          {
+            "slot": 3,
+            "resource": {
+              "name": "TempBuffer 289 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "D32S8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53259
+          },
+          {
+            "slot": 4,
+            "resource": {
+              "name": "TempBuffer 283 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R16G16B16A16_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53242
+          },
+          {
+            "slot": 5,
+            "resource": {
+              "name": "TempBuffer 284 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R8G8B8A8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53246
+          },
+          {
+            "slot": 6,
+            "resource": {
+              "name": "TempBuffer 285 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53250
+          }
+        ]
+      },
+      "readWrite": {}
+    },
+    {
+      "eventId": 1466,
+      "name": "",
+      "flags": "ActionFlags.Drawcall",
+      "indices": 3,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6627,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "ps": {
+          "id": 6628,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {
+        "ps": [
+          {
+            "slot": 0,
+            "resource": {
+              "name": "TempBuffer 286 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53254
+          },
+          {
+            "slot": 1,
+            "resource": {
+              "name": "UnityRed",
+              "width": 4,
+              "height": 4,
+              "format": "R8G8B8A8_SRGB",
+              "mips": 3,
+              "arraysize": 1
+            },
+            "id": 65
+          },
+          {
+            "slot": 2,
+            "resource": {
+              "name": "UnityDefault2D",
+              "width": 16,
+              "height": 16,
+              "format": "R8G8B8A8_SRGB",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 87
+          },
+          {
+            "slot": 3,
+            "resource": {
+              "name": "UnityDefault2D",
+              "width": 16,
+              "height": 16,
+              "format": "R8G8B8A8_SRGB",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 87
+          },
+          {
+            "slot": 4,
+            "resource": {
+              "name": "TempBuffer 283 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R16G16B16A16_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53242
+          },
+          {
+            "slot": 5,
+            "resource": {
+              "name": "TempBuffer 284 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R8G8B8A8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53246
+          },
+          {
+            "slot": 6,
+            "resource": {
+              "name": "TempBuffer 285 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53250
+          }
+        ]
+      },
+      "readWrite": {}
+    },
+    {
+      "eventId": 1484,
+      "name": "",
+      "flags": "ActionFlags.Drawcall",
+      "indices": 3,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 19390,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "ps": {
+          "id": 19391,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53286,
+          "resource": {
+            "name": "TempBuffer 295 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R16G16B16A16_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        },
+        {
+          "slot": 1,
+          "id": 53290,
+          "resource": {
+            "name": "TempBuffer 296 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R10G10B10A2_TYPELESS",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": {
+        "id": 53238,
+        "resource": {
+          "name": "TempBuffer 282 2880x1368",
+          "width": 2880,
+          "height": 1368,
+          "format": "D32S8_TYPELESS",
+          "mips": 1,
+          "arraysize": 1
+        }
+      },
+      "readOnly": {
+        "ps": [
+          {
+            "slot": 0,
+            "resource": {
+              "name": "TempBuffer 286 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53254
+          },
+          {
+            "slot": 1,
+            "resource": {
+              "name": "PreIntegratedFGD_GGXDisneyDiffuse",
+              "width": 64,
+              "height": 64,
+              "format": "R16G16B16A16_FLOAT",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 5964
+          },
+          {
+            "slot": 2,
+            "resource": {
+              "name": "TempBuffer 289 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "D32S8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53259
+          },
+          {
+            "slot": 3,
+            "resource": {
+              "name": "UnityDefault2D",
+              "width": 16,
+              "height": 16,
+              "format": "R8G8B8A8_SRGB",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 87
+          },
+          {
+            "slot": 4,
+            "resource": {
+              "name": "UnityDefault2D",
+              "width": 16,
+              "height": 16,
+              "format": "R8G8B8A8_SRGB",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 87
+          },
+          {
+            "slot": 5,
+            "resource": {
+              "name": "TempBuffer 283 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R16G16B16A16_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53242
+          },
+          {
+            "slot": 6,
+            "resource": {
+              "name": "TempBuffer 284 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R8G8B8A8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53246
+          },
+          {
+            "slot": 7,
+            "resource": {
+              "name": "TempBuffer 285 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53250
+          }
+        ]
+      },
+      "readWrite": {}
+    },
+    {
+      "eventId": 1511,
+      "name": "",
+      "flags": "ActionFlags.Indexed|Drawcall",
+      "indices": 6,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 1149,
+          "name": "Hidden/BlitCopy"
+        },
+        "ps": {
+          "id": 1150,
+          "name": "Hidden/BlitCopy"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53294,
+          "resource": {
+            "name": "TempBuffer 297 2880x1368",
+            "width": 2880,
+            "height": 1368,
+            "format": "R11G11B10_FLOAT",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": null,
+      "readOnly": {
+        "ps": [
+          {
+            "slot": 0,
+            "resource": {
+              "name": "TempBuffer 295 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R16G16B16A16_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53286
+          }
+        ]
+      },
+      "readWrite": {}
+    },
+    {
+      "eventId": 1533,
+      "name": "",
+      "flags": "ActionFlags.Drawcall",
+      "indices": 3,
+      "instances": 0,
+      "dispatch": [
+        0,
+        0,
+        0
+      ],
+      "shaders": {
+        "vs": {
+          "id": 6633,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "ps": {
+          "id": 19402,
+          "name": "Hidden/Universal Render Pipeline/DeferredShading"
+        },
+        "cs": {
+          "id": 5981,
+          "name": "lightlistbuild-worldgrid.CullLights"
+        }
+      },
+      "outputs": [
+        {
+          "slot": 0,
+          "id": 53298,
+          "resource": {
+            "name": "TempBuffer 298 1440x684",
+            "width": 1440,
+            "height": 684,
+            "format": "R11G11B10_FLOAT",
+            "mips": 1,
+            "arraysize": 1
+          }
+        }
+      ],
+      "depth": null,
+      "readOnly": {
+        "ps": [
+          {
+            "slot": 0,
+            "resource": {
+              "name": "TempBuffer 286 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53254
+          },
+          {
+            "slot": 1,
+            "resource": {
+              "name": "ClusteredLighting_VoxelLightLists",
+              "id": 53078
+            },
+            "id": 53078
+          },
+          {
+            "slot": 2,
+            "resource": {
+              "name": "ClusteredLighting_VoxelOffset",
+              "id": 53075
+            },
+            "id": 53075
+          },
+          {
+            "slot": 3,
+            "resource": {
+              "name": "Buffer-16-6604",
+              "id": 19744
+            },
+            "id": 19744
+          },
+          {
+            "slot": 4,
+            "resource": {
+              "name": "CubeMapArray",
+              "width": 256,
+              "height": 256,
+              "format": "BC6_UFLOAT",
+              "mips": 9,
+              "arraysize": 24
+            },
+            "id": 21026
+          },
+          {
+            "slot": 5,
+            "resource": {
+              "name": "TempBuffer 292 1440x684",
+              "width": 1440,
+              "height": 684,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53274
+          },
+          {
+            "slot": 6,
+            "resource": {
+              "name": "TempBuffer 293 1440x684",
+              "width": 1440,
+              "height": 684,
+              "format": "D32S8_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53278
+          },
+          {
+            "slot": 7,
+            "resource": {
+              "name": "TempBuffer 285 2880x1368",
+              "width": 2880,
+              "height": 1368,
+              "format": "R10G10B10A2_TYPELESS",
+              "mips": 1,
+              "arraysize": 1
+            },
+            "id": 53250
+          }
+        ]
+      },
+      "readWrite": {}
+    }
+  ],
+  "ok": true
+}
