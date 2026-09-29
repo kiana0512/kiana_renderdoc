@@ -216,6 +216,43 @@ def write_fbx(path, mesh):
         f.write(text)
 
 
+def write_obj(path, mesh):
+    """Write the same captured geometry as OBJ for UE's static-mesh importer.
+
+    Our minimal ASCII FBX is useful as evidence, but UE's FBX importer may
+    report that it contains no mesh. OBJ keeps positions, UV0 and normals.
+    """
+    uvs = mesh.get("uv0", [])
+    normals = mesh.get("normal", [])
+    count = len(mesh["position"])
+    if uvs and len(uvs) != count:
+        raise ValueError("UV0 count differs from position count")
+    if normals and len(normals) != count:
+        raise ValueError("Normal count differs from position count")
+    with open(path, "w", encoding="ascii") as f:
+        f.write("# Kiana captured input-assembly geometry; material roles unresolved\n")
+        f.write("o CapturedMesh\n")
+        for row in mesh["position"]:
+            f.write("v %.9g %.9g %.9g\n" % tuple(row[:3]))
+        for row in uvs:
+            f.write("vt %.9g %.9g\n" % tuple(row[:2]))
+        for row in normals:
+            f.write("vn %.9g %.9g %.9g\n" % tuple(row[:3]))
+        for tri in mesh["triangles"]:
+            refs = []
+            for value in tri:
+                index = value + 1
+                if uvs and normals:
+                    refs.append("%d/%d/%d" % (index, index, index))
+                elif uvs:
+                    refs.append("%d/%d" % (index, index))
+                elif normals:
+                    refs.append("%d//%d" % (index, index))
+                else:
+                    refs.append(str(index))
+            f.write("f %s\n" % " ".join(refs))
+
+
 def export_draw(ctrl, event, parent, save_textures=True, position_name="", attribute_map=None):
     action = action_at(ctrl.GetRootActions(),event)
     if action is None or not action.flags & rd.ActionFlags.Drawcall:
@@ -226,7 +263,9 @@ def export_draw(ctrl, event, parent, save_textures=True, position_name="", attri
     output = tempfile.mkdtemp(prefix="draw_%d_" % event,dir=parent)
     path = os.path.join(output,"draw_%d.fbx" % event)
     write_fbx(path,mesh)
-    manifest = {"event_id":event,"fbx":path,"vertices":len(mesh['position']),"triangles":len(mesh['triangles']),
+    obj_path = os.path.join(output,"draw_%d.obj" % event)
+    write_obj(obj_path,mesh)
+    manifest = {"event_id":event,"fbx":path,"obj":obj_path,"vertices":len(mesh['position']),"triangles":len(mesh['triangles']),
                 "attributes":mesh['attributes'],"available_attributes":mesh['available_attributes'],
                 "instance_count":int(action.numInstances),"textures":[],"warnings":mesh['warnings'],
                 "notes":["Input-assembly coordinates and UVs preserved; no automatic axis flip or scale.",

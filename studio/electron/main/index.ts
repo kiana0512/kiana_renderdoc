@@ -3,7 +3,8 @@ import { spawn, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
 import { connect as connectSocket } from 'node:net'
-import { basename, delimiter, dirname, extname, join, resolve } from 'node:path'
+import { basename, dirname, extname, join, resolve } from 'node:path'
+import { opaquePngPreview } from './opaquePng.js'
 
 if (!app.isPackaged && process.env.KIANA_CDP_PORT) {
   app.commandLine.appendSwitch('remote-debugging-address', '127.0.0.1')
@@ -21,17 +22,26 @@ const runtimeCandidates = [
 const kianaRoot = runtimeCandidates.find(value => existsSync(join(value, 'kiana_renderdoccmd.exe'))) || runtimeCandidates[0]
 const sourceHomeCandidates = [
   process.env.KIANA_SOURCE_HOME,
+  join(kianaRoot, 'kiana'),
   'E:\\renderdoc\\kiana',
   resolve(process.cwd(), '..', 'renderdoc', 'kiana'),
-  join(kianaRoot, 'kiana'),
   kianaRoot,
 ].filter((value): value is string => Boolean(value))
 const kianaHome = sourceHomeCandidates.find(value => existsSync(join(value, 'mcp', 'src', 'server.py'))) || kianaRoot
 const kianaSourceRoot = basename(kianaHome).toLowerCase() === 'kiana' ? dirname(kianaHome) : kianaHome
 const commandPath = join(kianaRoot, 'kiana_renderdoccmd.exe')
 const guiPath = join(kianaRoot, 'kiana_qrenderdoc.exe')
-const pythonCandidates = [process.env.KIANA_PYTHON, join(kianaRoot, 'python_mcp', 'python.exe'), join(kianaSourceRoot, '.venv', 'Scripts', 'python.exe')].filter((value): value is string => Boolean(value))
-const pythonPath = pythonCandidates.find(existsSync) || pythonCandidates[0]
+// 打包机 venv 可能仍指向 C:\Python314；存在 python.exe 不代表它能启动。
+const pythonCandidates = [
+  process.env.KIANA_PYTHON,
+  join(kianaRoot, 'python_mcp', 'python.exe'),
+  join(process.env.LOCALAPPDATA || '', 'Kiana RenderDoc', 'python_mcp', 'python.exe'),
+  join(kianaSourceRoot, '.venv', 'Scripts', 'python.exe'),
+].filter((value): value is string => Boolean(value))
+const pythonPath = pythonCandidates.find(value => {
+  if (!existsSync(value)) return false
+  return spawnSync(value, ['-c', 'import mcp'], { windowsHide: true, timeout: 8000, encoding: 'utf8' }).status === 0
+}) || pythonCandidates[0]
 const workerCandidates = [join(kianaHome, 'mcp', 'src', 'native_job.py'), join(kianaRoot, 'mcp', 'src', 'native_job.py')]
 const workerPath = workerCandidates.find(existsSync) || workerCandidates[0]
 const captureJobCandidates = [join(kianaHome, 'mcp', 'src', 'capture_job.py'), join('E:\\renderdoc\\kiana', 'mcp', 'src', 'capture_job.py')]
@@ -73,8 +83,9 @@ function parseJsonOutput(value: string) {
 }
 
 function pythonEnvironment(extra: NodeJS.ProcessEnv = {}) {
-  const pythonPathValue = [kianaSourceRoot, process.env.PYTHONPATH].filter(Boolean).join(delimiter)
-  return { ...process.env, ...extra, KIANA_HOME: kianaHome, PYTHONPATH: pythonPathValue, PYTHONUTF8: '1' }
+  // Kiana 运行目录带有 Python 3.6 的 _ctypes.pyd；把根目录放进 PYTHONPATH
+  // 会覆盖 MCP Python 3.14 的标准库并导致服务启动后导入 uvicorn 失败。
+  return { ...process.env, ...extra, KIANA_HOME: kianaHome, PYTHONUTF8: '1' }
 }
 
 function resolveManifestArtifact(value: unknown, manifestPath: string) {
@@ -218,10 +229,12 @@ function captureHistory() {
   }).sort((left, right) => right.modifiedAt - left.modifiedAt)
 }
 
-function imageDataUrl(filePath: string) {
+function imageDataUrl(filePath: string, showRgbIgnoringAlpha = false) {
   if (!existsSync(filePath)) return ''
   const mime = extname(filePath).toLowerCase() === '.png' ? 'image/png' : 'image/jpeg'
-  return `data:${mime};base64,${readFileSync(filePath).toString('base64')}`
+  const raw = readFileSync(filePath)
+  const image = showRgbIgnoringAlpha && mime === 'image/png' ? opaquePngPreview(raw) : raw
+  return `data:${mime};base64,${image.toString('base64')}`
 }
 
 function inferFrameNumber(capturePath: string) {
@@ -329,13 +342,14 @@ function captureArguments(project: any) {
 }
 
 async function probeRuntime() {
-  const renderdocMcp = await new Promise<boolean>(resolvePort => {
-    const socket = connectSocket({ host: '127.0.0.1', port: 8765 })
+  const probePort = (port: number) => new Promise<boolean>(resolvePort => {
+    const socket = connectSocket({ host: '127.0.0.1', port })
     const done = (value: boolean) => { socket.destroy(); resolvePort(value) }
     socket.setTimeout(450); socket.once('connect', () => done(true)); socket.once('timeout', () => done(false)); socket.once('error', () => done(false))
   })
+  const [renderdocMcp, ueMcp] = await Promise.all([probePort(8765), probePort(8011)])
   const unity = await probeUnity()
-  const base = { desktop: true, connected: existsSync(commandPath) && existsSync(guiPath), bridgeConnected: false, engineMcp: renderdocMcp, engineMcpUrl: 'http://127.0.0.1:8765/mcp', renderdocMcp, renderdocMcpUrl: 'http://127.0.0.1:8765/mcp', unityMcp: unity.connected, unityPort: unity.port, unityProject: unity.project, unityVersion: unity.version, mcpTools: 0, bridgePid: 0, kianaRoot, sourceRoot: kianaSourceRoot, captureCore: existsSync(commandPath), inspector: existsSync(guiPath), python: existsSync(pythonPath), analysisWorker: existsSync(workerPath) }
+  const base = { desktop: true, connected: existsSync(commandPath) && existsSync(guiPath), bridgeConnected: false, engineMcp: renderdocMcp, engineMcpUrl: 'http://127.0.0.1:8765/mcp', renderdocMcp, renderdocMcpUrl: 'http://127.0.0.1:8765/mcp', ueMcp, ueMcpUrl: 'http://127.0.0.1:8011/mcp', unityMcp: unity.connected, unityPort: unity.port, unityProject: unity.project, unityVersion: unity.version, mcpTools: 0, bridgePid: 0, kianaRoot, sourceRoot: kianaSourceRoot, captureCore: existsSync(commandPath), inspector: existsSync(guiPath), python: existsSync(pythonPath), analysisWorker: existsSync(workerPath) }
   if (!base.python || !existsSync(join(kianaHome, 'mcp', 'src', 'ipc_client.py'))) return base
   const source = [
     'import json,sys',
@@ -404,7 +418,7 @@ function ensureEngineMcpServer() {
   const child = spawn(pythonPath, [launcher, '--port', '8765'], {
     // RenderDoc's runtime root contains python36.dll. Keeping it out of the
     // process CWD prevents Windows DLL search from shadowing Python 3.14's DLLs.
-    cwd: kianaSourceRoot, windowsHide: true,
+    cwd: dirname(pythonPath), windowsHide: true,
     env: pythonEnvironment({ KIANA_PID: backendProcessPid ? String(backendProcessPid) : '' }),
   })
   engineMcpProcess = child
@@ -556,7 +570,15 @@ function discoverLiveCaptureSession(executable?: string): CaptureSession | null 
   return selected
 }
 
-app.whenReady().then(() => {
+// 同一工作台只保留一个回放后端，避免重复启动把 16 GB 显存占满。
+const primaryInstance = app.requestSingleInstanceLock()
+if (!primaryInstance) app.quit()
+else app.on('second-instance', () => {
+  const active = BrowserWindow.getAllWindows()[0]
+  if (active) { if (active.isMinimized()) active.restore(); active.focus() }
+})
+
+if (primaryInstance) app.whenReady().then(() => {
   ensureRuntimeExtension()
   ensureHeadlessBackend()
   ensureEngineMcpServer()
@@ -779,16 +801,30 @@ app.whenReady().then(() => {
     const remembered = loadWorkspace()
     const captureKey = createHash('sha256').update(String(remembered?.capturePath || 'capture')).digest('hex').slice(0, 12)
     const outputPath = join(cache, `${captureKey}-eid-${Number(eventId)}-rid-${Number(resourceId)}-${safeName}.png`)
-    if (existsSync(outputPath)) return { path: outputPath, dataUrl: imageDataUrl(outputPath), result: { cached: true, eventId: Number(eventId), resourceId: Number(resourceId) } }
+    // 相同 RID 在多个 EID 导出完全相同的像素时，不能宣称已经验证逐步历史。
+    const duplicateOf = (saved: string) => {
+      const digest = createHash('sha256').update(readFileSync(saved)).digest('hex')
+      const prefix = `${captureKey}-eid-`
+      const ridMarker = `-rid-${Number(resourceId)}-`
+      for (const file of readdirSync(cache)) {
+        if (!file.startsWith(prefix) || !file.includes(ridMarker)) continue
+        const otherEvent = Number(file.slice(prefix.length).split('-')[0])
+        if (!otherEvent || otherEvent === Number(eventId)) continue
+        const other = join(cache, file)
+        if (createHash('sha256').update(readFileSync(other)).digest('hex') === digest) return otherEvent
+      }
+      return 0
+    }
+    if (existsSync(outputPath)) return { path: outputPath, dataUrl: imageDataUrl(outputPath, true), result: { cached: true, eventId: Number(eventId), resourceId: Number(resourceId), duplicateOf: duplicateOf(outputPath) } }
     if (remembered?.capturePath && backendCapturePath.toLowerCase() !== resolve(remembered.capturePath).toLowerCase())
       await openCaptureInBackend(remembered.capturePath)
     // SetFrameEvent + SaveTexture must remain atomic because the extension
     // restores RenderDoc's previous event after each API request.
     const result = await callRenderdoc('save_texture', { event_id: Number(eventId), resource_id: Number(resourceId), output_path: outputPath, mip: 0, slice: -1 }, 120) as Record<string, unknown>
     const saved = resolve(String(result.saved || outputPath)); ensureFile(saved, 'RenderDoc 合成步骤预览')
-    return { path: saved, dataUrl: imageDataUrl(saved), result: { ...result, eventId: Number(eventId), resourceId: Number(resourceId) } }
+    return { path: saved, dataUrl: imageDataUrl(saved, true), result: { ...result, eventId: Number(eventId), resourceId: Number(resourceId), duplicateOf: duplicateOf(saved) } }
   })
-  ipcMain.handle('resource:image', (_event, value: string) => { const path = resolve(String(value || '')); ensureFile(path, '图像资源'); if (!['.png', '.jpg', '.jpeg'].includes(extname(path).toLowerCase())) throw new Error('仅允许加载分析导出的图像'); return imageDataUrl(path) })
+  ipcMain.handle('resource:image', (_event, value: string) => { const path = resolve(String(value || '')); ensureFile(path, '图像资源'); if (!['.png', '.jpg', '.jpeg'].includes(extname(path).toLowerCase())) throw new Error('仅允许加载分析导出的图像'); return imageDataUrl(path, /[\\/]pass-previews[\\/]/i.test(path)) })
   ipcMain.handle('window:set-zoom', (_event, factor: number) => { const value = Math.max(0.8, Math.min(1.25, Number(factor) || 1)); window.webContents.setZoomFactor(value); return value })
   ipcMain.handle('clipboard:write-text', (_event, value: string) => { clipboard.writeText(String(value).slice(0, 8192)) })
   ipcMain.on('window:minimize', () => window.minimize())

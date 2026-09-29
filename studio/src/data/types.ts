@@ -121,7 +121,7 @@ export type CaptureProgress = AnalysisProgress & {
   sessionActive?: boolean
 }
 export type CaptureHistoryEntry = { capturePath: string; captureName: string; captureBytes: number; frameNumber: number; modifiedAt: number; manifestPath: string; analyzed: boolean }
-export type RuntimeStatus = { desktop: boolean; connected: boolean; bridgeConnected: boolean; engineMcp: boolean; engineMcpUrl: string; renderdocMcp: boolean; renderdocMcpUrl: string; unityMcp: boolean; unityPort: number; unityProject: string; unityVersion: string; mcpTools: number; bridgePid: number; kianaRoot: string; sourceRoot: string; captureCore: boolean; inspector: boolean; python: boolean; analysisWorker: boolean }
+export type RuntimeStatus = { desktop: boolean; connected: boolean; bridgeConnected: boolean; engineMcp: boolean; engineMcpUrl: string; renderdocMcp: boolean; renderdocMcpUrl: string; ueMcp: boolean; ueMcpUrl: string; unityMcp: boolean; unityPort: number; unityProject: string; unityVersion: string; mcpTools: number; bridgePid: number; kianaRoot: string; sourceRoot: string; captureCore: boolean; inspector: boolean; python: boolean; analysisWorker: boolean }
 export type UnityStatus = { connected: boolean; port: number; project: string; version: string }
 
 export type KianaApi = {
