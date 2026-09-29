@@ -86,6 +86,9 @@ client, or start `python_mcp/python.exe mcp/launch.py` as a stdio MCP server.
 
 Open Kiana first. `ping` does not require a capture. Use `get_capture_status`,
 `get_draw_calls`, `get_pipeline_state`, `get_bound_textures`, `export_fbx`, etc.
+Use `get_post_vs_data(event_id)` to inspect the event-specific VS output layout,
+and `export_vertex_stage(event_id, output_dir)` to preserve exact post-VS buffers,
+indices, shader output semantics and bound vertex-stage constant-buffer bytes.
 Use `capture_kiana_d3d11` for verified direct D3D11 capture with optional Unity
 safe mode. Use `capture_nsight_d3d12` plus `convert_nsight_to_rdc` for the
 evidence-preserving Nsight D3D12 bridge.

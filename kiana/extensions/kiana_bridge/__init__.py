@@ -388,19 +388,25 @@ def _get_shader_info(params):
         # Constant buffers with values
         cbufs = []
         try:
-            cbufs_bound = ps.GetConstantBuffers(stage, False)
+            cbufs_bound = ps.GetConstantBlocks(stage, False)
         except Exception:
-            cbufs_bound = None
+            try:
+                cbufs_bound = ps.GetConstantBuffers(stage, False)
+            except Exception:
+                cbufs_bound = None
         cb_list = getattr(refl, 'constantBlocks', [])
         for idx, cb in enumerate(cb_list):
             cb_info = {"name": getattr(cb, 'name', ''), "size": getattr(cb, 'byteSize', 0), "index": idx}
             if cbufs_bound and idx < len(cbufs_bound):
                 b = cbufs_bound[idx]
-                cb_info["bufferId"] = int(b.resource)
+                resource, byte_offset, byte_size = _binding_resource_range(b, cb_info["size"])
+                cb_info["bufferId"] = int(resource)
+                cb_info["byteOffset"] = byte_offset
+                cb_info["boundSize"] = byte_size
                 try:
                     vars = ctrl.GetCBufferVariableContents(
                         pid, sid, stage, entries[0].name,
-                        idx, b.resource, getattr(b, 'byteOffset', 0), getattr(b, 'byteSize', 0))
+                        idx, resource, byte_offset, byte_size)
                     cb_info["variables"] = [_var_dict(v) for v in vars]
                 except Exception:
                     cb_info["variables"] = []
@@ -1202,11 +1208,235 @@ def _get_action_timings(params):
 
 
 def _get_post_vs_data(params):
-    """Get post-VS mesh data."""
+    """Get event-specific post-VS metadata and a small decoded sample.
+
+    The old implementation inspected whichever event happened to be selected in
+    the GUI. That made automated reconstruction non-deterministic. Keep this
+    method lightweight for MCP callers, while exposing enough layout data to
+    decide whether a draw contains reusable world-space varyings.
+    """
+    event_id = params.get("event_id")
+    if event_id is None:
+        raise ValueError("event_id required")
+    sample_count = max(0, min(int(params.get("sample_count", 8)), 64))
+
     def _do(ctrl):
+        import struct as _struct
+        ctrl.SetFrameEvent(int(event_id), True)
+        ps = ctrl.GetPipelineState()
         mesh = ctrl.GetPostVSData(0, 0, rd.MeshDataStage.VSOut)
-        return {"numIndices": mesh.numIndices, "topology": str(mesh.topology),
-                "indexStride": mesh.indexByteStride, "vertexStride": mesh.vertexByteStride}
+        result = {
+            "eventId": int(event_id),
+            "numIndices": int(mesh.numIndices),
+            "topology": str(mesh.topology),
+            "indexResourceId": int(mesh.indexResourceId),
+            "indexOffset": int(mesh.indexByteOffset),
+            "indexStride": int(mesh.indexByteStride),
+            "vertexResourceId": int(mesh.vertexResourceId),
+            "vertexOffset": int(mesh.vertexByteOffset),
+            "vertexStride": int(mesh.vertexByteStride),
+            "nearPlane": float(getattr(mesh, "nearPlane", 0.0)),
+            "farPlane": float(getattr(mesh, "farPlane", 0.0)),
+        }
+
+        sid = ps.GetShader(rd.ShaderStage.Vertex)
+        signature = []
+        if sid and int(sid) != 0:
+            entries = ctrl.GetShaderEntryPoints(sid)
+            if entries:
+                refl = ctrl.GetShader(_get_pipeline_obj(ps, ctrl), sid, entries[0])
+                packed_offset = 0
+                for sig in getattr(refl, "outputSignature", []):
+                    reg_index = int(getattr(sig, "regIndex", 0))
+                    reg_mask = int(getattr(sig, "regChannelMask", 0))
+                    comp_count = int(getattr(sig, "compCount", 0))
+                    signature.append({
+                        "semantic": getattr(sig, "semanticName", ""),
+                        "semanticIndex": int(getattr(sig, "semanticIndex", 0)),
+                        "varName": getattr(sig, "varName", ""),
+                        "compType": str(getattr(sig, "compType", "")),
+                        "compCount": comp_count,
+                        "regIndex": reg_index,
+                        "regChannelMask": reg_mask,
+                        "registerOffset": reg_index * 16,
+                        "packedOffset": packed_offset,
+                        "systemValue": str(getattr(sig, "systemValue", "")),
+                    })
+                    packed_offset += comp_count * 4
+        result["outputSignature"] = signature
+
+        samples = []
+        stride = int(mesh.vertexByteStride)
+        count = min(sample_count, int(mesh.numIndices))
+        if int(mesh.vertexResourceId) and stride > 0 and count > 0:
+            data = ctrl.GetBufferData(mesh.vertexResourceId, int(mesh.vertexByteOffset), count * stride)
+            actual = min(count, len(data) // stride)
+            for vertex_index in range(actual):
+                row = {"vertex": vertex_index, "outputs": []}
+                base = vertex_index * stride
+                for sig in signature:
+                    # GetPostVSData compacts varyings in reflection order; the
+                    # shader register number is metadata and may exceed stride.
+                    offset = base + sig["packedOffset"]
+                    components = min(sig["compCount"], 4)
+                    values = []
+                    if components > 0 and offset + components * 4 <= len(data):
+                        try:
+                            values = list(_struct.unpack_from("<%df" % components, data, offset))
+                        except Exception:
+                            values = []
+                    row["outputs"].append({
+                        "semantic": sig["semantic"],
+                        "semanticIndex": sig["semanticIndex"],
+                        "values": values,
+                    })
+                samples.append(row)
+        result["samples"] = samples
+        return result
+    return _replay(_do)
+
+
+def _binding_resource_range(binding, declared_size=0):
+    """Return (resource, offset, size) for API-specific constant bindings."""
+    resource = rd.ResourceId()
+    offset = 0
+    size = int(declared_size or 0)
+    descriptor = getattr(binding, "descriptor", None)
+    if descriptor is not None:
+        resource = getattr(descriptor, "resource", resource)
+        offset = int(getattr(descriptor, "byteOffset", getattr(binding, "byteOffset", 0)) or 0)
+        size = int(getattr(descriptor, "byteSize", getattr(binding, "byteSize", size)) or size)
+    else:
+        resource = getattr(binding, "resource", resource)
+        offset = int(getattr(binding, "byteOffset", 0) or 0)
+        size = int(getattr(binding, "byteSize", size) or size)
+    return resource, offset, size
+
+
+def _export_vertex_stage(params):
+    """Export raw post-VS data, layout and exact bound constant-buffer bytes."""
+    import hashlib as _hashlib
+    event_id = params.get("event_id")
+    output_dir = params.get("output_dir", "")
+    if event_id is None:
+        raise ValueError("event_id required")
+    if not output_dir:
+        raise ValueError("output_dir required")
+    output_dir = os.path.abspath(output_dir)
+    if not os.path.isdir(output_dir):
+        os.makedirs(output_dir)
+
+    def _do(ctrl):
+        ctrl.SetFrameEvent(int(event_id), True)
+        ps = ctrl.GetPipelineState()
+        sid = ps.GetShader(rd.ShaderStage.Vertex)
+        if not sid or int(sid) == 0:
+            raise RuntimeError("No vertex shader at EID %s" % event_id)
+        entries = ctrl.GetShaderEntryPoints(sid)
+        if not entries:
+            raise RuntimeError("Vertex shader has no entry point")
+        pid = _get_pipeline_obj(ps, ctrl)
+        refl = ctrl.GetShader(pid, sid, entries[0])
+        mesh = ctrl.GetPostVSData(0, 0, rd.MeshDataStage.VSOut)
+        prefix = "EID%d" % int(event_id)
+        result = {
+            "eventId": int(event_id),
+            "shaderId": int(sid),
+            "pipelineId": int(pid),
+            "entryPoint": entries[0].name,
+            "postVS": {
+                "numIndices": int(mesh.numIndices),
+                "topology": str(mesh.topology),
+                "vertexResourceId": int(mesh.vertexResourceId),
+                "vertexOffset": int(mesh.vertexByteOffset),
+                "vertexStride": int(mesh.vertexByteStride),
+                "indexResourceId": int(mesh.indexResourceId),
+                "indexOffset": int(mesh.indexByteOffset),
+                "indexStride": int(mesh.indexByteStride),
+            },
+            "outputSignature": [],
+            "constantBuffers": [],
+            "files": [],
+        }
+        packed_offset = 0
+        for sig in getattr(refl, "outputSignature", []):
+            comp_count = int(getattr(sig, "compCount", 0))
+            reg_index = int(getattr(sig, "regIndex", 0))
+            result["outputSignature"].append({
+                "semantic": getattr(sig, "semanticName", ""),
+                "semanticIndex": int(getattr(sig, "semanticIndex", 0)),
+                "varName": getattr(sig, "varName", ""),
+                "compType": str(getattr(sig, "compType", "")),
+                "compCount": comp_count,
+                "regIndex": reg_index,
+                "regChannelMask": int(getattr(sig, "regChannelMask", 0)),
+                "registerOffset": reg_index * 16,
+                "packedOffset": packed_offset,
+                "systemValue": str(getattr(sig, "systemValue", "")),
+            })
+            packed_offset += comp_count * 4
+
+        stride = int(mesh.vertexByteStride)
+        vertex_bytes = int(mesh.numIndices) * stride
+        if int(mesh.vertexResourceId) and vertex_bytes > 0:
+            data = ctrl.GetBufferData(mesh.vertexResourceId, int(mesh.vertexByteOffset), vertex_bytes)
+            path = os.path.join(output_dir, prefix + "_postvs.bin")
+            with open(path, "wb") as handle:
+                handle.write(data)
+            result["postVS"]["exportedBytes"] = len(data)
+            result["postVS"]["sha256"] = _hashlib.sha256(data).hexdigest()
+            result["files"].append(path)
+        if int(mesh.indexResourceId) and int(mesh.indexByteStride) > 0:
+            index_bytes = int(mesh.numIndices) * int(mesh.indexByteStride)
+            data = ctrl.GetBufferData(mesh.indexResourceId, int(mesh.indexByteOffset), index_bytes)
+            path = os.path.join(output_dir, prefix + "_postvs_indices.bin")
+            with open(path, "wb") as handle:
+                handle.write(data)
+            result["postVS"]["exportedIndexBytes"] = len(data)
+            result["files"].append(path)
+
+        try:
+            bindings = ps.GetConstantBlocks(rd.ShaderStage.Vertex, False)
+        except Exception:
+            try:
+                bindings = ps.GetConstantBuffers(rd.ShaderStage.Vertex, False)
+            except Exception:
+                bindings = []
+        blocks = getattr(refl, "constantBlocks", [])
+        for index, block in enumerate(blocks):
+            item = {
+                "index": index,
+                "name": getattr(block, "name", "cbuffer%d" % index),
+                "declaredSize": int(getattr(block, "byteSize", 0)),
+                "resourceId": 0,
+                "offset": 0,
+                "size": 0,
+            }
+            if index < len(bindings):
+                resource, offset, size = _binding_resource_range(bindings[index], item["declaredSize"])
+                item["resourceId"] = int(resource)
+                item["offset"] = offset
+                item["size"] = size
+                if int(resource) and size > 0:
+                    size = min(size, 64 * 1024 * 1024)
+                    data = ctrl.GetBufferData(resource, offset, size)
+                    path = os.path.join(output_dir, "%s_vs_cb%d_rid%d.bin" %
+                                        (prefix, index, int(resource)))
+                    with open(path, "wb") as handle:
+                        handle.write(data)
+                    item["exportedBytes"] = len(data)
+                    item["sha256"] = _hashlib.sha256(data).hexdigest()
+                    item["file"] = path
+                    result["files"].append(path)
+            result["constantBuffers"].append(item)
+
+        manifest = os.path.join(output_dir, prefix + "_vertex_stage.json")
+        with open(manifest, "w", encoding="utf-8") as handle:
+            json.dump(result, handle, ensure_ascii=False, indent=2)
+        result["manifest"] = manifest
+        result["files"].append(manifest)
+        return result
+
     return _replay(_do)
 
 
@@ -1375,9 +1605,12 @@ def _analyze_lighting(params):
             # Get cbuffer bindings
             cbufs_bound = None
             try:
-                cbufs_bound = ps.GetConstantBuffers(stage_enum, False)
+                cbufs_bound = ps.GetConstantBlocks(stage_enum, False)
             except Exception:
-                pass  # Vulkan: no GetConstantBuffers, use null resource fallback
+                try:
+                    cbufs_bound = ps.GetConstantBuffers(stage_enum, False)
+                except Exception:
+                    pass
 
             for cb_idx, cb in enumerate(getattr(refl, 'constantBlocks', [])):
                 cb_name = getattr(cb, 'name', 'cbuffer%d' % cb_idx)
@@ -2348,9 +2581,12 @@ def _export_to_unity(params):
                     # Get cbuffer values for material parameters
                     cbufs = []
                     try:
-                        cbufs_bound = ps.GetConstantBuffers(stage_enum, False)
+                        cbufs_bound = ps.GetConstantBlocks(stage_enum, False)
                     except Exception:
-                        cbufs_bound = None
+                        try:
+                            cbufs_bound = ps.GetConstantBuffers(stage_enum, False)
+                        except Exception:
+                            cbufs_bound = None
 
                     for idx, cb in enumerate(refl2.constantBlocks):
                         cb_info = {"name": getattr(cb, 'name', ''), "size": getattr(cb, 'byteSize', 0)}
@@ -3379,6 +3615,7 @@ METHODS = {
     "fetch_counters": _fetch_counters,
     "get_action_timings": _get_action_timings,
     "get_post_vs_data": _get_post_vs_data,
+    "export_vertex_stage": _export_vertex_stage,
     "get_debug_messages": _get_debug_messages,
     "find_by_texture": _find_by_texture,
     "find_by_shader": _find_by_shader,

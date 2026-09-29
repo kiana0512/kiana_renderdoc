@@ -1,5 +1,5 @@
 """
-Kiana MCP Server — 47 tools, communicates via correlated local file IPC.
+Kiana MCP Server — 48 tools, communicates via correlated local file IPC.
 
 Architecture:
   [WorkBuddy/AI] <-stdio-> [This MCP Server] <-file IPC-> [RenderDoc extension]
@@ -746,9 +746,25 @@ def fetch_counters(counter_ids: str) -> str:
 # ==================== 12. MESH & DEBUG MSGS ====================
 
 @mcp.tool()
-def get_post_vs_data() -> str:
-    """Get post-vertex-shader mesh data for the current draw call."""
-    return _call("get_post_vs_data")
+def get_post_vs_data(event_id: int, sample_count: int = 8) -> str:
+    """Get event-specific post-VS layout metadata and a decoded vertex sample.
+
+    Args:
+        event_id: Draw-call event ID to inspect.
+        sample_count: Number of post-VS vertices to decode (0-64).
+    """
+    return _call("get_post_vs_data", {"event_id": event_id, "sample_count": sample_count})
+
+
+@mcp.tool()
+def export_vertex_stage(event_id: int, output_dir: str) -> str:
+    """Export exact post-VS buffers, indices, layout and bound VS constants.
+
+    Args:
+        event_id: Draw-call event ID to export.
+        output_dir: Directory for binary buffers and the JSON manifest.
+    """
+    return _call("export_vertex_stage", {"event_id": event_id, "output_dir": output_dir}, timeout=120)
 
 @mcp.tool()
 def get_debug_messages() -> str:
