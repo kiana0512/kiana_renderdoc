@@ -1,7 +1,7 @@
 import { app, BrowserWindow, clipboard, dialog, ipcMain, shell } from 'electron'
 import { spawn, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { connect as connectSocket } from 'node:net'
 import { basename, dirname, extname, join, resolve } from 'node:path'
 import { opaquePngPreview } from './opaquePng.js'
@@ -22,6 +22,7 @@ const runtimeCandidates = [
 const kianaRoot = runtimeCandidates.find(value => existsSync(join(value, 'kiana_renderdoccmd.exe'))) || runtimeCandidates[0]
 const sourceHomeCandidates = [
   process.env.KIANA_SOURCE_HOME,
+  resolve(realpathSync(process.cwd()), '..', 'kiana'),
   join(kianaRoot, 'kiana'),
   'E:\\renderdoc\\kiana',
   resolve(process.cwd(), '..', 'renderdoc', 'kiana'),
@@ -44,7 +45,7 @@ const pythonPath = pythonCandidates.find(value => {
 }) || pythonCandidates[0]
 const workerCandidates = [join(kianaHome, 'mcp', 'src', 'native_job.py'), join(kianaRoot, 'mcp', 'src', 'native_job.py')]
 const workerPath = workerCandidates.find(existsSync) || workerCandidates[0]
-const captureJobCandidates = [join(kianaHome, 'mcp', 'src', 'capture_job.py'), join('E:\\renderdoc\\kiana', 'mcp', 'src', 'capture_job.py')]
+const captureJobCandidates = [join(kianaHome, 'mcp', 'src', 'capture_job.py'), join(kianaRoot, 'mcp', 'src', 'capture_job.py'), join('E:\\renderdoc\\kiana', 'mcp', 'src', 'capture_job.py')]
 const captureJobPath = captureJobCandidates.find(existsSync) || captureJobCandidates[0]
 const unityCliCandidates = [
   process.env.KIANA_UNITY_CLI,
@@ -272,6 +273,9 @@ function ensureRuntimeExtension() {
 function capturePresets() {
   const first = (values: string[]) => values.find(existsSync) || values[0]
   const wuthering = first([
+    'G:\\Wuthering Waves\\launcher.exe',
+    'D:\\Wuthering Waves\\launcher.exe',
+    'E:\\Wuthering Waves\\launcher.exe',
     'G:\\Wuthering Waves\\Wuthering Waves Game\\Wuthering Waves.exe',
     'D:\\Wuthering Waves\\Wuthering Waves Game\\Wuthering Waves.exe',
     'E:\\Wuthering Waves\\Wuthering Waves Game\\Wuthering Waves.exe',
@@ -284,7 +288,7 @@ function capturePresets() {
   ])
   const captureRoot = existsSync('E:\\') ? 'E:\\KianaCaptures' : join(app.getPath('documents'), 'KianaCaptures')
   return [
-    { id: 'wuthering', name: '鸣潮', description: 'UE5 · D3D12 · 4K · 子进程早期挂钩', executablePath: wuthering, workingDirectory: dirname(wuthering), captureDirectory: join(captureRoot, 'WutheringWaves'), arguments: '-krqlv=hd', profile: 'UnrealD3D12', hookChildren: true, referenceAllResources: false, captureCallstacks: false, allowFullscreen: true, captureFrame: 1200, resolutionWidth: 3840, resolutionHeight: 2160, windowMode: 'borderless', elevate: true, autoAnalyze: true, manualCapture: true, detected: existsSync(wuthering) },
+    { id: 'wuthering', name: '鸣潮', description: '官方启动器 · 跟踪游戏子进程', executablePath: wuthering, workingDirectory: dirname(wuthering), captureDirectory: join(captureRoot, 'WutheringWaves'), arguments: '', profile: 'UnrealD3D12', hookChildren: true, referenceAllResources: false, captureCallstacks: false, allowFullscreen: true, captureFrame: 1200, resolutionWidth: 3840, resolutionHeight: 2160, windowMode: 'borderless', elevate: true, autoAnalyze: true, manualCapture: true, detected: existsSync(wuthering) },
     { id: 'zzz', name: '绝区零', description: 'Unity · D3D11 安全模式 · 4K · 已实机验证', executablePath: zzz, workingDirectory: dirname(zzz), captureDirectory: join(captureRoot, 'ZenlessZoneZero'), arguments: '-force-d3d11', profile: 'UnityD3D11Safe', hookChildren: true, referenceAllResources: false, captureCallstacks: false, allowFullscreen: false, captureFrame: 900, resolutionWidth: 3840, resolutionHeight: 2160, windowMode: 'borderless', elevate: true, autoAnalyze: true, manualCapture: true, detected: existsSync(zzz) },
   ]
 }
@@ -336,6 +340,8 @@ function captureArguments(project: any) {
   const height = Math.max(480, Math.min(4320, Number(project.resolutionHeight) || 720))
   const mode = ['windowed', 'borderless', 'fullscreen'].includes(project.windowMode) ? project.windowMode : 'windowed'
   const values = splitArguments(String(project.arguments || ''))
+  // Official launchers accept their own arguments; game resolution flags belong to the game.
+  if (/^launcher(?:_main)?\.exe$/i.test(basename(String(project.executablePath || '')))) return values
   if (project.profile === 'UnityD3D11Safe') values.push('-screen-fullscreen', mode === 'fullscreen' ? '1' : '0', '-screen-width', String(width), '-screen-height', String(height), ...(mode === 'borderless' ? ['-popupwindow'] : []))
   else values.push(`-ResX=${width}`, `-ResY=${height}`, mode === 'fullscreen' ? '-fullscreen' : '-windowed', ...(mode === 'borderless' ? ['-borderless'] : []))
   return values
@@ -684,7 +690,7 @@ if (primaryInstance) app.whenReady().then(() => {
     }
     const output = join(parent, `${String(project.name || 'capture').replace(/[<>:"/\\|?*]/g, '-')}-${Date.now()}`)
     const manualCapture = project.manualCapture !== false
-    const args = [captureJobPath, '--executable', executable, '--working-dir', working, '--output', output, '--arguments-json', JSON.stringify(captureArguments(project)), '--frame', String(Math.max(1, Number(project.captureFrame) || 900)), '--timeout', manualCapture ? '86400' : '300', ...(project.profile === 'UnityD3D11Safe' ? ['--unity-safe'] : []), ...(project.hookChildren ? ['--hook-children'] : []), ...(project.referenceAllResources ? ['--reference-all-resources'] : []), ...(project.captureCallstacks ? ['--capture-callstacks'] : []), ...(project.allowFullscreen ? ['--allow-fullscreen'] : []), ...(project.elevate ? ['--elevate'] : []), ...(manualCapture ? ['--manual'] : [])]
+    const args = [captureJobPath, '--runtime', kianaRoot, '--executable', executable, '--working-dir', working, '--output', output, '--arguments-json', JSON.stringify(captureArguments(project)), '--frame', String(Math.max(1, Number(project.captureFrame) || 900)), '--timeout', manualCapture ? '86400' : '300', ...(project.profile === 'UnityD3D11Safe' ? ['--unity-safe'] : []), ...(project.hookChildren ? ['--hook-children'] : []), ...(project.referenceAllResources ? ['--reference-all-resources'] : []), ...(project.captureCallstacks ? ['--capture-callstacks'] : []), ...(project.allowFullscreen ? ['--allow-fullscreen'] : []), ...(project.elevate ? ['--elevate'] : []), ...(manualCapture ? ['--manual'] : [])]
     const child = spawn(pythonPath, args, { cwd: kianaSourceRoot, windowsHide: true, env: pythonEnvironment() })
     const session: CaptureSession = { output, pid: child.pid || 0, targetPid: 0, executable, triggered: false, processed: new Set<string>(), processing: false, monitoring: true }
     activeCaptureSession = session
@@ -692,11 +698,11 @@ if (primaryInstance) app.whenReady().then(() => {
     const sessionMeta = { projectName: String(project.name || executable.split(/[\\/]/).pop() || '游戏'), executablePath: executable, outputDirectory: output, api: project.profile === 'UnityD3D11Safe' ? 'D3D11' : 'D3D12' }
     const send = (value: Record<string, unknown>) => { if (!event.sender.isDestroyed()) event.sender.send('capture:progress', { ...sessionMeta, targetPid: session.targetPid || undefined, ...value }) }
     send({ phase: 'launching', percent: 4, message: project.elevate ? '等待 Windows UAC 确认并启动游戏' : '正在启动游戏' })
-    let buffer = ''; let stderr = ''; let captureResult: any = null
+    let buffer = ''; let stderr = ''; let captureResult: any = null; let captureError = ''
     child.stderr.on('data', value => { stderr = (stderr + value.toString()).slice(-maxProcessOutput) })
     child.stdout.on('data', value => {
       buffer += value.toString(); const lines = buffer.split(/\r?\n/); buffer = lines.pop() || ''
-      for (const line of lines) try { const message = JSON.parse(line); if (message.type === 'progress') send({ phase: message.percent >= 60 ? 'verifying' : 'capturing', ...message }); if (message.type === 'result') captureResult = message.result; if (message.type === 'error') send({ phase: 'failed', percent: 0, message: message.message, error: message.message }) } catch { /* ignore worker diagnostics */ }
+      for (const line of lines) try { const message = JSON.parse(line); if (message.type === 'progress') send({ phase: message.percent >= 60 ? 'verifying' : 'capturing', ...message }); if (message.type === 'result') captureResult = message.result; if (message.type === 'error') captureError = String(message.message) } catch { /* ignore worker diagnostics */ }
     })
     const processLiveCapture = async (capturePathValue: string) => {
       const capturePath = resolve(capturePathValue)
@@ -727,6 +733,7 @@ if (primaryInstance) app.whenReady().then(() => {
          const detectedApi = [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api
          if (detectedApi) sessionMeta.api = String(detectedApi)
          if (state.status === 'launching') send({ phase: 'launching', percent: 12, message: '游戏进程正在注入 Kiana' })
+         if (state.status === 'waiting_for_graphics') send({ phase: 'launching', percent: 18, message: '等待游戏图形 API；如已打开启动器，请点击开始游戏', sessionActive: false })
          if (state.status === 'waiting_for_capture') send({ phase: 'capturing', percent: 28, message: manualCapture ? `实时连接成功 · PID ${session.targetPid} · 点击“截取当前帧”` : `已连接图形 API，等待 Frame ${project.captureFrame}`, sessionActive: manualCapture })
          if (state.status === 'capturing') send({ phase: 'capturing', percent: 48, message: '已触发当前帧，等待 RDC 写入', sessionActive: manualCapture })
          for (const capture of state.captures || []) void processLiveCapture(String(capture))
@@ -734,11 +741,16 @@ if (primaryInstance) app.whenReady().then(() => {
        } catch { /* state may be mid-write */ }
     }, 900)
     void (async () => {
-      const code = await new Promise<number>(resolveCode => child.once('close', value => resolveCode(value ?? -1)))
-      if (!manualCapture) clearInterval(stateTimer)
-      if (!manualCapture && activeCaptureSession?.output === output) activeCaptureSession = null
-      if (manualCapture) return
-      if (code !== 0 || !captureResult?.capture) throw new Error(stderr || '捕获进程没有生成已验证的 RDC')
+      const code = await new Promise<number>((resolveCode, reject) => {
+        child.once('error', error => { clearInterval(stateTimer); captureSessions.delete(output); if (activeCaptureSession?.output === output) activeCaptureSession = null; reject(error) })
+        child.once('close', value => resolveCode(value ?? -1))
+      })
+      clearInterval(stateTimer)
+      captureSessions.delete(output)
+      if (activeCaptureSession?.output === output) activeCaptureSession = null
+      if (code !== 0) throw new Error(captureError || stderr || '捕获进程提前退出，请检查运行时日志')
+      if (manualCapture) { send({ phase: 'complete', percent: 100, message: '捕获会话已结束', sessionActive: false }); return }
+      if (!captureResult?.capture) throw new Error(captureError || stderr || '捕获进程没有生成已验证的 RDC')
       const capturePath = resolve(captureResult.capture); ensureFile(capturePath, 'RDC 文件')
       let manifestPath = ''
       if (project.autoAnalyze) {
@@ -749,7 +761,7 @@ if (primaryInstance) app.whenReady().then(() => {
       rememberWorkspace(capturePath, manifestPath, thumbnail)
       const payload = workspace(capturePath, manifestPath, thumbnail, Number(captureResult.frame_number || project.captureFrame || 0))
       send({ phase: 'complete', percent: 100, message: project.autoAnalyze ? '抓帧、验证与分析全部完成' : '抓帧与验证完成', done: true, capturePath, workspace: payload })
-    })().catch(error => send({ phase: 'failed', percent: 0, message: error instanceof Error ? error.message : '端到端捕获失败', error: error instanceof Error ? error.message : String(error) }))
+    })().catch(error => send({ phase: 'failed', percent: 0, message: error instanceof Error ? error.message : '端到端捕获失败', error: error instanceof Error ? error.message : String(error), sessionActive: false }))
     return { pid: child.pid || 0, logPath: join(output, 'direct-capture-result.json'), outputDirectory: output }
   })
   ipcMain.handle('capture:trigger', () => {
