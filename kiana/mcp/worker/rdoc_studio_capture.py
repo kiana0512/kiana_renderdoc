@@ -77,6 +77,9 @@ def run(rd, config):
                 break
             state['targets'] = [dict(ident=ident, pid=t.GetPID(), name=t.GetTarget(), api=t.GetAPI())
                                 for ident, t in targets.items()]
+            if (output / 'stop-capture.json').is_file() and not state['capture_in_progress']:
+                state['status'] = 'stopped'
+                break
             # Launcher web views are not the game's renderer.
             ready = [(ident, t) for ident, t in targets.items()
                      if str(t.GetAPI()).lower() not in ('', 'none', 'unknown')
@@ -119,7 +122,7 @@ def run(rd, config):
         state['session_active'] = False
         state['capture_in_progress'] = False
         save()
-    return 0 if state['captures'] and state['status'] != 'failed' else 1
+    return 0 if state['status'] == 'stopped' or (state['captures'] and state['status'] != 'failed') else 1
 
 
 def main(config_path):

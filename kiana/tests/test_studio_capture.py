@@ -1,6 +1,7 @@
 """Exercise Studio's capture protocol without launching or hooking a game."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace as NS
@@ -11,6 +12,9 @@ from unittest.mock import patch
 spec = importlib.util.spec_from_file_location('studio_capture', Path(__file__).parents[1] / 'mcp/worker/rdoc_studio_capture.py')
 worker = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(worker)
+job_spec = importlib.util.spec_from_file_location('capture_job', Path(__file__).parents[1] / 'mcp/src/capture_job.py')
+job = importlib.util.module_from_spec(job_spec)
+job_spec.loader.exec_module(job)
 
 
 class Target:
@@ -38,13 +42,15 @@ class Target:
 
 
 class CaptureTests(unittest.TestCase):
-    def simulate(self, targets, manual=False, result='ok', trigger=False):
+    def simulate(self, targets, manual=False, result='ok', trigger=False, stop=False):
         with tempfile.TemporaryDirectory() as directory:
             config = dict(output=directory, executable='game.exe', working_dir=directory, arguments=[], frame=12,
                           timeout_seconds=2, manual=manual, hook_children=True, allow_fullscreen=False,
                           reference_all_resources=False, capture_callstacks=False)
             if trigger:
                 Path(directory, 'trigger-capture.json').write_text(json.dumps(dict(id='once', frames=1)))
+            if stop:
+                Path(directory, 'stop-capture.json').write_text('{}')
             clock = NS(value=1.0)
             def sleep(seconds): clock.value += seconds
             rd = NS(CaptureOptions=lambda: NS(), SetDebugLogFile=lambda path: None,
@@ -84,6 +90,46 @@ class CaptureTests(unittest.TestCase):
         self.assertEqual(launcher.triggers, 0)
         self.assertEqual(state['pid'], 0)
         self.assertEqual(state['captures'], [])
+
+    def test_stop_disconnects_control_without_triggering_or_terminating_the_game(self):
+        game = Target('game.exe', 'D3D11')
+        code, state = self.simulate({1: game}, manual=True, stop=True)
+        self.assertEqual(code, 0)
+        self.assertEqual(state['status'], 'stopped')
+        self.assertFalse(state['session_active'])
+        self.assertEqual(game.triggers, 0)
+        self.assertEqual(state['captures'], [])
+
+
+class BootstrapTests(unittest.TestCase):
+    def test_cli_accepts_explicit_game_compatibility_flags(self):
+        args = job.parser().parse_args(['--executable', 'game.exe', '--working-dir', '.', '--output', '.', '--runtime', '.',
+                                       '--preserve-export-identity', '--wrap-opted-out-devices'])
+        self.assertTrue(args.preserve_export_identity)
+        self.assertTrue(args.wrap_opted_out_devices)
+
+    def run_bootstrap(self, enabled):
+        args = NS(unity_safe=enabled, preserve_export_identity=enabled, wrap_opted_out_devices=enabled)
+        observed = {}
+        def main(config):
+            observed.update({key: os.environ[key] for key in ('KIANA_UNITY_SAFE_MODE', 'KIANA_EXPORT_IDENTITY', 'KIANA_D3D11_CAPTURE_OVERRIDE')})
+            observed['config'] = config
+            return 7
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            script = job.bootstrap_script(args, root / 'worker.py', root / 'config.json', root, root / 'bootstrap.py')
+            with patch.dict(os.environ, {key: '1' for key in ('KIANA_UNITY_SAFE_MODE', 'KIANA_EXPORT_IDENTITY', 'KIANA_D3D11_CAPTURE_OVERRIDE')}), patch('runpy.run_path', return_value={'main': main}), patch('sys.argv', []):
+                with self.assertRaises(SystemExit) as raised:
+                    exec(compile(script, '<capture-bootstrap>', 'exec'), {})
+                self.assertEqual(raised.exception.code, 7)
+            self.assertEqual(observed.pop('config'), str(root / 'config.json'))
+        return observed
+
+    def test_compatibility_is_set_inside_the_elevated_bootstrap(self):
+        self.assertEqual(set(self.run_bootstrap(True).values()), {'1'})
+
+    def test_default_profile_clears_inherited_compatibility_flags(self):
+        self.assertEqual(set(self.run_bootstrap(False).values()), {'0'})
 
 
 if __name__ == '__main__':

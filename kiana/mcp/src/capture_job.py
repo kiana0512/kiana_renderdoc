@@ -79,7 +79,7 @@ def parser():
     result.add_argument("--arguments-json", default="[]")
     result.add_argument("--frame", type=int, default=900)
     result.add_argument("--timeout", type=int, default=300)
-    for name in ("unity-safe", "hook-children", "reference-all-resources", "capture-callstacks",
+    for name in ("unity-safe", "preserve-export-identity", "wrap-opted-out-devices", "hook-children", "reference-all-resources", "capture-callstacks",
                  "allow-fullscreen", "elevate", "manual", "check"):
         result.add_argument("--" + name, action="store_true")
     return result
@@ -103,6 +103,8 @@ def prepare(args):
     config = dict(executable=str(executable), working_dir=str(working), arguments=arguments,
                   output=str(Path(args.output).resolve()), frame=args.frame, timeout_seconds=args.timeout,
                   manual=args.manual, hook_children=args.hook_children,
+                  unity_safe=args.unity_safe, preserve_export_identity=args.preserve_export_identity,
+                  wrap_opted_out_devices=args.wrap_opted_out_devices,
                   reference_all_resources=args.reference_all_resources,
                   capture_callstacks=args.capture_callstacks, allow_fullscreen=args.allow_fullscreen)
     return gui, worker, config
@@ -140,6 +142,21 @@ def finish_capture(gui, worker, output, state):
     raise TimeoutError('RDC 验证超时；捕获文件保留在 ' + str(capture))
 
 
+def bootstrap_script(args, worker, config_path, output, script):
+    return ("import os, runpy, sys, json, traceback\n"
+                      + 'sys.argv = [' + repr(str(script)) + ']\n'
+                      + "os.environ['KIANA_UNITY_SAFE_MODE'] = " + repr("1" if args.unity_safe else "0") + "\n"
+                      + "os.environ['KIANA_EXPORT_IDENTITY'] = " + repr("1" if args.preserve_export_identity else "0") + "\n"
+                      + "os.environ['KIANA_D3D11_CAPTURE_OVERRIDE'] = " + repr("1" if args.wrap_opted_out_devices else "0") + "\n"
+                      + "try:\n"
+                      + "    worker = runpy.run_path(" + repr(str(worker)) + ")\n"
+                      + "    sys.exit(worker['main'](" + repr(str(config_path)) + "))\n"
+                      + "except Exception:\n"
+                      + "    with open(" + repr(str(output / 'direct-capture-result.json')) + ", 'w', encoding='utf-8') as report:\n"
+                      + "        json.dump(dict(status='failed', session_active=False, error=traceback.format_exc()), report)\n"
+                      + "    sys.exit(1)\n")
+
+
 def main():
     args = parser().parse_args()
     gui, worker, config = prepare(args)
@@ -155,16 +172,7 @@ def main():
     # qrenderdoc's Python console does not define __file__. Pass only explicit paths.
     # Environment is set inside the bootstrap so it also survives Windows elevation.
     script = output / "capture-bootstrap.py"
-    script.write_text("import os, runpy, sys, json, traceback\n"
-                      + 'sys.argv = [' + repr(str(script)) + ']\n'
-                      + "os.environ['KIANA_UNITY_SAFE_MODE'] = " + repr("1" if args.unity_safe else "0") + "\n"
-                      + "try:\n"
-                      + "    worker = runpy.run_path(" + repr(str(worker)) + ")\n"
-                      + "    sys.exit(worker['main'](" + repr(str(config_path)) + "))\n"
-                      + "except Exception:\n"
-                      + "    with open(" + repr(str(output / 'direct-capture-result.json')) + ", 'w', encoding='utf-8') as report:\n"
-                      + "        json.dump(dict(status='failed', session_active=False, error=traceback.format_exc()), report)\n"
-                      + "    sys.exit(1)\n", encoding="utf-8")
+    script.write_text(bootstrap_script(args, worker, config_path, output, script), encoding="utf-8")
     emit("progress", percent=4, message="等待 Windows 权限确认" if args.elevate else "正在启动捕获进程")
     child = launch(gui, script, Path(config["working_dir"]), args.elevate)
     state_path = output / "direct-capture-result.json"
@@ -185,6 +193,9 @@ def main():
             if status == "capture_saved" and not args.manual:
                 return finish_capture(gui, worker, output, state)
             if state.get("session_active") is False:
+                if state.get("status") == "stopped":
+                    emit("result", result=state)
+                    return 0
                 if not state.get("captures"):
                     raise RuntimeError("目标连接已结束，没有生成 RDC")
                 emit("result", result=state)

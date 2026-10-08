@@ -1,0 +1,7 @@
+import { useState } from 'react'
+import type { WorkspacePayload } from '../data/types'
+
+export function AnalysisSetup({ workspace, onClose, onAnalyze }: { workspace: WorkspacePayload; onClose: () => void; onAnalyze: (engine: 'unity' | 'unreal') => void }) {
+  const [engine, setEngine] = useState(workspace.sourceEngine || '')
+  return <div className="modal-backdrop"><section className="utility-dialog" role="dialog" aria-modal="true" aria-label="分析这张画面"><header><b>分析这张画面</b><button aria-label="关闭分析设置" onClick={onClose}>×</button></header><div className="utility-body analysis-setup"><h2>先确认这就是你要研究的画面</h2><p>{workspace.captureName}</p>{workspace.thumbnailDataUrl && <img src={workspace.thumbnailDataUrl} alt="开始分析前的捕获预览" />}<label>这张画面来自哪个游戏引擎？<select aria-label="分析目标引擎" value={engine} onChange={event => setEngine(event.target.value)}><option value="">请选择；不确定时请向技术美术确认</option><option value="unity">Unity（绝区零、崩铁、崩坏 3、原神）</option><option value="unreal">Unreal（鸣潮）</option></select></label><p>图形后端 {workspace.api} 不能单独确定游戏引擎。</p><h3>这一步会得到</h3><ul><li>画面的绘制层与资源绑定。</li><li>可导出的几何片段、贴图和检查证据。</li><li>自动推测的用途分类，以及仍缺少的信息。</li></ul><p>这是基于单帧数据的结构分析，不会自动恢复完整游戏工程或完整角色动画。</p></div><footer><button className="dcs-btn" onClick={onClose}>返回检查画面</button><button className="dcs-btn dcs-btn--primary" disabled={!engine} onClick={() => onAnalyze(engine as 'unity' | 'unreal')}>开始拆解画面</button></footer></section></div>
+}
