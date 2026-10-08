@@ -55,9 +55,10 @@ class MeshTests(unittest.TestCase):
                 "normal":[[0.,0.,1.]]*3,"tangent":[[1.,0.,0.]]*3,
                 "uv0":[[0.,0.],[1.,0.],[0.,1.]],"uv1":[[0.5,0.5]]*3,"uv2":[[1.,1.]]*3,
                 "color":[[1.,0.,0.,1.]]*3}
-        out = ROOT.parent / "build-early-exports" / "fbx-fixture.fbx"
-        fbx.write_fbx(str(out),mesh)
-        self.assertTrue(out.stat().st_size > 100)
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory) / "fbx-fixture.fbx"
+            fbx.write_fbx(str(out),mesh)
+            self.assertTrue(out.stat().st_size > 100)
 
 
 class TransportTests(unittest.TestCase):

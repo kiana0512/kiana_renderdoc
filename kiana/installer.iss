@@ -1,11 +1,11 @@
 #ifndef PackageDir
-  #define PackageDir "..\dist\Kiana-1.47-v11-release-x64"
+  #define PackageDir "..\dist\Kiana-1.47-v12-release-x64"
 #endif
 [Setup]
 AppId={{D3321239-C56C-4383-9120-45E874A79D3D}
 AppName=Kiana RenderDoc
-AppVersion=1.47.11
-AppVerName=Kiana RenderDoc 1.47 v11
+AppVersion=1.47.12
+AppVerName=Kiana RenderDoc 1.47 v12
 AppPublisher=Kiana contributors
 DefaultDirName={localappdata}\Kiana RenderDoc
 DefaultGroupName=Kiana RenderDoc
@@ -14,7 +14,7 @@ PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..\dist\packages
-OutputBaseFilename=kiana_RenderDoc_1.47.11_x64_Setup
+OutputBaseFilename=kiana_RenderDoc_1.47.12_x64_Setup
 Compression=lzma2/normal
 SolidCompression=yes
 WizardStyle=modern

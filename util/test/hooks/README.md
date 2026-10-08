@@ -22,3 +22,24 @@ leave the D3D12 wrapper's recursion guard set for the following valid device cre
 
 Build products and per-process stdout/stderr are in ignored `build-early-exports/`.
 This is a local regression test; it does not launch or validate a game.
+
+## Kiana v12 compatibility and diagnostics
+
+To exercise graphics export address identity and D3D11 outputs, run from a fresh
+PowerShell process after building:
+
+```powershell
+$env:KIANA_UNITY_SAFE_MODE = '1'
+$env:KIANA_EXPORT_IDENTITY = '1'
+$env:KIANA_D3D11_CAPTURE_OVERRIDE = '0'
+./util/test/hooks/test_early_exports.ps1
+$env:KIANA_D3D11_CAPTURE_OVERRIDE = '1'
+./util/test/hooks/test_early_exports.ps1
+./util/test/hooks/test_crash_diagnostics.ps1
+```
+
+The export fixture checks DXGI/D3D11/D3D12 resolver identity, wrapped D3D11 WARP
+capture, and both device/context and context-only outputs with device wrapping
+disabled or explicitly enabled. The diagnostic fixture verifies that observation
+does not consume an SEH exception or change `ExitProcess(999)`; disabled diagnostics
+must not write a log. Its outputs are in ignored `build-crash-diagnostics/`.

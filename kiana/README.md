@@ -1,8 +1,14 @@
-# Kiana RenderDoc v11
+# Kiana RenderDoc v12
+
+2026-10-08：合并上游 `origin/v1.x` 的 36 个更新，基于 `4924d00`，保留 Kiana
+早期图形挂钩、Unity 安全模式、MCP、FBX 导出及 Vulkan 联动功能。
+本次构建、绝区零测试及崩坏：星穹铁道启动兼容修复见 `VALIDATION_V12.md`。
+绝区零、鸣潮、崩铁、崩坏 3、原神的默认启动路径、参数和开关见
+[`GAME_LAUNCH_PRESETS.md`](GAME_LAUNCH_PRESETS.md)。
 
 ## 安装与使用
 
-运行 `kiana_RenderDoc_1.47.11_x64_Setup.exe`，默认安装到当前用户的
+运行 `kiana_RenderDoc_1.47.12_x64_Setup.exe`，默认安装到当前用户的
 `%LOCALAPPDATA%\Kiana RenderDoc`。从开始菜单启动 **Kiana RenderDoc**。
 安装包内置 MCP 所需 Python 和依赖，不需要另外安装 Python。
 
@@ -34,6 +40,16 @@ Unity/D3D11 游戏可由 MCP 调用 `capture_kiana_d3d11`。`unity_safe_mode` �
 减少早期系统/显卡厂商模块挂钩，同时可随时关闭做兼容回归。工具会保存 RDC、诊断日志，
 并自动回放验证动作、绘制、资源和着色器数量。D3D12 目标可使用
 `capture_nsight_d3d12`，再调用 `convert_nsight_to_rdc` 生成并验证 Kiana RDC。
+
+崩坏：星穹铁道抓帧：从便携目录运行 `launch-export-identity.cmd`，在新开的 Kiana
+窗口启动 `StarRail.exe`，使用 `-force-d3d11 -screen-fullscreen 0`，关闭捕获子进程。
+该入口设置 `KIANA_EXPORT_IDENTITY=1`，保留 DXGI/D3D11/D3D12 导出函数的系统模块
+地址，同时在导出入口挂钩以包装设备。MCP 对应 `preserve_export_identity=true`。
+已验证保存第 901 帧并独立回放；普通入口和该选项的默认值保持原来的挂钩方式。
+
+原神从 `launch-genshin-capture.cmd` 启动新 Kiana，使用 D3D11 参数。该入口还设置
+`KIANA_D3D11_CAPTURE_OVERRIDE=1`；MCP 对应 `wrap_opted_out_devices=true`。
+已验证实际抓帧含 535 次绘制和 22 次计算，并通过独立回放。
 
 Vulkan 联动已用同一 GPU 上的两个独立 VkInstance/VkDevice 验证抓取及回放。
 每个设备产生单独的 RDC；不合并多设备，也不解除 RenderDoc 对单个 VkInstance 多设备的限制。

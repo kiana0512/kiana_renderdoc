@@ -149,20 +149,26 @@ private:
       dummyUsed = true;
     }
 
-    HRESULT ret = real(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels,
-                       SDKVersion, pUsedSwapDesc, ppSwapChain, ppDevice, pFeatureLevel, NULL);
+    const bool suppress =
+        (Flags & D3D11_CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY) != 0 &&
+        !WrapOptedOutDevices();
 
-    SAFE_RELEASE(dummydev);
-    if(dummyUsed)
+    // When returning an unwrapped device, also return the real requested context. The wrapped
+    // path obtains its context below, but skipping that path must not discard an API output.
+    HRESULT ret = real(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels,
+                       SDKVersion, pUsedSwapDesc, ppSwapChain, ppDevice, pFeatureLevel,
+                       suppress ? ppImmediateContext : NULL);
+
+    // Keep a context-only device alive until its context has been obtained and wrapped.
+    if(dummyUsed && !ppImmediateContext)
+    {
+      SAFE_RELEASE(dummydev);
       ppDevice = NULL;
+    }
 
     RDCDEBUG("Called real createdevice...");
     CAPTURE_PATH_DIAG("D3D11 real create returned %s; deviceOutput=%s", ToStr(ret).c_str(),
                       ppDevice ? "yes" : "no");
-
-    bool suppress = false;
-
-    suppress = (Flags & D3D11_CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY) != 0;
 
     if(suppress)
     {
@@ -206,11 +212,24 @@ private:
       RDCDEBUG("failed. HRESULT: %s", ToStr(ret).c_str());
     }
 
+    if(dummyUsed)
+      SAFE_RELEASE(dummydev);
+
     EndRecurse();
 
     CAPTURE_PATH_DIAG("D3D11 Create_Internal exit; result=%s", ToStr(ret).c_str());
 
     return ret;
+  }
+
+  static bool WrapOptedOutDevices()
+  {
+    DWORD error = GetLastError();
+    char value[2] = {};
+    const bool enabled =
+        GetEnvironmentVariableA("KIANA_D3D11_CAPTURE_OVERRIDE", value, 2) == 1 && value[0] == '1';
+    SetLastError(error);
+    return enabled;
   }
 
   static HRESULT WINAPI D3D11CreateDevice_hook(

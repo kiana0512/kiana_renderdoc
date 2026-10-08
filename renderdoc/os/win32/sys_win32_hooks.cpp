@@ -28,6 +28,7 @@
 #include "hooks/hooks.h"
 #include "os/os_specific.h"
 #include "strings/string_utils.h"
+#include "win32_crash_diagnostics.h"
 
 #include <string>
 
@@ -128,6 +129,15 @@ public:
     WSAStartup.Register("ws2_32.dll", "WSAStartup", WSAStartup_hook);
     WSACleanup.Register("ws2_32.dll", "WSACleanup", WSACleanup_hook);
 
+    if(KianaCrashDiagnosticsEnabled())
+    {
+      KianaInstallCrashDiagnostics();
+      ExitProcess.Register("kernel32.dll", "ExitProcess", ExitProcess_hook);
+      TerminateProcess.Register("kernel32.dll", "TerminateProcess", TerminateProcess_hook);
+      RaiseFailFastException.Register("kernel32.dll", "RaiseFailFastException",
+                                      RaiseFailFastException_hook);
+    }
+
     m_RecurseSlot = Threading::AllocateTLSSlot();
     Threading::SetTLSValue(m_RecurseSlot, NULL);
   }
@@ -170,6 +180,33 @@ private:
 
   HookedFunction<PFN_WSASTARTUP> WSAStartup;
   HookedFunction<PFN_WSACLEANUP> WSACleanup;
+
+  HookedFunction<decltype(&::ExitProcess)> ExitProcess;
+  HookedFunction<decltype(&::TerminateProcess)> TerminateProcess;
+  HookedFunction<decltype(&::RaiseFailFastException)> RaiseFailFastException;
+
+  static void WINAPI ExitProcess_hook(UINT code)
+  {
+    KianaLogDiagnosticExit("ExitProcess", code, GetCurrentProcessId());
+    syshooks.ExitProcess()(code);
+  }
+
+  static BOOL WINAPI TerminateProcess_hook(HANDLE process, UINT code)
+  {
+    DWORD error = GetLastError();
+    DWORD pid = GetProcessId(process);
+    SetLastError(error);
+    KianaLogDiagnosticExit("TerminateProcess", code, pid);
+    return syshooks.TerminateProcess()(process, code);
+  }
+
+  static void WINAPI RaiseFailFastException_hook(EXCEPTION_RECORD *record, CONTEXT *context,
+                                                 DWORD flags)
+  {
+    KianaLogDiagnosticExit("RaiseFailFastException", record ? record->ExceptionCode : 0,
+                           GetCurrentProcessId());
+    syshooks.RaiseFailFastException()(record, context, flags);
+  }
 
   static int WSAAPI WSAStartup_hook(WORD wVersionRequested, LPWSADATA lpWSAData)
   {

@@ -1,5 +1,5 @@
 param(
-  [string]$Destination = 'E:\renderdoc\dist\Kiana-1.47-v11-release-x64',
+  [string]$Destination = 'E:\renderdoc\dist\Kiana-1.47-v12-release-x64',
   [string]$PythonRuntime = 'C:\Users\rentian\AppData\Roaming\uv\python\cpython-3.12.11-windows-x86_64-none'
 )
 $ErrorActionPreference = 'Stop'
@@ -16,7 +16,7 @@ foreach ($name in $required) {
 foreach ($name in @('pymodules','qtplugins')) {
   Copy-Item -LiteralPath (Join-Path $build $name) -Destination $Destination -Recurse -Force
 }
-foreach ($name in @('extensions','mcp','requirements.txt','requirements.lock.txt','README.md','VALIDATION.md','DEBUGGING_AND_USAGE_CN.md','LICENSE.RenderDocMCP2','configure_mcp.cmd')) {
+foreach ($name in @('extensions','mcp','requirements.txt','requirements.lock.txt','README.md','VALIDATION.md','VALIDATION_V12.md','GAME_LAUNCH_PRESETS.md','DEBUGGING_AND_USAGE_CN.md','LICENSE.RenderDocMCP2','configure_mcp.cmd','launch-export-identity.cmd','launch-genshin-capture.cmd')) {
   Copy-Item -LiteralPath (Join-Path $PSScriptRoot $name) -Destination $Destination -Recurse -Force
 }
 $gfxDest = Join-Path $Destination 'tools\gfxreconstruct'

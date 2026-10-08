@@ -66,6 +66,16 @@ static bool UnitySafeModeEnabled()
   return enabled;
 }
 
+static bool ExportIdentityEnabled()
+{
+  DWORD error = GetLastError();
+  char value[2] = {};
+  const bool enabled =
+      GetEnvironmentVariableA("KIANA_EXPORT_IDENTITY", value, 2) == 1 && value[0] == '1';
+  SetLastError(error);
+  return enabled;
+}
+
 static bool IsGraphicsEntryPoint(const char *name)
 {
   return !strcmp(name, "D3D12CreateDevice") || !strcmp(name, "D3D12GetInterface") ||
@@ -116,18 +126,28 @@ static rdcstr ModuleForAddress(void *address)
 std::map<void **, void *> s_InstalledHooks;
 Threading::CriticalSection installedLock;
 
+// Only populated after provider detours have been enabled. Preserve the public export address
+// while the provider entry itself routes into the wrapper and its onward trampoline.
+static std::map<void **, void *> s_ExportIdentityEntries;
+
 bool ApplyHook(FunctionHook &hook, void **IATentry, bool &already)
 {
   DWORD oldProtection = PAGE_EXECUTE;
 
-  if(*IATentry == hook.hook)
+  void *destination = hook.hook;
+  auto exportEntry = s_ExportIdentityEntries.find(hook.orig);
+  if(exportEntry != s_ExportIdentityEntries.end() &&
+     (*IATentry == exportEntry->second || *IATentry == hook.hook))
+    destination = exportEntry->second;
+
+  if(*IATentry == destination)
   {
     already = true;
     return true;
   }
 
 #if ENABLED(VERBOSE_DEBUG_HOOK)
-  RDCDEBUG("Patching IAT for %s: %p to %p", hook.function.c_str(), IATentry, hook.hook);
+  RDCDEBUG("Patching IAT for %s: %p to %p", hook.function.c_str(), IATentry, destination);
 #endif
 
   {
@@ -143,7 +163,7 @@ bool ApplyHook(FunctionHook &hook, void **IATentry, bool &already)
     return false;
   }
 
-  *IATentry = hook.hook;
+  *IATentry = destination;
 
   success = VirtualProtect(IATentry, sizeof(void *), oldProtection, &oldProtection);
   if(!success)
@@ -701,7 +721,10 @@ static void PrepareEarlyGraphicsExports()
   // The early provider patch exists for D3D12 applications that create their device inside a
   // DLL initializer. Unity's D3D11 path resolves its entry points after injection and is covered
   // by the normal GetProcAddress/IAT hooks, so safe mode can avoid executable-code patching.
-  if(UnitySafeModeEnabled())
+  // Export identity mode explicitly opts back into provider detours, including D3D11, so
+  // imports and dynamically resolved pointers can keep their original provider addresses.
+  const bool preserveIdentity = ExportIdentityEnabled();
+  if(UnitySafeModeEnabled() && !preserveIdentity)
   {
     CAPTURE_HOOK_DIAG("Unity safe mode skipped early DXGI/D3D12 provider patches");
     return;
@@ -720,10 +743,13 @@ static void PrepareEarlyGraphicsExports()
   // consumers initialise. This covers static imports and previously cached function pointers,
   // even when the caller bypasses our LoadLibrary/GetProcAddress IAT hooks.
   // Replay/manual SDK loading deliberately does not take this path.
-  const char *libraries[] = {"dxgi.dll", "d3d12.dll"};
+  const char *libraries[] = {"dxgi.dll", "d3d12.dll", "d3d11.dll"};
+  std::map<void **, void *> identityEntries;
   uint32_t created = 0;
   for(const char *library : libraries)
   {
+    if(!preserveIdentity && !strcmp(library, "d3d11.dll"))
+      continue;
     auto it = s_HookData->DllHooks.find(library);
     if(it == s_HookData->DllHooks.end() || it->second.FunctionHooks.empty())
       continue;
@@ -757,6 +783,8 @@ static void PrepareEarlyGraphicsExports()
       // Publish all onward pointers before enabling any hooks; resolving the now-patched
       // export from inside a wrapper would otherwise recurse back into that wrapper.
       *hook.orig = trampoline;
+      if(preserveIdentity)
+        identityEntries[hook.orig] = target;
       created++;
       CAPTURE_HOOK_DIAG("early export hook prepared %s!%s: entry=%p trampoline=%p wrapper=%p",
                         library, hook.function.c_str(), target, trampoline, hook.hook);
@@ -770,7 +798,10 @@ static void PrepareEarlyGraphicsExports()
     if(status != MH_OK)
       RDCWARN("Could not enable all early graphics hooks: %s", MH_StatusToString(status));
     else
+    {
+      s_ExportIdentityEntries.swap(identityEntries);
       CAPTURE_HOOK_DIAG("early graphics export hooks enabled: %u; before consumer load", created);
+    }
   }
 }
 
@@ -1123,15 +1154,18 @@ FARPROC WINAPI Hooked_GetProcAddress(HMODULE mod, const LPCSTR func)
       if(found != it->second.FunctionHooks.end() && !(search < *found))
       {
         FARPROC realfunc = GetProcAddress(mod, func);
+        FARPROC result = (FARPROC)found->hook;
+        auto exportEntry = s_ExportIdentityEntries.find(found->orig);
+        if(exportEntry != s_ExportIdentityEntries.end() && (void *)realfunc == exportEntry->second)
+          result = realfunc;
 
         if(diagnose)
-          CAPTURE_HOOK_DIAG(
-              "%s matched %s; caller=%s+%p; real=%p wrapper=%p; returning=%p", func,
-              it->first.c_str(), diagnosticCallerModule.c_str(), diagnosticCaller, realfunc,
-              found->hook, realfunc ? found->hook : NULL);
+          CAPTURE_HOOK_DIAG("%s matched %s; caller=%s+%p; real=%p wrapper=%p; returning=%p", func,
+                            it->first.c_str(), diagnosticCallerModule.c_str(), diagnosticCaller,
+                            realfunc, found->hook, realfunc ? result : NULL);
 
 #if ENABLED(VERBOSE_DEBUG_HOOK)
-        RDCDEBUG("Found hooked function, returning hook pointer %p", found->hook);
+        RDCDEBUG("Found hooked function, returning pointer %p", result);
 #endif
 
         SetLastError(S_OK);
@@ -1139,7 +1173,7 @@ FARPROC WINAPI Hooked_GetProcAddress(HMODULE mod, const LPCSTR func)
         if(realfunc == NULL)
           return NULL;
 
-        return (FARPROC)found->hook;
+        return result;
       }
     }
   }

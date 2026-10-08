@@ -81,7 +81,9 @@ def capture_kiana_d3d11(executable: str, working_dir: str = "", arguments: list[
                         output_dir: str = "", capture_frame: int = 900,
                         unity_safe_mode: bool = True, hook_children: bool = True,
                         terminate_after_capture: bool = False, open_after: bool = True,
-                        timeout_seconds: int = 300) -> str:
+                        timeout_seconds: int = 300,
+                        preserve_export_identity: bool = False,
+                        wrap_opted_out_devices: bool = False) -> str:
     """Capture and verify a D3D11 frame directly with Kiana RenderDoc.
 
     Unity safe mode reduces early system/provider hooks and avoids modifying known
@@ -101,12 +103,17 @@ def capture_kiana_d3d11(executable: str, working_dir: str = "", arguments: list[
         terminate_after_capture: Close the launched target after saving. Defaults to false.
         open_after: Open the verified RDC in Kiana. Defaults to true.
         timeout_seconds: Maximum capture wait.
+        preserve_export_identity: Keep DXGI/D3D11/D3D12 export addresses in their provider
+            modules using entry detours. Enable for the tested Star Rail startup compatibility.
+        wrap_opted_out_devices: Explicitly wrap D3D11 devices even when they request unchanged
+            layer settings. Enable for the tested Genshin capture profile; defaults to false.
     """
     try:
         result = _capture_kiana_d3d11(
             executable, working_dir, arguments, output_dir, capture_frame,
             unity_safe_mode, hook_children, terminate_after_capture, True,
-            timeout_seconds)
+            timeout_seconds, preserve_export_identity=preserve_export_identity,
+            wrap_opted_out_devices=wrap_opted_out_devices)
         if open_after:
             if ipc.is_bridge_alive():
                 result["open_result"] = json.loads(_call(

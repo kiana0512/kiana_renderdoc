@@ -241,6 +241,7 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="os\win32\dia2_stubs.h" />
+    <ClInclude Include="os\win32\win32_crash_diagnostics.h" />
     <ClInclude Include="os\win32\win32_specific.h" />
     <ClInclude Include="replay\common\var_dispatch_helpers.h" />
     <ClInclude Include="replay\dummy_driver.h" />
@@ -630,6 +631,7 @@
     </ClCompile>
     <ClCompile Include="os\win32\sys_win32_hooks.cpp" />
     <ClCompile Include="os\win32\win32_callstack.cpp" />
+    <ClCompile Include="os\win32\win32_crash_diagnostics.cpp" />
     <ClCompile Include="os\win32\win32_hook.cpp" />
     <ClCompile Include="os\win32\win32_libentry.cpp" />
     <ClCompile Include="os\win32\win32_network.cpp" />

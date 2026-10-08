@@ -1,7 +1,58 @@
-# Kiana RenderDoc 1.47 v11：抓帧、MCP 与调试使用说明
+# Kiana RenderDoc 1.47：抓帧、MCP 与调试使用说明
 
-本文适用于本仓库的 Kiana RenderDoc v11，记录 2026-09-23 的真实验证结果，
-并给出鸣潮、绝区零、D3D11、D3D12、MCP 和 Nsight 桥接的完整操作方法。
+本文保留 v11 在 2026-09-23 的验证记录，并补充 v12 在 2026-10-08 的崩坏：星穹铁道
+启动兼容修复。v12 的构建和抓帧结果见 `VALIDATION_V12.md`。
+
+## v12：崩坏：星穹铁道启动退出诊断与修复
+
+普通启动正常，而原有捕获路径在第一帧前结束。启用退出/异常观察钩子后，记录到
+`UnityPlayer.dll+0x1c41c` 调用 `ExitProcess(999)`，没有记录到所监听的访问违例、
+非法指令等异常。DXGI 导出地址诊断及只读反汇编显示：Unity 获取 `CreateDXGIFactory`
+后检查其地址范围，Kiana 原有解析器返回自身 DLL 内的包装函数，导致该初始化检查退出。
+
+修复通过 `KIANA_EXPORT_IDENTITY=1` 启用：`GetProcAddress` 和原有 IAT 导入保留
+系统图形导出的地址，原始入口使用 MinHook detour 路由到 Kiana 包装器，再通过
+trampoline 调用系统实现。它与 `KIANA_UNITY_SAFE_MODE=1` 可同时使用；此时明确启用
+DXGI、D3D11 和 D3D12 的入口挂钩，继续保留安全模式的 UMD 导入表处理。
+
+手动使用：运行便携目录内的 `launch-export-identity.cmd`，在新打开的 Kiana 窗口启动：
+
+- 程序：`D:\miHoYo Launcher\games\Star Rail Game\StarRail.exe`
+- 工作目录：`D:\miHoYo Launcher\games\Star Rail Game`
+- 参数：`-force-d3d11 -screen-fullscreen 0 -screen-width 1280 -screen-height 720`
+- 关闭 **Capture Child Processes**；关闭 **Allow Fullscreen**。
+- 自动捕获帧设为 900，或在叠加层显示 D3D11 后按 F12。
+
+也可以在 GUI 的启动环境里同时添加 `KIANA_UNITY_SAFE_MODE=1`、
+`KIANA_EXPORT_IDENTITY=1`。MCP 调用 `capture_kiana_d3d11` 时传入
+`preserve_export_identity=true`、`unity_safe_mode=true`、`hook_children=false`。
+本次排队帧 900，实际保存帧 901；独立回放通过，含 167 次绘制和 7 次计算。
+验证范围是启动到抓帧，未验证登录后的长时间游戏。
+
+需要继续诊断时，在启动 Kiana 前添加下列环境变量，日志目录须已存在：
+
+```text
+KIANA_CRASH_DIAGNOSTICS=1
+KIANA_CRASH_LOG=E:\renderdoc\test-results\native-crash.log
+KIANA_CAPTURE_DIAGNOSTICS=1
+```
+
+观察钩子记录选定异常、`ExitProcess`、`TerminateProcess`、`RaiseFailFastException`
+及模块偏移堆栈，随后继续原有异常分发或退出调用；默认关闭。
+
+## v12：崩坏 3 与原神后端测试
+
+崩坏 3 使用同一导出地址兼容入口，分别传入 `-force-d3d11`、`-force-d3d12`，
+两个后端均完成真实 RDC 抓取和独立回放。启动 30 秒后抓取的协议提示界面分别含
+89 次和 81 次绘制；尚未验证登录后的战斗画面。
+
+原神的初始空指针崩溃另行修复：未包装设备路径会完整返回调用者请求的设备上下文。
+原神实际捕获还需要 `KIANA_D3D11_CAPTURE_OVERRIDE=1`，通过
+`launch-genshin-capture.cmd` 启动新 Kiana 即可使用。MCP 对应
+`wrap_opted_out_devices=true`，同时启用导出地址兼容模式。已抓到 535 次绘制和
+22 次计算，RDC 独立回放通过。该包装开关默认关闭。
+传入 `-force-d3d12` 后实际引擎仍是 Direct3D 11，本次测试不能确认原神的 D3D12 支持。
+默认游戏启动配置见 `GAME_LAUNCH_PRESETS.md`；完整测试记录见 `VALIDATION_V12.md`。
 
 ## 1. 实战案例一：鸣潮（UE5 / D3D12）
 

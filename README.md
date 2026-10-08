@@ -1,6 +1,19 @@
-# Kiana RenderDoc + Kiana Studio
+# Kiana RenderDoc 1.47 v12 + Kiana Studio
 
-This repository contains the modified RenderDoc source and the Kiana Studio Electron workbench together. See [KIANA.md](KIANA.md) for the directory layout, local build steps, and source snapshot notes. The original RenderDoc README follows below.
+This repository contains the modified RenderDoc source and the Kiana Studio Electron workbench together. See [KIANA.md](KIANA.md) for the directory layout, local build steps, and source snapshot notes, and [studio/README.md](studio/README.md) for the workbench.
+
+2026-10-08：合并 RenderDoc `v1.x` 上游更新，保留 Kiana 的 MCP、FBX 导出、Vulkan
+联动和早期图形挂钩，并增加崩铁、原神的启动与抓帧兼容配置。
+
+- [Kiana 安装与使用](kiana/README.md)
+- [绝区零、鸣潮、崩铁、崩坏 3、原神的默认启动参数](kiana/GAME_LAUNCH_PRESETS.md)
+- [v12 构建、回归和实际抓帧验证](kiana/VALIDATION_V12.md)
+- [抓帧、MCP 和故障诊断说明](kiana/DEBUGGING_AND_USAGE_CN.md)
+
+默认推荐 D3D11 的游戏使用各自文档配置；崩坏 3 的 D3D12 也已验证实际画面。
+崩铁 D3D12 的回放输出为黑色，原神的 D3D12 参数未切换实际后端，详情记录在验证文档中。
+
+以下为上游 RenderDoc 项目说明。
 
 ---
 

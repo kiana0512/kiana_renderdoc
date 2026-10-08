@@ -37,7 +37,9 @@ def capture_kiana_d3d11(executable: str, working_dir: str = "", arguments: list[
                         output_dir: str = "", capture_frame: int = 900,
                         unity_safe_mode: bool = True, hook_children: bool = True,
                         terminate_after_capture: bool = False, open_diagnostics: bool = True,
-                        timeout_seconds: int = 300) -> dict[str, Any]:
+                        timeout_seconds: int = 300,
+                        preserve_export_identity: bool = False,
+                        wrap_opted_out_devices: bool = False) -> dict[str, Any]:
     """Capture and independently verify one D3D11 frame with Kiana RenderDoc."""
     target = Path(executable).expanduser().resolve()
     if not target.is_file():
@@ -78,6 +80,8 @@ def capture_kiana_d3d11(executable: str, working_dir: str = "", arguments: list[
         "KIANA_DIRECT_CAPTURE_CONFIG": str(config_path),
         "KIANA_UNITY_SAFE_MODE": "1" if unity_safe_mode else "0",
         "KIANA_CAPTURE_DIAGNOSTICS": "1" if open_diagnostics else "0",
+        "KIANA_EXPORT_IDENTITY": "1" if preserve_export_identity else "0",
+        "KIANA_D3D11_CAPTURE_OVERRIDE": "1" if wrap_opted_out_devices else "0",
     })
     qrenderdoc = _find_kiana_binary("kiana_qrenderdoc.exe")
     subprocess.Popen(
@@ -122,6 +126,8 @@ def capture_kiana_d3d11(executable: str, working_dir: str = "", arguments: list[
         "resource_count": verification.get("resource_count"),
         "shader_count": verification.get("shader_count"),
         "unity_safe_mode": unity_safe_mode,
+        "preserve_export_identity": preserve_export_identity,
+        "wrap_opted_out_devices": wrap_opted_out_devices,
         "target_was_terminated": bool(capture_result.get("child_terminated")),
         "diagnostic_log": str(out / "renderdoc-debug.log"),
         "verification": str(verify_result),
