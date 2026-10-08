@@ -5,8 +5,6 @@ import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync,
 import { connect as connectSocket } from 'node:net'
 import { basename, dirname, extname, join, resolve } from 'node:path'
 import { opaquePngPreview } from './opaquePng.js'
-import { captureArguments, captureReady, gamePresets, knownEngine } from '../../src/data/captureProfiles.js'
-import type { CaptureProject } from '../../src/data/types.js'
 
 if (!app.isPackaged && process.env.KIANA_CDP_PORT) {
   app.commandLine.appendSwitch('remote-debugging-address', '127.0.0.1')
@@ -17,8 +15,6 @@ const packagedDriveRoot = resolve(dirname(process.execPath), '..', '..', '..')
 const runtimeCandidates = [
   join(process.resourcesPath, 'kiana-runtime'),
   process.env.KIANA_HOME,
-  resolve(process.cwd(), '..', 'dist', 'Kiana-1.47-v12-release-x64'),
-  'E:\\renderdoc\\dist\\Kiana-1.47-v12-release-x64',
   join(packagedDriveRoot, 'KianaRenderDoc', 'x64', 'Development'),
   resolve(process.cwd(), '..', 'KianaRenderDoc', 'x64', 'Development'),
   join(process.env.LOCALAPPDATA || '', 'Kiana RenderDoc'),
@@ -26,7 +22,6 @@ const runtimeCandidates = [
 const kianaRoot = runtimeCandidates.find(value => existsSync(join(value, 'kiana_renderdoccmd.exe'))) || runtimeCandidates[0]
 const sourceHomeCandidates = [
   process.env.KIANA_SOURCE_HOME,
-  join(process.resourcesPath, 'kiana'),
   resolve(realpathSync(process.cwd()), '..', 'kiana'),
   join(kianaRoot, 'kiana'),
   'E:\\renderdoc\\kiana',
@@ -63,8 +58,8 @@ const unityProjectCandidates = [
   'F:\\KianaFrame38112Unity',
 ].filter((value): value is string => Boolean(value))
 const defaultUnityProject = unityProjectCandidates.find(existsSync) || unityProjectCandidates[0]
-const defaultCapture = process.env.KIANA_DEFAULT_CAPTURE || ''
-const defaultManifest = process.env.KIANA_DEFAULT_MANIFEST || ''
+const defaultCapture = process.env.KIANA_DEFAULT_CAPTURE || 'E:\\renderdoc\\test-results.rdc'
+const defaultManifest = process.env.KIANA_DEFAULT_MANIFEST || 'E:\\renderdoc\\test-results\\wuthering-reconstruction-package-v2\\reconstruction-manifest.json'
 const defaultThumbnail = join(process.env.LOCALAPPDATA || '', 'Kiana Studio', 'thumbnails', 'FAA43D3CD2698F38FFFC.jpg')
 const maxProcessOutput = 8 * 1024 * 1024
 
@@ -174,7 +169,7 @@ function parseManifest(manifestPath: string) {
         const declared = declaredStages.get(eventId) || {}
         const outputResourceIds = (action.outputs || []).map((value: unknown) => Number(typeof value === 'object' && value ? (value as Record<string, unknown>).resourceId || (value as Record<string, unknown>).id : value || 0)).filter((value: number) => value > 0)
         const kind = (flags & 256) ? 'present' : (flags & 2097152) ? 'copy' : (flags & 1048576) ? 'clear' : (flags & 4) ? 'dispatch' : 'draw'
-        const special = kind === 'clear' ? `${displayNames[item.module] || 'Pass'}起点 · 清屏` : kind === 'copy' ? '资源复制' : kind === 'present' ? '最终画面提交' : ''
+        const special = eventId === 1610 ? '胸前透明衣料' : eventId === 1868 ? '角色透明叠加' : kind === 'clear' ? `${displayNames[item.module] || 'Pass'}起点 · 清屏` : kind === 'copy' ? '场景底图复制' : kind === 'present' ? '最终画面提交' : ''
         return {
           eventId, ordinal: index + 1, name: String(declared.name || declared.label || special || `${stagePrefix[item.module] || '合成步骤'} ${String(index + 1).padStart(2, '0')}`),
           sourceName: String(action.name || `Action ${index + 1}`), kind,
@@ -247,23 +242,6 @@ function inferFrameNumber(capturePath: string) {
   return Number(basename(capturePath).match(/frame[_-]?(\d+)/i)?.[1] || 0)
 }
 
-const captureMetadata = new Map<string, { api: string; engine?: 'unity' | 'unreal' }>()
-
-async function readCaptureMetadata(capturePath: string) {
-  const key = resolve(capturePath).toLowerCase()
-  const directory = join(app.getPath('userData'), 'metadata'); mkdirSync(directory, { recursive: true })
-  const tag = createHash('sha256').update(`${key}:${statSync(capturePath).mtimeMs}:${statSync(capturePath).size}`).digest('hex').slice(0, 20)
-  const resultPath = join(directory, `${tag}.json`)
-  if (!existsSync(resultPath)) {
-    const script = join(directory, `${tag}.py`)
-    writeFileSync(script, `import json, sys, renderdoc as rd\ncap = rd.OpenCaptureFile()\ntry:\n    status = cap.OpenFile(${JSON.stringify(capturePath)}, 'rdc', None)\n    if not status.OK(): raise RuntimeError(status.Message())\n    with open(${JSON.stringify(resultPath)}, 'w', encoding='utf-8') as out: json.dump({'api': cap.DriverName()}, out)\nfinally:\n    cap.Shutdown()\nsys.exit(0)\n`, 'utf8')
-    const result = await run(guiPath, [`--python=${script}`])
-    if (result.code !== 0 || !existsSync(resultPath)) throw new Error('无法读取这份 RDC 的图形 API，请检查文件与运行时版本。')
-  }
-  const value = JSON.parse(readFileSync(resultPath, 'utf8'))
-  captureMetadata.set(key, { ...captureMetadata.get(key), api: String(value.api || '未读取') })
-}
-
 function workspace(capturePath = defaultCapture, manifestPath = '', thumbnailPath = defaultThumbnail, frameNumber = inferFrameNumber(capturePath)) {
   ensureFile(capturePath, 'RDC 文件')
   const parsed = manifestPath && existsSync(manifestPath) ? parseManifest(manifestPath) : {
@@ -272,9 +250,8 @@ function workspace(capturePath = defaultCapture, manifestPath = '', thumbnailPat
     assetGraph: { path: '', objects: 0, materials: 0, shaders: 0, textures: 0, classificationCounts: {}, skinnedEventIds: [], characterEventIds: [], animation: {} },
     reconstructionContract: { path: '', counts: {}, characterEventIds: [] }, truthPolicy: {}, reverseWorkflow: undefined,
   }
-  const metadata = captureMetadata.get(resolve(capturePath).toLowerCase())
-  return { ...parsed, mode: 'capture' as const, capturePath, captureName: basename(capturePath) || 'capture.rdc', captureBytes: statSync(capturePath).size,
-    api: metadata?.api || '未读取', sourceEngine: metadata?.engine || knownEngine(capturePath), frameNumber, thumbnailDataUrl: imageDataUrl(thumbnailPath) }
+  const captureKey = capturePath.toLowerCase()
+  return { ...parsed, mode: 'capture' as const, capturePath, captureName: basename(capturePath) || 'capture.rdc', captureBytes: statSync(capturePath).size, api: captureKey.includes('zzz') || captureKey.includes('zenlesszonezero') ? 'D3D11' : 'D3D12', frameNumber, thumbnailDataUrl: imageDataUrl(thumbnailPath) }
 }
 
 function ensureRuntimeExtension() {
@@ -294,7 +271,26 @@ function ensureRuntimeExtension() {
 }
 
 function capturePresets() {
-  return gamePresets(join(app.getPath('documents'), 'KianaCaptures'), existsSync)
+  const first = (values: string[]) => values.find(existsSync) || values[0]
+  const wuthering = first([
+    'G:\\Wuthering Waves\\launcher.exe',
+    'D:\\Wuthering Waves\\launcher.exe',
+    'E:\\Wuthering Waves\\launcher.exe',
+    'G:\\Wuthering Waves\\Wuthering Waves Game\\Wuthering Waves.exe',
+    'D:\\Wuthering Waves\\Wuthering Waves Game\\Wuthering Waves.exe',
+    'E:\\Wuthering Waves\\Wuthering Waves Game\\Wuthering Waves.exe',
+    'E:\\Wuthering Waves Game\\Wuthering Waves.exe',
+  ])
+  const zzz = first([
+    'E:\\ZenlessZoneZero Game\\ZenlessZoneZero.exe',
+    'D:\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe',
+    'D:\\HoYoPlay\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe',
+  ])
+  const captureRoot = existsSync('E:\\') ? 'E:\\KianaCaptures' : join(app.getPath('documents'), 'KianaCaptures')
+  return [
+    { id: 'wuthering', name: '鸣潮', description: '官方启动器 · 跟踪游戏子进程', executablePath: wuthering, workingDirectory: dirname(wuthering), captureDirectory: join(captureRoot, 'WutheringWaves'), arguments: '', profile: 'UnrealD3D12', hookChildren: true, referenceAllResources: false, captureCallstacks: false, allowFullscreen: true, captureFrame: 1200, resolutionWidth: 3840, resolutionHeight: 2160, windowMode: 'borderless', elevate: true, autoAnalyze: true, manualCapture: true, detected: existsSync(wuthering) },
+    { id: 'zzz', name: '绝区零', description: 'Unity · D3D11 安全模式 · 4K · 已实机验证', executablePath: zzz, workingDirectory: dirname(zzz), captureDirectory: join(captureRoot, 'ZenlessZoneZero'), arguments: '-force-d3d11', profile: 'UnityD3D11Safe', hookChildren: true, referenceAllResources: false, captureCallstacks: false, allowFullscreen: false, captureFrame: 900, resolutionWidth: 3840, resolutionHeight: 2160, windowMode: 'borderless', elevate: true, autoAnalyze: true, manualCapture: true, detected: existsSync(zzz) },
+  ]
 }
 
 function workspaceStatePath() { return join(app.getPath('userData'), 'last-workspace.json') }
@@ -328,29 +324,27 @@ function run(executable: string, args: string[], env: NodeJS.ProcessEnv = proces
   })
 }
 
-function checkCapture(project: CaptureProject) {
-  const problems: string[] = []
-  const file = (path: string) => Boolean(path && existsSync(path) && statSync(path).isFile())
-  const directory = (path: string) => Boolean(path && existsSync(path) && statSync(path).isDirectory())
-  if (!file(project.executablePath)) problems.push('没有找到游戏程序，请选择实际安装的游戏 EXE。')
-  if (!directory(project.workingDirectory)) problems.push('工作目录不存在，请重新选择游戏所在文件夹。')
-  if (!project.captureDirectory?.trim()) problems.push('请选择保存画面的文件夹。')
-  else if (existsSync(project.captureDirectory) && !statSync(project.captureDirectory).isDirectory()) problems.push('保存位置指向一个文件，请选择文件夹。')
-  if (project.engine !== 'unity' && project.engine !== 'unreal') problems.push('请选择游戏引擎。')
-  if (!['UnityD3D11Safe', 'UnityD3D12', 'UnrealD3D12'].includes(project.profile)) problems.push('请选择有效的图形配置。')
-  if ((project.engine === 'unity') !== (project.profile !== 'UnrealD3D12')) problems.push('所选引擎与图形配置不一致，请重新选择。')
-  if (!Number.isInteger(project.resolutionWidth) || project.resolutionWidth < 640 || project.resolutionWidth > 7680 || !Number.isInteger(project.resolutionHeight) || project.resolutionHeight < 480 || project.resolutionHeight > 4320) problems.push('画面尺寸应在 640×480 到 7680×4320 之间。')
-  if (!Number.isInteger(project.captureFrame) || project.captureFrame < 1) problems.push('自动捕获帧号必须是正整数。')
-  for (const [path, label] of [[guiPath, 'Kiana 图形捕获程序'], [pythonPath, 'Kiana Python'], [captureJobPath, '捕获任务脚本']]) if (!file(path)) problems.push(`${label}缺失，请检查运行时目录。`)
-  const dll = join(kianaRoot, 'kiana_renderdoc.dll')
-  if (!file(dll)) problems.push('Kiana 捕获核心 DLL 缺失。')
-  else {
-    const binary = readFileSync(dll)
-    if ((project.preserveExportIdentity && !binary.includes(Buffer.from('KIANA_EXPORT_IDENTITY'))) || (project.wrapOptedOutDevices && !binary.includes(Buffer.from('KIANA_D3D11_CAPTURE_OVERRIDE')))) problems.push('此游戏需要 Kiana v12 兼容功能，当前运行时过旧。请使用新版运行时（KIANA_HOME）。')
+function splitArguments(commandLine: string) {
+  const result: string[] = []; let current = ''; let quoted = false
+  for (const character of commandLine || '') {
+    if (character === '"') { quoted = !quoted; continue }
+    if (/\s/.test(character) && !quoted) { if (current) { result.push(current); current = '' } }
+    else current += character
   }
-  let args: string[] = []
-  try { args = captureArguments(project) } catch (error) { problems.push(error instanceof Error ? error.message : String(error)) }
-  return { ok: problems.length === 0, problems, runtimeDirectory: kianaRoot, arguments: args }
+  if (current) result.push(current)
+  return result
+}
+
+function captureArguments(project: any) {
+  const width = Math.max(640, Math.min(7680, Number(project.resolutionWidth) || 1280))
+  const height = Math.max(480, Math.min(4320, Number(project.resolutionHeight) || 720))
+  const mode = ['windowed', 'borderless', 'fullscreen'].includes(project.windowMode) ? project.windowMode : 'windowed'
+  const values = splitArguments(String(project.arguments || ''))
+  // Official launchers accept their own arguments; game resolution flags belong to the game.
+  if (/^launcher(?:_main)?\.exe$/i.test(basename(String(project.executablePath || '')))) return values
+  if (project.profile === 'UnityD3D11Safe') values.push('-screen-fullscreen', mode === 'fullscreen' ? '1' : '0', '-screen-width', String(width), '-screen-height', String(height), ...(mode === 'borderless' ? ['-popupwindow'] : []))
+  else values.push(`-ResX=${width}`, `-ResY=${height}`, mode === 'fullscreen' ? '-fullscreen' : '-windowed', ...(mode === 'borderless' ? ['-borderless'] : []))
+  return values
 }
 
 async function probeRuntime() {
@@ -469,7 +463,6 @@ async function openCaptureInBackend(capturePath: string) {
 }
 
 async function createThumbnail(capturePath: string) {
-  await readCaptureMetadata(capturePath)
   const cache = join(app.getPath('userData'), 'thumbnails'); mkdirSync(cache, { recursive: true })
   const thumbnail = join(cache, `${createHash('sha256').update(capturePath).digest('hex').slice(0, 20)}.jpg`)
   const result = await run(commandPath, ['thumb', '--out', thumbnail, '--format', 'jpg', '--max-size', '2560', capturePath])
@@ -536,14 +529,14 @@ function enqueueAnalysisJob(capturePath: string, output: string, engine: 'unity'
     if (workerSource.includes('"--ai-auto"') || workerSource.includes("'--ai-auto'")) workerArgs.push('--ai-auto')
     if (workerSource.includes('"--max-character-poses"') || workerSource.includes("'--max-character-poses'")) workerArgs.push('--max-character-poses', String(maxCharacterPoses))
     const child = spawn(pythonPath, workerArgs, { cwd: kianaSourceRoot, windowsHide: true, env: pythonEnvironment({ KIANA_PID: backendProcessPid ? String(backendProcessPid) : '' }) })
-    let buffer = ''; let stderr = ''; let manifestPath = ''; let workerError = ''
+    let buffer = ''; let stderr = ''; let manifestPath = ''
     child.stderr.on('data', value => { stderr = (stderr + value.toString()).slice(-maxProcessOutput) })
     child.stdout.on('data', value => {
       buffer += value.toString(); const lines = buffer.split(/\r?\n/); buffer = lines.pop() || ''
-      for (const line of lines) try { const message = JSON.parse(line); if (message.type === 'progress') onProgress(Number(message.percent || 0), String(message.message || '正在分析')); if (message.type === 'result') manifestPath = resolve(message.manifest); if (message.type === 'error') workerError = String(message.message || '分析失败') } catch { /* ignore malformed worker diagnostics */ }
+      for (const line of lines) try { const message = JSON.parse(line); if (message.type === 'progress') onProgress(Number(message.percent || 0), String(message.message || '正在分析')); if (message.type === 'result') manifestPath = resolve(message.manifest) } catch { /* ignore malformed worker diagnostics */ }
     })
-    const code = await new Promise<number>((resolveCode, reject) => { child.once('error', reject); child.once('close', value => resolveCode(value ?? -1)) })
-    if (code !== 0 || !manifestPath) throw new Error(workerError || stderr || '分析进程没有生成重建清单')
+    const code = await new Promise<number>(resolveCode => child.once('close', value => resolveCode(value ?? -1)))
+    if (code !== 0 || !manifestPath) throw new Error(stderr || '分析进程没有生成重建清单')
     return manifestPath
   }
   const job = analysisQueue.catch(() => undefined).then(runJob)
@@ -596,7 +589,7 @@ if (primaryInstance) app.whenReady().then(() => {
   ensureHeadlessBackend()
   ensureEngineMcpServer()
   const window = createWindow()
-  ipcMain.handle('workspace:load', async () => { const value = loadWorkspace(); if (!value) return null; await readCaptureMetadata(value.capturePath); void openCaptureInBackend(value.capturePath); const thumbnail = await createThumbnail(value.capturePath); return workspace(value.capturePath, value.manifestPath, thumbnail, value.frameNumber) })
+  ipcMain.handle('workspace:load', () => { const value = loadWorkspace(); if (value) void openCaptureInBackend(value.capturePath); return value })
   ipcMain.handle('workspace:history', () => captureHistory())
   ipcMain.handle('workspace:open-capture', async (_event, value: string) => {
     const capturePath = resolve(String(value || '')); ensureFile(capturePath, 'RDC 文件')
@@ -604,7 +597,6 @@ if (primaryInstance) app.whenReady().then(() => {
     const cache = join(app.getPath('userData'), 'thumbnails'); mkdirSync(cache, { recursive: true })
     const thumbnail = join(cache, `${createHash('sha256').update(capturePath).digest('hex').slice(0, 20)}.jpg`)
     if (!existsSync(thumbnail)) await createThumbnail(capturePath)
-    else await readCaptureMetadata(capturePath)
     rememberWorkspace(capturePath, manifestPath, thumbnail); void openCaptureInBackend(capturePath)
     return workspace(capturePath, manifestPath, thumbnail)
   })
@@ -629,10 +621,9 @@ if (primaryInstance) app.whenReady().then(() => {
   })
   ipcMain.handle('analysis:run', async (event, request: { capturePath: string; outputDirectory: string; engine: string; maxGeometry: number; maxCharacterPoses?: number }) => {
     ensureFile(resolve(request.capturePath), 'RDC 文件'); ensureFile(pythonPath, 'Kiana Python'); ensureFile(workerPath, 'Kiana 分析进程')
-    if (!['unity', 'unreal'].includes(request.engine)) throw new Error('请选择目标引擎，图形 API 无法确定 Unity 或 Unreal。')
     const output = resolve(request.outputDirectory)
-    const manifestPath = await enqueueAnalysisJob(resolve(request.capturePath), output, request.engine as 'unity' | 'unreal', Math.max(1, Math.min(32, Number(request.maxGeometry) || 32)), Math.max(1, Math.min(64, Number(request.maxCharacterPoses) || 32)), (percent, message) => { if (!event.sender.isDestroyed()) event.sender.send('analysis:progress', { percent, message }) })
-    event.sender.send('analysis:progress', { percent: 100, message: '画面分析清单已生成', done: true })
+    const manifestPath = await enqueueAnalysisJob(resolve(request.capturePath), output, request.engine === 'unity' ? 'unity' : 'unreal', Math.max(1, Math.min(32, Number(request.maxGeometry) || 32)), Math.max(1, Math.min(64, Number(request.maxCharacterPoses) || 32)), (percent, message) => { if (!event.sender.isDestroyed()) event.sender.send('analysis:progress', { percent, message }) })
+    event.sender.send('analysis:progress', { percent: 100, message: '重建包已生成', done: true })
     const capturePath = resolve(request.capturePath); const resolvedManifest = resolve(manifestPath)
     const thumbnail = join(app.getPath('userData'), 'thumbnails', `${createHash('sha256').update(capturePath).digest('hex').slice(0, 20)}.jpg`)
     rememberWorkspace(capturePath, resolvedManifest, thumbnail)
@@ -640,7 +631,6 @@ if (primaryInstance) app.whenReady().then(() => {
     return workspace(capturePath, resolvedManifest, thumbnail)
   })
   ipcMain.handle('capture:presets', () => capturePresets())
-  ipcMain.handle('capture:check', (_event, project: CaptureProject) => checkCapture(project))
   ipcMain.handle('capture:recover', () => {
     const session = discoverLiveCaptureSession()
     if (!session) return null
@@ -653,29 +643,26 @@ if (primaryInstance) app.whenReady().then(() => {
     }
     const executablePath = String(state.executable || session.executable || '')
     const preset = capturePresets().find(item => resolve(String(item.executablePath || '')).toLowerCase() === resolve(executablePath).toLowerCase())
-    const api = state.api || [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api || 'Unknown'
-    return { phase: state.capture_in_progress ? 'capturing' : 'capturing', percent: state.capture_in_progress ? 48 : 28, message: state.capture_in_progress ? '已触发当前帧，等待 RDC 写入' : `已恢复实时连接 · PID ${state.pid || session.targetPid || '—'} · 可截取当前游戏帧`, projectName: preset?.name || basename(executablePath, extname(executablePath)) || '实时捕获会话', executablePath, outputDirectory: session.output, targetPid: Number(state.pid || session.targetPid || 0), api, sessionActive: true, presetId: preset?.id || '', readyToCapture: captureReady(state) }
+    const api = [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api || 'Unknown'
+    return { phase: state.capture_in_progress ? 'capturing' : 'capturing', percent: state.capture_in_progress ? 48 : 28, message: state.capture_in_progress ? '已触发当前帧，等待 RDC 写入' : `已恢复实时连接 · PID ${state.pid || session.targetPid || '—'} · 可截取当前游戏帧`, projectName: preset?.name || basename(executablePath, extname(executablePath)) || '实时捕获会话', executablePath, outputDirectory: session.output, targetPid: Number(state.pid || session.targetPid || 0), api, sessionActive: true, presetId: preset?.id || '' }
   })
-  ipcMain.handle('capture:launch', async (event, project: CaptureProject) => {
-    const check = checkCapture(project)
-    if (!check.ok) throw new Error(check.problems.join('\n'))
-    if (activeCaptureSession && readCaptureState(activeCaptureSession.output)?.session_active && resolve(project.executablePath).toLowerCase() !== resolve(activeCaptureSession.executable || '').toLowerCase()) throw new Error('请先结束当前捕获会话，再连接另一个游戏。结束会话不会关闭游戏。')
+  ipcMain.handle('capture:launch', async (event, project: any) => {
     const executable = resolve(String(project.executablePath || '')); ensureFile(executable, '游戏可执行文件'); ensureFile(pythonPath, 'Kiana Python'); ensureFile(captureJobPath, 'Kiana 捕获进程')
     const working = project.workingDirectory ? resolve(project.workingDirectory) : dirname(executable)
     const parent = resolve(project.captureDirectory || join(working, 'KianaCaptures')); mkdirSync(parent, { recursive: true })
     const existingSession = discoverLiveCaptureSession(executable)
     if (existingSession) {
       const state = readCaptureState(existingSession.output) || {}
-      const sessionMeta = { projectName: String(project.name || basename(executable)), executablePath: executable, outputDirectory: existingSession.output, readyToCapture: captureReady(state), targetPid: Number(state.pid || existingSession.targetPid || 0), api: [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api || (project.profile === 'UnityD3D11Safe' ? 'D3D11' : 'D3D12') }
-      const send = (value: Record<string, unknown>) => { if (!event.sender.isDestroyed()) event.sender.send('capture:progress', { ...sessionMeta, readyToCapture: captureReady(readCaptureState(existingSession.output)) && !existingSession.processing && !existingSession.triggered, ...value }) }
-      event.sender.send('capture:progress', { phase: 'capturing', percent: 28, message: `已恢复实时连接 · PID ${state.pid || existingSession.targetPid || '—'} · 点击“截取当前游戏帧”`, projectName: String(project.name || basename(executable)), executablePath: executable, outputDirectory: existingSession.output, readyToCapture: captureReady(state), targetPid: Number(state.pid || existingSession.targetPid || 0), api: [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api || (project.profile === 'UnityD3D11Safe' ? 'D3D11' : 'D3D12'), sessionActive: true })
+      const sessionMeta = { projectName: String(project.name || basename(executable)), executablePath: executable, outputDirectory: existingSession.output, targetPid: Number(state.pid || existingSession.targetPid || 0), api: [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api || (project.profile === 'UnityD3D11Safe' ? 'D3D11' : 'D3D12') }
+      const send = (value: Record<string, unknown>) => { if (!event.sender.isDestroyed()) event.sender.send('capture:progress', { ...sessionMeta, ...value }) }
+      event.sender.send('capture:progress', { phase: 'capturing', percent: 28, message: `已恢复实时连接 · PID ${state.pid || existingSession.targetPid || '—'} · 点击“截取当前游戏帧”`, projectName: String(project.name || basename(executable)), executablePath: executable, outputDirectory: existingSession.output, targetPid: Number(state.pid || existingSession.targetPid || 0), api: [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api || (project.profile === 'UnityD3D11Safe' ? 'D3D11' : 'D3D12'), sessionActive: true })
       if (existingSession.monitoring) return { pid: existingSession.pid, targetPid: Number(state.pid || existingSession.targetPid || 0), logPath: join(existingSession.output, 'direct-capture-result.json'), outputDirectory: existingSession.output, recovered: true }
       existingSession.monitoring = true
       const recoveredTimer = setInterval(() => {
         const next = readCaptureState(existingSession.output)
         if (!next) return
         existingSession.targetPid = Number(next.pid || existingSession.targetPid || 0)
-        if (next.session_active === false || !isProcessAlive(existingSession.targetPid)) { clearInterval(recoveredTimer); existingSession.monitoring = false; captureSessions.delete(existingSession.output); if (activeCaptureSession?.output === existingSession.output) activeCaptureSession = null; send(next.status === 'stopped' ? { phase: 'complete', percent: 100, message: '捕获会话已结束，游戏继续运行', sessionActive: false, readyToCapture: false, done: true } : { phase: 'failed', percent: 0, message: '目标游戏已退出，实时捕获会话结束', error: 'target_disconnected', sessionActive: false }); return }
+        if (next.session_active === false || !isProcessAlive(existingSession.targetPid)) { clearInterval(recoveredTimer); existingSession.monitoring = false; captureSessions.delete(existingSession.output); if (activeCaptureSession?.output === existingSession.output) activeCaptureSession = null; send({ phase: 'failed', percent: 0, message: '目标游戏已退出，实时捕获会话结束', error: 'target_disconnected', sessionActive: false }); return }
         if (next.capture_in_progress) send({ phase: 'capturing', percent: 48, message: '已触发当前帧，等待 RDC 写入', sessionActive: true })
         else if (!existingSession.processing && !captureTriggerPending(existingSession, next)) { existingSession.triggered = false; send({ phase: 'capturing', percent: 28, message: `实时连接成功 · PID ${existingSession.targetPid} · 点击“截取当前游戏帧”`, sessionActive: true }) }
         for (const value of next.captures || []) {
@@ -685,14 +672,13 @@ if (primaryInstance) app.whenReady().then(() => {
           void (async () => {
             try {
               send({ phase: 'verifying', percent: 62, message: 'RDC 已写入，正在生成帧预览', sessionActive: true })
-              captureMetadata.set(capturePath.toLowerCase(), { api: String(next.api || '未读取'), engine: project.engine })
               const thumbnail = await createThumbnail(capturePath)
               rememberWorkspace(capturePath, '', thumbnail)
               send({ phase: 'complete', percent: 100, message: project.autoAnalyze ? '当前帧已保存并加入分析队列' : '当前帧已保存', done: true, capturePath, workspace: workspace(capturePath, '', thumbnail), sessionActive: true })
               let manifestPath = ''
               if (project.autoAnalyze) {
                 const analysisOutput = join(existingSession.output, `analysis-frame${inferFrameNumber(capturePath) || Date.now()}`)
-                manifestPath = await enqueueAnalysisJob(capturePath, analysisOutput, project.engine, 12, 12, (percent, message) => send({ phase: 'analyzing', percent: Math.max(1, percent), message, sessionActive: true }))
+                manifestPath = await enqueueAnalysisJob(capturePath, analysisOutput, project.profile === 'UnityD3D11Safe' ? 'unity' : 'unreal', 12, 12, (percent, message) => send({ phase: 'analyzing', percent: Math.max(1, percent), message, sessionActive: true }))
               }
               if (manifestPath) { rememberWorkspace(capturePath, manifestPath, thumbnail); send({ phase: 'complete', percent: 100, message: '当前帧自动分析完成', done: true, capturePath, workspace: workspace(capturePath, manifestPath, thumbnail), sessionActive: true }) }
             } catch (error) { send({ phase: 'failed', percent: 0, message: error instanceof Error ? error.message : '实时帧处理失败', error: error instanceof Error ? error.message : String(error), sessionActive: true }) }
@@ -704,13 +690,13 @@ if (primaryInstance) app.whenReady().then(() => {
     }
     const output = join(parent, `${String(project.name || 'capture').replace(/[<>:"/\\|?*]/g, '-')}-${Date.now()}`)
     const manualCapture = project.manualCapture !== false
-    const args = [captureJobPath, '--runtime', kianaRoot, '--executable', executable, '--working-dir', working, '--output', output, '--arguments-json', JSON.stringify(captureArguments(project)), '--frame', String(Math.max(1, Number(project.captureFrame) || 900)), '--timeout', manualCapture ? '86400' : '300', ...(project.engine === 'unity' ? ['--unity-safe'] : []), ...(project.preserveExportIdentity ? ['--preserve-export-identity'] : []), ...(project.wrapOptedOutDevices ? ['--wrap-opted-out-devices'] : []), ...(project.hookChildren ? ['--hook-children'] : []), ...(project.referenceAllResources ? ['--reference-all-resources'] : []), ...(project.captureCallstacks ? ['--capture-callstacks'] : []), ...(project.allowFullscreen ? ['--allow-fullscreen'] : []), ...(project.elevate ? ['--elevate'] : []), ...(manualCapture ? ['--manual'] : [])]
+    const args = [captureJobPath, '--runtime', kianaRoot, '--executable', executable, '--working-dir', working, '--output', output, '--arguments-json', JSON.stringify(captureArguments(project)), '--frame', String(Math.max(1, Number(project.captureFrame) || 900)), '--timeout', manualCapture ? '86400' : '300', ...(project.profile === 'UnityD3D11Safe' ? ['--unity-safe'] : []), ...(project.hookChildren ? ['--hook-children'] : []), ...(project.referenceAllResources ? ['--reference-all-resources'] : []), ...(project.captureCallstacks ? ['--capture-callstacks'] : []), ...(project.allowFullscreen ? ['--allow-fullscreen'] : []), ...(project.elevate ? ['--elevate'] : []), ...(manualCapture ? ['--manual'] : [])]
     const child = spawn(pythonPath, args, { cwd: kianaSourceRoot, windowsHide: true, env: pythonEnvironment() })
     const session: CaptureSession = { output, pid: child.pid || 0, targetPid: 0, executable, triggered: false, processed: new Set<string>(), processing: false, monitoring: true }
     activeCaptureSession = session
     captureSessions.set(output, session)
     const sessionMeta = { projectName: String(project.name || executable.split(/[\\/]/).pop() || '游戏'), executablePath: executable, outputDirectory: output, api: project.profile === 'UnityD3D11Safe' ? 'D3D11' : 'D3D12' }
-    const send = (value: Record<string, unknown>) => { if (!event.sender.isDestroyed()) event.sender.send('capture:progress', { ...sessionMeta, targetPid: session.targetPid || undefined, readyToCapture: captureReady(readCaptureState(session.output)) && !session.processing && !session.triggered, ...value }) }
+    const send = (value: Record<string, unknown>) => { if (!event.sender.isDestroyed()) event.sender.send('capture:progress', { ...sessionMeta, targetPid: session.targetPid || undefined, ...value }) }
     send({ phase: 'launching', percent: 4, message: project.elevate ? '等待 Windows UAC 确认并启动游戏' : '正在启动游戏' })
     let buffer = ''; let stderr = ''; let captureResult: any = null; let captureError = ''
     child.stderr.on('data', value => { stderr = (stderr + value.toString()).slice(-maxProcessOutput) })
@@ -720,7 +706,6 @@ if (primaryInstance) app.whenReady().then(() => {
     })
     const processLiveCapture = async (capturePathValue: string) => {
       const capturePath = resolve(capturePathValue)
-      captureMetadata.set(capturePath.toLowerCase(), { api: sessionMeta.api, engine: project.engine })
       if (session.processed.has(capturePath) || !existsSync(capturePath)) return
       session.processed.add(capturePath); session.processing = true; session.triggered = false
       try {
@@ -732,7 +717,7 @@ if (primaryInstance) app.whenReady().then(() => {
         let manifestPath = ''
         if (project.autoAnalyze) {
           const analysisOutput = join(output, `analysis-frame${inferFrameNumber(capturePath) || Date.now()}`)
-          manifestPath = await enqueueAnalysisJob(capturePath, analysisOutput, project.engine, 12, 12, (percent, message) => send({ phase: 'analyzing', percent: Math.max(1, percent), message, sessionActive: true }))
+          manifestPath = await enqueueAnalysisJob(capturePath, analysisOutput, project.profile === 'UnityD3D11Safe' ? 'unity' : 'unreal', 12, 12, (percent, message) => send({ phase: 'analyzing', percent: Math.max(1, percent), message, sessionActive: true }))
         }
         if (manifestPath) { rememberWorkspace(capturePath, manifestPath, thumbnail); send({ phase: 'complete', percent: 100, message: '当前帧自动分析完成', done: true, capturePath, workspace: workspace(capturePath, manifestPath, thumbnail), sessionActive: true }) }
         setTimeout(() => send({ phase: 'capturing', percent: 28, message: `实时连接中 · PID ${session.targetPid || '—'} · 可继续截取当前帧`, sessionActive: true }), 1200)
@@ -745,14 +730,14 @@ if (primaryInstance) app.whenReady().then(() => {
       if (!existsSync(statePath)) return
        try {
          const state = JSON.parse(readFileSync(statePath, 'utf8')); session.targetPid = Number(state.pid || session.targetPid || 0)
-         const detectedApi = state.api
+         const detectedApi = [...(state.messages || [])].reverse().find((item: any) => item?.api)?.api
          if (detectedApi) sessionMeta.api = String(detectedApi)
          if (state.status === 'launching') send({ phase: 'launching', percent: 12, message: '游戏进程正在注入 Kiana' })
          if (state.status === 'waiting_for_graphics') send({ phase: 'launching', percent: 18, message: '等待游戏图形 API；如已打开启动器，请点击开始游戏', sessionActive: false })
-         if (state.status === 'waiting_for_capture' && !session.processing) send({ phase: 'capturing', percent: 28, message: manualCapture ? `实时连接成功 · PID ${session.targetPid} · 点击“截取当前帧”` : `已连接图形 API，等待 Frame ${project.captureFrame}`, sessionActive: manualCapture })
+         if (state.status === 'waiting_for_capture') send({ phase: 'capturing', percent: 28, message: manualCapture ? `实时连接成功 · PID ${session.targetPid} · 点击“截取当前帧”` : `已连接图形 API，等待 Frame ${project.captureFrame}`, sessionActive: manualCapture })
          if (state.status === 'capturing') send({ phase: 'capturing', percent: 48, message: '已触发当前帧，等待 RDC 写入', sessionActive: manualCapture })
-         if (manualCapture) for (const capture of state.captures || []) void processLiveCapture(String(capture))
-         if (manualCapture && (state.session_active === false || (session.targetPid > 0 && !isProcessAlive(session.targetPid))) && !session.processing) { clearInterval(stateTimer); captureSessions.delete(output); if (activeCaptureSession?.output === output) activeCaptureSession = null; send(state.status === 'stopped' ? { phase: 'complete', percent: 100, message: '捕获会话已结束，游戏继续运行', sessionActive: false, readyToCapture: false, done: true } : { phase: 'failed', percent: 0, message: '目标游戏已退出，实时捕获会话结束', error: 'target_disconnected', sessionActive: false }) }
+         for (const capture of state.captures || []) void processLiveCapture(String(capture))
+         if (manualCapture && (state.session_active === false || (session.targetPid > 0 && !isProcessAlive(session.targetPid))) && !session.processing) { clearInterval(stateTimer); captureSessions.delete(output); if (activeCaptureSession?.output === output) activeCaptureSession = null; send({ phase: 'failed', percent: 0, message: '目标游戏已退出，实时捕获会话结束', error: 'target_disconnected', sessionActive: false }) }
        } catch { /* state may be mid-write */ }
     }, 900)
     void (async () => {
@@ -764,14 +749,13 @@ if (primaryInstance) app.whenReady().then(() => {
       captureSessions.delete(output)
       if (activeCaptureSession?.output === output) activeCaptureSession = null
       if (code !== 0) throw new Error(captureError || stderr || '捕获进程提前退出，请检查运行时日志')
-      if (manualCapture) { send({ phase: 'complete', percent: 100, message: '捕获会话已结束', sessionActive: false, readyToCapture: false, done: true }); return }
+      if (manualCapture) { send({ phase: 'complete', percent: 100, message: '捕获会话已结束', sessionActive: false }); return }
       if (!captureResult?.capture) throw new Error(captureError || stderr || '捕获进程没有生成已验证的 RDC')
       const capturePath = resolve(captureResult.capture); ensureFile(capturePath, 'RDC 文件')
-      captureMetadata.set(capturePath.toLowerCase(), { api: String(captureResult.api || '未读取'), engine: project.engine })
       let manifestPath = ''
       if (project.autoAnalyze) {
         const analysisOutput = join(output, 'analysis')
-        manifestPath = await enqueueAnalysisJob(capturePath, analysisOutput, project.engine, 12, 12, (percent, message) => send({ phase: 'analyzing', percent: Math.max(1, percent), message }))
+        manifestPath = await enqueueAnalysisJob(capturePath, analysisOutput, project.profile === 'UnityD3D11Safe' ? 'unity' : 'unreal', 12, 12, (percent, message) => send({ phase: 'analyzing', percent: Math.max(1, percent), message }))
       }
       const thumbnail = await createThumbnail(capturePath)
       rememberWorkspace(capturePath, manifestPath, thumbnail)
@@ -779,11 +763,6 @@ if (primaryInstance) app.whenReady().then(() => {
       send({ phase: 'complete', percent: 100, message: project.autoAnalyze ? '抓帧、验证与分析全部完成' : '抓帧与验证完成', done: true, capturePath, workspace: payload })
     })().catch(error => send({ phase: 'failed', percent: 0, message: error instanceof Error ? error.message : '端到端捕获失败', error: error instanceof Error ? error.message : String(error), sessionActive: false }))
     return { pid: child.pid || 0, logPath: join(output, 'direct-capture-result.json'), outputDirectory: output }
-  })
-  ipcMain.handle('capture:stop', () => {
-    const session = activeCaptureSession || discoverLiveCaptureSession()
-    if (!session || readCaptureState(session.output)?.session_active === false) throw new Error('当前没有活动捕获会话。')
-    writeFileSync(join(session.output, 'stop-capture.json'), JSON.stringify({ requestedAt: new Date().toISOString() }), 'utf8')
   })
   ipcMain.handle('capture:trigger', () => {
     const session = (activeCaptureSession && readCaptureState(activeCaptureSession.output)?.session_active !== false) ? activeCaptureSession : discoverLiveCaptureSession()
@@ -795,7 +774,6 @@ if (primaryInstance) app.whenReady().then(() => {
     if (session.triggered) throw new Error('当前帧正在写入，请稍候')
     if (state.session_active === false) throw new Error('目标游戏已退出，请重新一键注入')
     if (state.capture_in_progress) throw new Error('目标正在保存上一帧，请稍候')
-    if (!captureReady(state) || session.processing) throw new Error('游戏尚未连接或上一帧仍在处理，请等待“可以抓帧”。')
     writeFileSync(join(session.output, 'trigger-capture.json'), JSON.stringify({ id: `${Date.now()}-${Math.random()}`, frames: 1, requestedAt: new Date().toISOString() }), 'utf8')
     session.triggered = true
     activeCaptureSession = session

@@ -1,7 +1,7 @@
 {
   "name": "kianastudioelectron",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.2.0",
   "description": "Kiana GPU capture and scene reconstruction workbench",
   "main": "out/main/index.js",
   "type": "module",
@@ -11,7 +11,6 @@
     "build": "tsc -b && electron-vite build",
     "typecheck": "tsc -b",
     "lint": "oxlint electron src",
-    "test:workflow": "node --experimental-strip-types --test tests/workflow.test.mjs",
     "preview": "electron-vite preview",
     "package": "npm run build && electron-builder --win --dir",
     "dist": "npm run build && electron-builder --win nsis"
@@ -41,41 +40,9 @@
   "build": {
     "appId": "com.kiana.studio",
     "productName": "Kiana Studio",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "out/**/*",
-      "package.json"
-    ],
-    "win": {
-      "target": [
-        "nsis"
-      ],
-      "icon": "build/icon.ico"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true
-    },
-    "extraResources": [
-      {
-        "from": "../kiana",
-        "to": "kiana",
-        "filter": [
-          "mcp/**/*",
-          "extensions/**/*",
-          "LICENSE.*",
-          "*.md",
-          "!**/__pycache__/**",
-          "!**/*.pyc"
-        ]
-      },
-      {
-        "from": "docs/ARTIST_WORKFLOW_CN.md",
-        "to": "studio/docs/ARTIST_WORKFLOW_CN.md"
-      }
-    ]
+    "directories": { "output": "release" },
+    "files": ["out/**/*", "package.json"],
+    "win": { "target": ["nsis"], "icon": "build/icon.ico" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true }
   }
 }

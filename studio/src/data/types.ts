@@ -67,12 +67,11 @@ export type ReverseWorkflow = {
 }
 
 export type WorkspacePayload = {
-  mode: 'empty' | 'demo' | 'capture'
+  mode: 'demo' | 'capture'
   capturePath: string
   captureName: string
   captureBytes: number
   api: string
-  sourceEngine?: 'unity' | 'unreal'
   frameNumber: number
   thumbnailDataUrl: string
   manifestPath: string
@@ -108,9 +107,8 @@ export type WorkspacePayload = {
 
 export type AnalysisProgress = { percent: number; message: string; done?: boolean; error?: string }
 export type AnalysisRequest = { capturePath: string; outputDirectory: string; engine: 'unreal' | 'unity'; maxGeometry: number; maxCharacterPoses?: number }
-export type CaptureProject = { name: string; executablePath: string; workingDirectory: string; captureDirectory: string; arguments: string; profile: 'UnrealD3D12' | 'UnityD3D11Safe' | 'UnityD3D12'; engine: 'unity' | 'unreal'; preserveExportIdentity: boolean; wrapOptedOutDevices: boolean; hookChildren: boolean; referenceAllResources: boolean; captureCallstacks: boolean; allowFullscreen: boolean; captureFrame: number; resolutionWidth: number; resolutionHeight: number; windowMode: 'windowed' | 'borderless' | 'fullscreen'; elevate: boolean; autoAnalyze: boolean; manualCapture: boolean }
-export type CapturePreset = CaptureProject & { id: 'wuthering' | 'zzz' | 'starrail' | 'bh3' | 'genshin'; detected: boolean; description: string; limitation: string }
-export type CaptureCheck = { ok: boolean; problems: string[]; runtimeDirectory: string; arguments: string[] }
+export type CaptureProject = { name: string; executablePath: string; workingDirectory: string; captureDirectory: string; arguments: string; profile: 'UnrealD3D12' | 'UnityD3D11Safe'; hookChildren: boolean; referenceAllResources: boolean; captureCallstacks: boolean; allowFullscreen: boolean; captureFrame: number; resolutionWidth: number; resolutionHeight: number; windowMode: 'windowed' | 'borderless' | 'fullscreen'; elevate: boolean; autoAnalyze: boolean; manualCapture: boolean }
+export type CapturePreset = CaptureProject & { id: 'wuthering' | 'zzz'; detected: boolean; description: string }
 export type CaptureProgress = AnalysisProgress & {
   phase: 'launching' | 'capturing' | 'verifying' | 'analyzing' | 'complete' | 'failed'
   capturePath?: string
@@ -121,7 +119,6 @@ export type CaptureProgress = AnalysisProgress & {
   targetPid?: number
   api?: string
   sessionActive?: boolean
-  readyToCapture?: boolean
 }
 export type CaptureHistoryEntry = { capturePath: string; captureName: string; captureBytes: number; frameNumber: number; modifiedAt: number; manifestPath: string; analyzed: boolean }
 export type RuntimeStatus = { desktop: boolean; connected: boolean; bridgeConnected: boolean; engineMcp: boolean; engineMcpUrl: string; renderdocMcp: boolean; renderdocMcpUrl: string; ueMcp: boolean; ueMcpUrl: string; unityMcp: boolean; unityPort: number; unityProject: string; unityVersion: string; mcpTools: number; bridgePid: number; kianaRoot: string; sourceRoot: string; captureCore: boolean; inspector: boolean; python: boolean; analysisWorker: boolean }
@@ -135,10 +132,8 @@ export type KianaApi = {
   runAnalysis: (request: AnalysisRequest) => Promise<WorkspacePayload>
   launchCapture: (project: CaptureProject) => Promise<{ pid: number; logPath: string; outputDirectory: string }>
   triggerCapture: () => Promise<{ triggered: boolean; outputDirectory: string }>
-  stopCapture: () => Promise<void>
   recoverCapture: () => Promise<(CaptureProgress & { presetId?: string }) | null>
   getCapturePresets: () => Promise<CapturePreset[]>
-  checkCapture: (project: CaptureProject) => Promise<CaptureCheck>
   selectExecutable: () => Promise<string | null>
   selectDirectory: () => Promise<string | null>
   openInspector: (capturePath: string) => Promise<void>

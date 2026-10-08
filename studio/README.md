@@ -2,36 +2,28 @@
 
 Kiana Studio 是面向 GPU 抓帧、渲染逆向和场景重建的 Windows 桌面工作台。界面使用 Electron、React、TypeScript、decius.css 与 React Mosaic；RenderDoc 捕获、RDC 回放和 Python 分析继续由本机 Kiana RenderDoc 运行时完成。
 
-Studio 0.3 默认提供面向美术的“获取画面 → 拆解画面 → 查看素材与依据”引导。
-第一次使用请看 [美术使用流程](docs/ARTIST_WORKFLOW_CN.md)。详细检查模式保留 EID、Pass、Shader 和资源查询。
-用途分类基于规则推测；捕获文件记录、推测和待确认信息在界面中明确区分。
-
 ## 当前能力
 
-- 提供绝区零、崩铁、崩坏 3、原神、鸣潮的预设和启动前检查，接通 Kiana v12 兼容开关。
-- 默认手动截取并确认预览后分析，F12 / PrintScreen 在工作台中触发已就绪的捕获会话。
-- 读取 RDC 头中的实际 D3D11/D3D12 信息；游戏引擎单独确认。
-- 结束捕获连接时保留游戏进程和已经保存的 RDC。
+- 从游戏路径启动 D3D12 / Unity D3D11 Safe 捕获会话。
 - 导入 RDC，并通过 `kiana_renderdoccmd.exe thumb` 生成最高 2560px 的真实预览。
 - 读取重建清单，显示 Pass、Draw、事件范围、Shader、纹理和输出资源。
 - 调用 `native_job.py` 执行本地自动分析，并以 NDJSON 进度更新 UI。
 - 可调整、拖拽和重新排列场景树、视口、Pass Timeline 与 Inspector 面板，也可一键最大化视口与恢复工作台。
 - 打开重建包目录；高级检查仍由 `kiana_qrenderdoc.exe` 承担。
 - 内置本地运行时状态页，直接检查捕获核心、Inspector、Python 与 MCP 分析进程。
-- 恢复最近打开的实际 RDC，以及界面密度与缩放；Electron 使用原生页面缩放保持自适应。
+- 工作区会保存当前帧、对象、界面密度与缩放；Electron 使用原生页面缩放保持自适应。
 
 ## 已接通的界面操作
 
 | 区域 | 操作 |
 | --- | --- |
-| 美术引导 | 获取画面、确认后分析、查看素材与用途依据；失败信息保留并可重试 |
-| 游戏启动 | 五个游戏预设、路径记忆、启动前检查、就绪后截取、结束捕获会话 |
-| 分析结果 | 真实操作与导出项统计、绘制层选择、推测说明、原始依据和缺失信息 |
-| 预览 | RDC 整帧预览、资源纹理、指定 EID 输出；真实导出失败时显示错误 |
-| 详细检查 | Pass / EID 定位、Shader 和资源查询、打开原生 GPU Inspector |
-| 桌面与布局 | 文件夹与日志入口、窗口控制、工作台截图、可调整面板、密度与缩放 |
-
-详细模式中的场景候选、用途分类和重建映射仍需人工核对；界面上的对象控制不代表原始游戏场景或骨骼已完整恢复。
+| 顶部 | 一键抓帧、自动分析、导出重建包、完整桌面菜单、窗口控制、MCP/运行时状态 |
+| 项目栏 | 帧切换与全界面同步、分组折叠、重建目录选择、导入 RDC、新建捕获项目 |
+| 场景树 | 场景/资源切换、实时搜索、层级折叠、对象选择、对象显隐、资源类别选择 |
+| 视口 | R/G/B/A 通道、Beauty/Wireframe/Overdraw、叠加层、拾取/截图/选择/移动/旋转、视角、1:1、最大化 |
+| Timeline | Pass 彩条定位、EID/名称搜索、Pass 表选择、下一个 Pass、禁用/Draw/资源高亮证据选项 |
+| Inspector | 基本信息、材质/Shader、重建映射、LOD、折叠区、材质与纹理选择、Shader 标识复制、参考/重建滑杆 |
+| 布局 | 面板拖动、交换、停靠和尺寸调整；窄窗口应用菜单；1120、1360、2200px 响应式断点 |
 
 ## 安全边界
 
@@ -56,23 +48,22 @@ npm run dev:web
 ```powershell
 npm run typecheck
 npm run lint
-npm run test:workflow
 npm run build
 npm run dist
 ```
 
-安装包生成到 `release\Kiana Studio Setup 0.3.0.exe`。
+安装包生成到 `release\Kiana Studio Setup 0.2.0.exe`。
 
 ## 本地依赖
 
-运行时按内置运行时、`KIANA_HOME`、本地便携目录和 `%LOCALAPPDATA%\Kiana RenderDoc` 查找，所需组件为：
+默认从 `%LOCALAPPDATA%\Kiana RenderDoc` 读取：
 
 - `kiana_renderdoccmd.exe`
 - `kiana_qrenderdoc.exe`
 - `python_mcp\python.exe`
+- `mcp\src\native_job.py`
 
-安装包包含 `resources/kiana/mcp` 与 `resources/kiana/extensions`，保留 Python 包结构。开发时可用 `KIANA_SOURCE_HOME` 指向源码中的 `kiana` 目录。
-捕获数据与分析包只在本机处理。
+可用 `KIANA_HOME` 覆盖运行时目录。捕获数据与重建包只在本机处理。
 
 ## 设计基准
 
